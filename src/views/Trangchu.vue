@@ -73,8 +73,8 @@
             <!-- Thêm class col-md-6 để hình ảnh chiếm 50% chiều rộng, offset-md-3 để căn giữa -->
             <img class="imgqc" src="../assets/img/qc.webp" alt="">
           </div>
-          <div>
-            <khuyenmai></khuyenmai>
+          <div class="col-sm-12">
+            <khuyenmai> </khuyenmai>
             
           </div>
         </div>
