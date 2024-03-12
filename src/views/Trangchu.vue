@@ -82,6 +82,32 @@
 
     </div>
 
+    <div class="qc">
+      <div class="container">
+        <div class="row">
+         
+          <div class="col-sm-12">
+            <HotelTrainVue></HotelTrainVue>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="qc">
+      <div class="container">
+        <div class="row">
+         
+          <div class="col-sm-12">
+            <HotelInterTrain></HotelInterTrain>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
 
 
 
@@ -155,6 +181,10 @@ import findhotel from '../components/findhotel.vue';
 
 import khuyenmai from '../components/khuyenmai.vue';
 
+import HotelTrainVue from "../components/HotelThai.vue";
+
+import HotelInterTrain from "../components/HotelDNA.vue";
+
 
 
 export default {
@@ -162,7 +192,9 @@ export default {
   components: {
     VueAIcarousel,
     findhotel,
-    khuyenmai
+    khuyenmai,
+    HotelTrainVue,
+    HotelInterTrain
   },
 
 
@@ -413,4 +445,4 @@ button:hover {
 .col-sm-6 {
   margin-bottom: 18px;
 }
-</style>
+</style>../components/HotelInterTrain.vue

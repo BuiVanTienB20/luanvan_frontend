@@ -106,10 +106,11 @@ export default {
 };
 </script>
 
-<style>
+<style >
+
 .button-container {
   display: flex;
-  margin-left: 130px;
+  margin-left: 45px;
   gap: 10px;
   /* Khoảng cách giữa các nút */
   margin-bottom: 50px;
