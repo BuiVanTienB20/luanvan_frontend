@@ -1,77 +1,94 @@
-<template >
-    <section class="vh-100">
+<template>
+    <div class="log">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 text-black">
 
 
+                    <Form style="width: 23rem; margin-left: 100px; margin-top: 100px; font-size: 14px;"
+                        @submit="submitLogin" :validation-schema="loginFormSchema">
 
-                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                        <h4 class="fw-normal "
+                            style="letter-spacing: 1px; justify-content: center; text-align: center;">Đăng nhập</h4>
 
-                        <Form style="width: 23rem;" @submit="submitLogin" :validation-schema="loginFormSchema">
-
-                            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập</h3>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example18">Địa chỉ email</label>
-                                <Field type="email" id="form2Example18" class="form-control form-control-lg" name="email"
-                                    v-model="loginLocal.email" />
-                                <ErrorMessage name="email" class="error-feedback" style="color: rgb(238, 15, 15);" />
-
-
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="form2Example28">Mật khẩu</label>
-                                
-                                <Field :type="showPassword ? 'text': 'password'"  
-                                id="form2Example28" 
-                                class="form-control form-control-lg"
-                                name="password" 
-                                v-model="loginLocal.password" />
-                                <i class="far fa-eye"
-                                @click="showPassword = !showPassword"
-                                style="cursor: pointer; position: absolute; right: 130px; top: 270px "
-                               
-                                >
-                                </i>
-                                
-                                <ErrorMessage name="password" class="error-feedback" style="color: rgb(238, 15, 15);" />
-
-                            </div>
-
-                            <div class="pt-1 mb-4">
-                                <button class="btn btn-info btn-lg btn-block" type="submit" style="color: #ffff;">Đăng nhập</button>
-                            </div>
-
-                            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Quên mật khẩu?</a></p>
-                            <p>Bạn chưa có tài khoản?
-
-                                <button class="btn btn-sm btn-success" @click="goToAddUsers()">
-                                    <router-link :to="{ name: 'user.register' }" class="link-info">
-                                        Đăng ký
-                                    </router-link>
-
-                                </button>
-
-                            </p>
+                        <div class="form-outline ">
+                            <label class="form-label" for="form2Example18">Địa chỉ email</label>
+                            <Field type="email" id="form2Example18" class="form-control form-control-lg" name="email"
+                                v-model="loginLocal.email" />
+                            <ErrorMessage name="email" class="error-feedback" style="color: rgb(238, 15, 15);" />
 
 
+                        </div>
+
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="form2Example28">Mật khẩu</label>
+
+                            <Field :type="showPassword ? 'text' : 'password'" id="form2Example28"
+                                class="form-control form-control-lg" name="password" v-model="loginLocal.password" />
 
 
-                        </Form>
+                            <ErrorMessage name="password" class="error-feedback" style="color: rgb(238, 15, 15);" />
+
+                        </div>
+
+                        <div class="mb-2 ">
+                            <button class="btn btn-info btn-lg btn-block" type="submit" style="color: #ffff;">Đăng
+                                nhập</button>
+                        </div>
 
 
-                    </div>
+                        <p class="small  mb-2 pb-lg-2"><a class="text-danger" href="#!">Quên mật khẩu?</a></p>
+                        <p>Bạn chưa có tài khoản?
+
+                            <button class="btn btn-sm btn-success" @click="goToAddUsers()">
+                                <router-link :to="{ name: 'user.register' }" class="link-info">
+                                    Đăng ký
+                                </router-link>
+
+                            </button>
+
+                        </p>
+                        <div class="dkgg " style="text-align: center;">
+                            <h6 class="mb-2">Hoặc đăng nhập/đăng ký với</h6>
+                            <hr>
+
+                            <button class="btn mb-2 gg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-brand-google">
+                                    <path
+                                        d="M20.945 11a9 9 0 1 1 -3.284 -5.997l-2.655 2.392a5.5 5.5 0 1 0 2.119 6.605h-4.125v-3h7.945z">
+                                    </path>
+                                </svg>Tiếp tục với Google
+                            </button>
+                            <button class="btn mb-2  fb"><svg class="mr-2" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg" data-id="IcBrandSocialFb">
+                                    <path
+                                        d="M22 12.0609C22 6.50383 17.5234 2 12 2C6.47656 2 2 6.50383 2 12.0609C2 17.0835 5.65625 21.2454 10.4375 22V14.9691H7.89844V12.0609H10.4375V9.84437C10.4375 7.32325 11.9297 5.93005 14.2148 5.93005C15.3086 5.93005 16.4531 6.12655 16.4531 6.12655V8.60248H15.1914C13.9492 8.60248 13.5625 9.37866 13.5625 10.1745V12.0609H16.3359L15.8926 14.9691H13.5625V22C18.3438 21.2454 22 17.0835 22 12.0609Z"
+                                        fill="#1877F2"></path>
+                                </svg>Tiếp tục với Facebook</button>
+
+
+                        </div>
+
+
+
+
+                    </Form>
+
+
+
 
                 </div>
                 <div class="col-sm-6 px-0 d-none d-sm-block">
-                    <img src="https://img.freepik.com/free-vector/isolated-flower-lotus-with-light-pink-petals-with-reflection-white-background-3d-vector-illustration_98292-11.jpg?2&t=st=1700831587~exp=1700832187~hmac=3af848cef6149dac0aaf5821c868ff55b57146c80124414baa0d10860718d4e3"
-                        alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+                    <img src="https://static-images.vnncdn.net/files/publish/2023/5/24/348559308-3784185538484345-527454361338992790-n-546.jpg"
+                        alt="Login image" class="imglogin" style="object-fit: cover; object-position: left;">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
 </template>
 
 <script>
@@ -139,6 +156,11 @@ export default {
 </script>
 
 <style scoped>
+.log {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
 .bg-image-vertical {
     position: relative;
     overflow: hidden;
@@ -156,5 +178,25 @@ export default {
 .link-info {
     color: #ffff;
     text-decoration: none;
+}
+
+.imglogin {
+    margin-top: 100px;
+    width: 70vh;
+    height: 70vh;
+    border-radius: 5px;
+}
+
+.fb {
+    border: 1px solid rgb(1, 148, 243);
+    color: #3B5998;
+
+}
+
+.gg {
+    border: 1px solid rgb(1, 148, 243);
+    color: #DB4437;
+
+
 }
 </style>

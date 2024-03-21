@@ -74,6 +74,20 @@
         </div>
       </div>
     </div>
+    <div>
+      <button class="btn btn-primary text-white">
+        Bạn cần hỗ trợ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-help-octagon">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M12.802 2.165l5.575 2.389c.48 .206 .863 .589 1.07 1.07l2.388 5.574c.22 .512 .22 1.092 0 1.604l-2.389 5.575c-.206 .48 -.589 .863 -1.07 1.07l-5.574 2.388c-.512 .22 -1.092 .22 -1.604 0l-5.575 -2.389a2.036 2.036 0 0 1 -1.07 -1.07l-2.388 -5.574a2.036 2.036 0 0 1 0 -1.604l2.389 -5.575c.206 -.48 .589 -.863 1.07 -1.07l5.574 -2.388a2.036 2.036 0 0 1 1.604 0z" />
+          <path d="M12 16v.01" />
+          <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+        </svg>
+      </button>
+
+    </div>
     <div class="ftcuoi">
       <p>Công ty TNHH Traveloka Việt Nam. Mã số DN: 0313581779. Tòa nhà An Phú, 117-119 Lý Chính Thắng, P. 7, Q. 3,
         TPHCM
@@ -91,10 +105,10 @@
 // Để viết JavaScript, bạn có thể thêm mã JavaScript vào đây nếu cần thiết.
 </script>
 
-<style>
+<style scoped>
 .banner {
   padding-bottom: 100px;
-  margin-top: 100px;
+  margin-top: -16px;
   width: 100%;
   height: 400px;
   background-color: #000000;
@@ -178,25 +192,36 @@ a {
   color: rgba(205, 208, 209, 1.00)
 }
 
-.ftcuoi  {
+.ftcuoi {
   position: relative;
-  
+
 }
 
 .ftcuoi ::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 80px; /* Khoảng cách của đường dưới chữ */
+  bottom: 80px;
+  /* Khoảng cách của đường dưới chữ */
   width: 100%;
-  height: 2px; /* Độ dày của đường */
-  background-color: rgba(205, 208, 209, 1.00);/* Màu của đường */
+  height: 2px;
+  /* Độ dày của đường */
+  background-color: rgba(205, 208, 209, 1.00);
+  /* Màu của đường */
   opacity: 0.05;
 }
 
-.ftcuoi > p {
+.ftcuoi>p {
   font-size: 14px;
-  
 }
 
+.btn {
+  position: fixed;
+  bottom: 20px;
+  /* Khoảng cách từ bottom */
+  right: 20px;
+  /* Khoảng cách từ right */
+  z-index: 1000;
+
+}
 </style>

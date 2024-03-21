@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="trangchu">
     <div class="blue-background">
       <div class="container">
         <div class="row">
@@ -339,47 +339,26 @@
 
 
 
-    <div class="tc ">
+    <div class="tc">
       <div class="container">
         <div class="dh">
           <h2>Điểm đến hot nhất do Traveloka đề xuất</h2>
-
         </div>
-
-        <div class="row">
-
-
-          <div class="col-sm-4" @click="OpenModalRegister" v-for="product in products" :key="product._id">
-            <div class="ks">
-              <img :src="product.imgURL" alt="Hình ảnh" class="imgsp" />
-
-
-
+        <div class="row kss">
+          <div class="col-sm-4" v-for="product in products" :key="product._id">
+            <div class="ks" @mouseover="showButton" @mouseleave="hideButton">
+              <div class="image-container">
+                <img :src="product.imgURL" alt="Hình ảnh" class="imgsp" />
+                <button class="overlay-button" v-show="isButtonVisible">Xem phòng khách sạn còn trống</button>
+              </div>
               <div class="ten">
                 <p class="text-white" style="font-size: 24px; font-weight: 600;">{{ product.TenHH }}</p>
-                <p class="text-white" style=" font-weight: 600;">Có 500 khách sạn</p>
-
+                <p class="text-white" style="font-weight: 600;">Có 500 khách sạn</p>
               </div>
-
-
-              <!-- <homeModal :isShowModalRegister="isShowModalRegister" :closeModalRegister="closeModalRegister"
-                class="homeNodal" /> -->
             </div>
           </div>
-
-
-
-
         </div>
-
-        <!-- 3 -->
-
-
-
       </div>
-      
-
-
     </div>
 
 
@@ -467,6 +446,8 @@ export default {
         guests: 1,
         rooms: 1
       },
+      isButtonVisible: false
+
 
     };
   },
@@ -487,6 +468,12 @@ export default {
       // Đoạn mã gửi dữ liệu lên máy chủ sẽ được thêm vào ở đây
       // Ví dụ: sử dụng axios hoặc fetch API để gửi dữ liệu
     },
+    showButton() {
+      this.isButtonVisible = true;
+    },
+    hideButton() {
+      this.isButtonVisible = false;
+    }
   },
   created() {
     this.retrieveProducts();
@@ -514,6 +501,10 @@ const closeModalRegister = () => {
 </script> -->
 
 <style scoped>
+.trangchu {
+  margin-top: 140px;
+}
+
 .blue-background {
   background-color: rgba(73, 179, 232, 1.00);
   background-image: linear-gradient(-180deg, rgba(0, 160, 255, 0), #0770cd);
@@ -784,5 +775,44 @@ button:hover {
   /* Khoảng cách từ đường gạch đến các phần tử xung quanh */
 
 
+}
+
+
+.overlay-button {
+
+  border: 1px solid white;
+  border-radius: 0;
+  filter: none;
+}
+
+.overlay-button {
+  position: absolute;
+  bottom: 1;
+  left: 1;
+  width: 60%;
+  background-color: rgba(80, 80, 80, 0.5);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  transform: translateY(100%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  margin-top: 30px;
+  margin-left: 50px;
+
+}
+
+.ks:hover .overlay-button {
+  transform: translateY(0);
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+
+}
+
+.ks:hover img {
+  filter: brightness(40%);
+ 
 }
 </style>

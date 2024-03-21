@@ -1,217 +1,348 @@
 <template>
-    <div class="navt">
-        <nav class="navbar navbar-expand navbar-dark bg-white">
-            <a href="" class="navbar-brand">
-                <router-link :to="{ name: 'trangchu' }" class="nav-link">
+    <header>
+        <div class="navt">
+            <nav class="navbar navbar-expand navbar-dark bg-white">
+                <a href="" class="navbar-brand">
+                    <router-link :to="{ name: 'trangchu' }" class="nav-link">
 
-                    <img src="../assets/img/Logo_Traveloka.png" alt="" class="rounded-circle logo-img mr-2">
+                        <img src="../assets/img/Logo_Traveloka.png" alt="" class="rounded-circle logo-img mr-2">
 
 
-                </router-link>
+                    </router-link>
 
-            </a>
-            <div>
-                <div class="navbar-user" v-if="!isLoggedIn" @click="loginUser()">
-                    <router-link :to="{ name: 'login' }" class="login">
-                        <img importance="low" loading="lazy"
-                            src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/a/a3478fc6e57b8681609c1458bd50cbb9.svg"
-                            decoding="async" width="16" height="16" style="border: 2px solid rgb(2, 100, 200); object-fit: none; object-position: 50% 50%;     border-bottom-left-radius: 9999px;
+                </a>
+                <div>
+                    <div class="navbar-user" >
+                        <router-link :to="{ name: 'login' }" class="login">
+                            <img importance="low" loading="lazy"
+                                src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/a/a3478fc6e57b8681609c1458bd50cbb9.svg"
+                                decoding="async" width="16" height="16" style="border: 2px solid rgb(2, 100, 200); object-fit: none; object-position: 50% 50%;     border-bottom-left-radius: 9999px;
                             border-bottom-right-radius: 9999px;
                             border-top-left-radius: 9999px;
                             border-top-right-radius: 9999px;
                             " class="r-sdzlij r-1kb76zh">
-                        VI|VND
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M6 9l6 6l6 -6" />
+                            VI|VND
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M6 9l6 6l6 -6" />
 
-                        </svg>
+                            </svg>
 
-                    </router-link>
+                        </router-link>
 
-                </div>
-
-            </div>
-            <div>
-                <div class="navbar-user" v-if="!isLoggedIn" @click="loginUser()">
-                    <router-link :to="{ name: 'login' }" class="login">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            data-id="IcMarketingPromoBadge">
-                            <circle cx="12" cy="12" r="10" stroke="#0194f3" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"></circle>
-                            <path
-                                d="M8.5 17.5L15.5 6.5C15.5 6.5 14 8.00002 12 8.00002C10 8.00002 8 7.05 8 7.05M8 7.00002V7.00002C9.10457 7.00002 10 7.89545 10 9.00002V9.00002C10 10.1046 9.10457 11 8 11V11C6.89543 11 6 10.1046 6 9.00002V9.00002C6 7.89545 6.89543 7.00002 8 7.00002V7.00002ZM18 15V15C18 16.1046 17.1046 17 16 17V17C14.8954 17 14 16.1046 14 15V15C14 13.8954 14.8954 13 16 13V13C17.1046 13 18 13.8954 18 15Z"
-                                stroke="#91EC00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        Khuyến mãi
-
-                    </router-link>
+                    </div>
 
                 </div>
+                <div>
+                    <div class="navbar-user" >
+                        <router-link :to="{ name: 'login' }" class="login">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" data-id="IcMarketingPromoBadge">
+                                <circle cx="12" cy="12" r="10" stroke="#0194f3" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></circle>
+                                <path
+                                    d="M8.5 17.5L15.5 6.5C15.5 6.5 14 8.00002 12 8.00002C10 8.00002 8 7.05 8 7.05M8 7.00002V7.00002C9.10457 7.00002 10 7.89545 10 9.00002V9.00002C10 10.1046 9.10457 11 8 11V11C6.89543 11 6 10.1046 6 9.00002V9.00002C6 7.89545 6.89543 7.00002 8 7.00002V7.00002ZM18 15V15C18 16.1046 17.1046 17 16 17V17C14.8954 17 14 16.1046 14 15V15C14 13.8954 14.8954 13 16 13V13C17.1046 13 18 13.8954 18 15Z"
+                                    stroke="#91EC00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </svg>
+                            Khuyến mãi
 
-            </div>
-            <div>
-                <div class="navbar-user" v-if="!isLoggedIn" @click="loginUser()">
-                    <router-link :to="{ name: 'login' }" class="login">
-                        Hỗ trợ
+                        </router-link>
 
-                    </router-link>
-
-                </div>
-
-            </div>
-            <div>
-                <div class="navbar-user" v-if="!isLoggedIn" @click="loginUser()">
-                    <router-link :to="{ name: 'login' }" class="login">
-                        Hợp tác với chúng tôi
-
-                    </router-link>
-
-                </div>
-
-            </div>
-            <div>
-                <div class="navbar-user" v-if="!isLoggedIn" @click="loginUser()">
-                    <router-link :to="{ name: 'login' }" class="login">
-                        Đặt chỗ của tôi
-
-                    </router-link>
+                    </div>
 
                 </div>
+                <div>
+                    <div class="navbar-user" >
+                        <router-link :to="{ name: 'login' }" class="login">
+                            Hỗ trợ
 
-            </div>
-            <div>
-                <button class="navbar-user" v-if="!isLoggedIn" @click="loginUser()">
-                    <router-link :to="{ name: 'login' }" class="login">
-                        <i class="fa-solid fa-user"></i> Đăng Nhập
+                        </router-link>
 
-                    </router-link>
+                    </div>
 
-                </button>
+                </div>
+                <div>
+                    <div class="navbar-user" >
+                        <router-link :to="{ name: 'login' }" class="login">
+                            Hợp tác với chúng tôi
 
-            </div>
+                        </router-link>
 
+                    </div>
 
-            <div>
-                <button class="navbar-user" v-if="!isLoggedIn" @click="loginUser()">
-                    <router-link :to="{ name: 'login' }" class="login">
-                        Đăng ký
+                </div>
+                <div>
+                    <div class="navbar-user" >
+                        <router-link :to="{ name: 'login' }" class="login">
+                            Đặt chỗ của tôi
 
-                    </router-link>
+                        </router-link>
 
-                </button>
+                    </div>
 
+                </div>
+                <div>
+                    <button class="navbar-user log" v-if="!isLoggedIn" @click="loginUser()">
+                        <router-link :to="{ name: 'login' }" class="login">
+                            <i class="fa-solid fa-user" style="color: rgb(1, 148, 243);"></i> Đăng Nhập
 
-                <div class="dropdown" v-else>
-                    <button class="btn btn-secondary " type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <img src="@/assets/img/chitonngoc.jpg" class="rounded-circle" height="55" width="60" alt="User"
-                            loading="lazy" />
+                        </router-link>
+
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                        <button type="button" class="btn btn-success" @click="logout">
-                            Đăng xuất
+                </div>
 
+
+                <div>
+                    <button class="navbar-user reg" v-if="!isLoggedIn" @click="goToAddUsers()">
+                        <router-link :to="{ name: 'user.register' }" class="login" style="color: #ffffff">
+                            Đăng ký
+
+                        </router-link>
+
+                    </button>
+
+
+                    <div class="dropdown" style="width: 250px;" v-else>
+                        <button class="btn m-4 btn-secondary " type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <img src="@/assets/img/chitonngoc.jpg" class="rounded-circle" height="55" width="60"
+                                alt="User" loading="lazy" />
                         </button>
+                        <div class="dropdown-menu" style="margin-top: -21px;" aria-labelledby="dropdownMenuButton">
+                            <div class="m-2">
+                                <b>Tien</b>
+                            </div>
+                            <button type="button" class="btn " @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="color: #FFCC00;"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-mood-dollar">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M20.87 10.48a9 9 0 1 0 -7.876 10.465" />
+                                    <path d="M9 10h.01" />
+                                    <path d="M15 10h.01" />
+                                    <path d="M9.5 15c.658 .64 1.56 1 2.5 1c.357 0 .709 -.052 1.043 -.151" />
+                                    <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" />
+                                    <path d="M19 21v1m0 -8v1" />
+                                </svg>
 
+                                <b>0 Điểm</b>
+
+                            </button>
+
+
+                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="color: #0066CC;"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-user">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                </svg>
+                                Chỉnh sửa hồ sơ
+
+                            </button>
+
+
+
+
+
+                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="color: #0066CC;"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-credit-card">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+                                    <path d="M3 10l18 0" />
+                                    <path d="M7 15l.01 0" />
+                                    <path d="M11 15l2 0" />
+                                </svg>
+                                Thẻ của tôi
+
+                            </button>
+
+                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="color: #0066CC;"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-clipboard-list">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                                    <path
+                                        d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                    <path d="M9 12l.01 0" />
+                                    <path d="M13 12l2 0" />
+                                    <path d="M9 16l.01 0" />
+                                    <path d="M13 16l2 0" />
+                                </svg>
+                                Danh sách giao dịch
+
+                            </button>
+
+
+
+                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="color: #0066CC;"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-vocabulary">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M10 19h-6a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1h6a2 2 0 0 1 2 2a2 2 0 0 1 2 -2h6a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-6a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2z" />
+                                    <path d="M12 5v16" />
+                                    <path d="M7 7h1" />
+                                    <path d="M7 11h1" />
+                                    <path d="M16 7h1" />
+                                    <path d="M16 11h1" />
+                                    <path d="M16 15h1" />
+                                </svg>
+                                Đặt chỗ của tôi
+
+                            </button>
+
+                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="color: #0066CC;"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-mail">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                                    <path d="M3 7l9 6l9 -6" />
+                                </svg>
+                               Khuyến mãi
+
+                            </button>
+
+                           
+                           
+                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="color: #0066CC;"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-power">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M7 6a7.75 7.75 0 1 0 10 0" />
+                                    <path d="M12 4l0 8" />
+                                </svg>
+                                Đăng xuất
+
+                            </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </nav>
+            <div>
+                <nav class="navbar navi">
+                    <div class="" style="margin-right: 16px;;margin-left: auto;">
+                        <router-link :to="{ name: 'auth' }" class="" style="color: #ffffff;">
+                            Khách sạn
+                        </router-link>
+
+                    </div>
+                    <div class="" style="margin-right: 16px;; ">
+                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
+                            Vé máy bay
+                        </router-link>
 
 
 
                     </div>
-                </div>
 
+                    <div class="" style="margin-right: 16px;; ">
+                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
+                            Vé xe khách
+                        </router-link>
+
+
+
+                    </div>
+
+                    <div class="" style="margin-right: 16px;; ">
+                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
+                            Đưa đón sân bay
+                        </router-link>
+
+
+
+                    </div>
+                    <div class="" style="margin-right: 16px;; ">
+                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
+                            Cho thuê xe
+                        </router-link>
+
+
+
+                    </div>
+
+                    <div class="" style="margin-right: 16px;; ">
+                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
+                            Hoạt động vui chơi
+                        </router-link>
+
+
+
+                    </div>
+
+                    <div class="" style="margin-right: 16px;; ">
+                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
+                            More
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M6 9l6 6l6 -6" />
+                            </svg>
+                        </router-link>
+
+
+
+                    </div>
+                    <div :class="''" style="color: white;margin-right: auto;"></div>
+                </nav>
 
             </div>
 
-        </nav>
-        <div>
-            <nav class="navbar navi">
-                <div class="" style="margin-right: 16px;;margin-left: auto;">
-                    <router-link :to="{ name: 'auth' }" class="" style="color: #ffffff;">
-                        Khách sạn
-                    </router-link>
-
-                </div>
-                <div class="" style="margin-right: 16px;; ">
-                    <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                        Vé máy bay
-                    </router-link>
 
 
 
-                </div>
 
-                <div class="" style="margin-right: 16px;; ">
-                    <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                        Vé xe khách
-                    </router-link>
-
-
-
-                </div>
-
-                <div class="" style="margin-right: 16px;; ">
-                    <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                        Đưa đón sân bay
-                    </router-link>
-
-
-
-                </div>
-                <div class="" style="margin-right: 16px;; ">
-                    <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                        Cho thuê xe
-                    </router-link>
-
-
-
-                </div>
-
-                <div class="" style="margin-right: 16px;; ">
-                    <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                        Hoạt động vui chơi
-                    </router-link>
-
-
-
-                </div>
-
-                <div class="" style="margin-right: 16px;; ">
-                    <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                        More
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M6 9l6 6l6 -6" />
-                        </svg>
-                    </router-link>
-
-
-
-                </div>
-                <div :class="''" style="color: white;margin-right: auto;"></div>
-            </nav>
 
         </div>
 
+    </header>
 
-
-
-
-
-    </div>
 </template>
 
 
 <script>
-
-
 export default {
-
     data() {
         return {
             isLoggedIn: false,
@@ -220,6 +351,12 @@ export default {
 
         };
 
+    },
+    methods: {
+
+        goToAddUsers() {
+            this.$router.push({ name: 'user.register' });
+        },
     },
 
 
@@ -279,6 +416,19 @@ export default {
 
 <style scoped>
 /* CSS để bo tròn ảnh và thu nhỏ nó */
+header {
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    /* Cố định header ở trên cùng */
+    top: 0;
+    /* Đặt header ở trên cùng của trang */
+    z-index: 1000;
+    /* Đảm bảo header hiển thị trên các phần tử khác */
+}
+
 
 .nav-link {
     display: block;
@@ -300,7 +450,7 @@ export default {
 }
 
 .navbar-user {
-    font-size: 13px;
+    font-size: 15px;
     /* Thu nhỏ kích thước chữ */
     font-weight: 500;
     /* Làm chữ in đậm */
@@ -308,6 +458,30 @@ export default {
     /* Loại bỏ đường viền */
     border-radius: 5px;
 
+}
+
+.log {
+    padding: 10px;
+    border: 2px solid rgb(45, 161, 238);
+    background-color: #fff;
+
+}
+
+.log:hover {
+    filter: brightness(90%);
+
+
+
+}
+
+.reg {
+    padding: 10px 20px;
+    background-color: rgb(45, 161, 238);
+
+}
+
+.reg:hover {
+    filter: brightness(70%);
 }
 
 .navbar-user button {
@@ -449,4 +623,5 @@ export default {
     color: #ff6600;
     /* Example: Change text color to orange */
     /* Add any other styles you want to customize the text appearance */
-}</style>
+}
+</style>

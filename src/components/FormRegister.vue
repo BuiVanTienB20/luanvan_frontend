@@ -1,90 +1,95 @@
-
 <template>
-    <section class="vh-250"
-        style="background-image: url('https://img.freepik.com/free-photo/person-practicing-yoga-meditation-nature-sunset-sunrise_23-2150838495.jpg?t=st=1700828870~exp=1700832470~hmac=9704fcd27c5d9160b380220b9c8087e663f01ed29e45e64ecd97c958dd7c2bda&w=360');">
-        <div class=" ">
-            <div class="container h-100 ">
-                <div class="row  d-flex justify-content-center align-items-center h-100" style="padding: 20px;">
-                    <div class="col-12 col-md-9 col-lg-7">
-                        <div class="card" style="border-radius: 15px;">
-                            <div class="card-body p-5">
-                                <h2 class="text-uppercase text-center mb-5">TẠO MỘT TÀI KHOẢN</h2>
+    <div class="reg">
+        <section class="vh-200"
+            style="background-image: url('https://img.freepik.com/free-photo/person-practicing-yoga-meditation-nature-sunset-sunrise_23-2150838495.jpg?t=st=1700828870~exp=1700832470~hmac=9704fcd27c5d9160b380220b9c8087e663f01ed29e45e64ecd97c958dd7c2bda&w=360');">
+            <div class=" ">
+                <div class="container h-100 ">
+                    <div class="row  d-flex justify-content-center align-items-center h-100" style="padding: 20px;">
+                        <div class="col-12 col-md-9 col-lg-7">
+                            <div class="card" style="border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <h2 class="text-uppercase text-center ">TẠO MỘT TÀI KHOẢN</h2>
 
-                                <Form @submit="submitUser" :validation-schema="userFormSchema">
+                                    <Form @submit="submitUser" :validation-schema="userFormSchema">
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example1cg">Tên của bạn</label>
-                                        <Field type="text" id="form3Example1cg" class="form-control form-control-lg"
-                                            name="name" v-model="userLocal.name" />
-                                        <ErrorMessage name="name" class="error-feedback" style="color: rgb(238, 15, 15);" />
+                                        <div class="form-outline ">
+                                            <label class="form-label" for="form3Example1cg">Tên của bạn</label>
+                                            <Field type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                                name="name" v-model="userLocal.name" />
+                                            <ErrorMessage name="name" class="error-feedback"
+                                                style="color: rgb(238, 15, 15);" />
 
-                                    </div>
+                                        </div>
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example3cg">Email của bạn</label>
-                                        <Field type="email" id="form3Example3cg" class="form-control form-control-lg"
-                                            name="email" v-model="userLocal.email" />
-                                        <ErrorMessage name="email" class="error-feedback"
-                                            style="color: rgb(238, 15, 15);" />
-
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example4cg">Mật khẩu</label>
-                                        <Field :type="showPassword ? 'text' : 'password'" id="form3Example4cg"
-                                            class="form-control form-control-lg" name="password"
-                                            v-model="userLocal.password" />
-
-                                        <i class="far fa-eye" @click="showPassword = !showPassword"
-                                            style="cursor: pointer;position: relative; left: 450px; bottom: 35px;">
-                                        </i>
-
-                                        <ErrorMessage name="password" class="error-feedback"
-                                            style="color: rgb(238, 15, 15);" />
+                                        <div class="form-outline">
+                                            <label class="form-label" for="form3Example3cg">Email của bạn</label>
+                                            <Field type="email" id="form3Example3cg"
+                                                class="form-control form-control-lg" name="email"
+                                                v-model="userLocal.email" />
+                                            <ErrorMessage name="email" class="error-feedback"
+                                                style="color: rgb(238, 15, 15);" />
 
 
-                                    </div>
+                                        </div>
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example4cdg">Nhập lại mật khẩu</label>
-                                        <Field :type="showPassword ? 'text' : 'password'" id="form3Example4cdg"
-                                            class="form-control form-control-lg" name="respassword"
-                                            v-model="userLocal.respassword" />
-                                        <i class="far fa-eye" @click="showPassword = !showPassword"
-                                            style="cursor: pointer;position: relative;left: 450px; bottom: 35px; ">
-                                        </i>
-                                        <ErrorMessage name="respassword" class="error-feedback"
-                                            style="color: rgb(238, 15, 15);" />
+                                        <div class="form-outline">
+                                            <label class="form-label" for="form3Example4cg">Mật khẩu</label>
+                                            <Field :type="showPassword ? 'text' : 'password'" id="form3Example4cg"
+                                                class="form-control form-control-lg" name="password"
+                                                v-model="userLocal.password" />
 
+                                            <i class="far fa-eye" @click="showPassword = !showPassword"
+                                                style="cursor: pointer;position: relative; left: 450px; bottom: 35px;">
+                                            </i>
 
-                                    </div>
-
+                                            <ErrorMessage name="password" class="error-feedback"
+                                                style="color: rgb(238, 15, 15);" />
 
 
-                                    <div class="d-flex justify-content-center" >
-                                        <button type="submit"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 ">
+                                        </div>
 
-                                            Đăng
-                                            ký
+                                        <div class="form-outline">
+                                            <label class="form-label" for="form3Example4cdg">Nhập lại mật khẩu</label>
+                                            <Field :type="showPassword ? 'text' : 'password'" id="form3Example4cdg"
+                                                class="form-control form-control-lg" name="respassword"
+                                                v-model="userLocal.respassword" />
+                                            <i class="far fa-eye" @click="showPassword = !showPassword"
+                                                style="cursor: pointer;position: relative;left: 450px; bottom: 35px; ">
+                                            </i>
+                                            <ErrorMessage name="respassword" class="error-feedback"
+                                                style="color: rgb(238, 15, 15);" />
 
-                                        </button>
-                                    </div>
+
+                                        </div>
 
 
-                                </Form>
 
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 ">
+
+                                                Đăng
+                                                ký
+
+                                            </button>
+                                        </div>
+
+
+                                    </Form>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </section>
+        </section>
+
+    </div>
+
 </template>
-    
+
 <script>
 import { ErrorMessage, Field, Form } from "vee-validate";
 
@@ -127,8 +132,8 @@ export default {
                 .min(8, "Tên phải ít nhất 8 ký tự.")
                 .max(8, "Tên có nhiều nhất 8 ký tự.")
                 .test("password-match", "Mật khẩu không khớp.", function (value) {
-                return value === this.parent.password;
-            }),
+                    return value === this.parent.password;
+                }),
 
         });
         return {
@@ -150,7 +155,7 @@ export default {
 
             this.$emit("submit:user", this.userLocal);
         }
-        
+
     },
 
 };
@@ -158,12 +163,15 @@ export default {
 
 
 </script>
-    
-    
-    
-    
-    
+
+
+
+
+
 <style scoped>
+.reg{
+    margin-top: 60px;
+}
 .gradient-custom-4 {
     color: #ffff;
     /* fallback for old browsers */

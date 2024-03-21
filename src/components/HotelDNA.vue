@@ -19,6 +19,10 @@
     <div v-if="currentImages">
       <div class="image-container">
         <div v-for="(image, index) in currentImages.slice(startIndex, startIndex + 5)" :key="index" class="image-item">
+          <div class="location-discount">
+            <div class="location-name">{{ locationNames[startIndex + index] }}</div>
+            <div class="discount-code">{{ discountCodes[startIndex + index] }}</div>
+          </div>
           <img :src="image" :alt="'Ảnh ' + (startIndex + index + 1)" class="img-dna">
           <h6 style="  color: rgba(67, 67, 67, 1.00); font-style: normal;">Khách sạn 4 sao</h6>
           <div class="css-1dbjc4n r-1awozwy r-18u37iz"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"
@@ -111,7 +115,24 @@ export default {
         '../src/assets/img/ba6.webp', '../src/assets/img/ba7.webp', '../src/assets/img/ba8.webp', '../src/assets/img/ba9.webp', '../src/assets/img/ba10.webp'
       ],
 
-      highlightedButton: 0
+      highlightedButton: 0,
+      locationNames: [
+        // Tên địa điểm cho các ảnh Bangkok
+        'Bangkok 1', 'Bangkok 2', 'Bangkok 3', 'Bangkok 4', 'Bangkok 5', 'Bangkok 6', 'Bangkok 7', 'Bangkok 8', 'Bangkok 9', 'Bangkok 10',
+        // Tên địa điểm cho các ảnh Chiang Mai
+        'Chiang Mai 1', 'Chiang Mai 2', 'Chiang Mai 3', 'Chiang Mai 4', 'Chiang Mai 5', 'Chiang Mai 6', 'Chiang Mai 7', 'Chiang Mai 8', 'Chiang Mai 9', 'Chiang Mai 10',
+        // Tên địa điểm cho các ảnh Pattaya
+        'Pattaya 1', 'Pattaya 2', 'Pattaya 3', 'Pattaya 4', 'Pattaya 5', 'Pattaya 6', 'Pattaya 7', 'Pattaya 8', 'Pattaya 9', 'Pattaya 10',
+      ],
+      discountCodes: [
+        // Mã code cho các ảnh Bangkok
+        'CODE123', 'CODE456', 'CODE789', 'CODEABC', 'CODEDEF', 'CODEGHI', 'CODEJKL', 'CODEMNO', 'CODEPQR', 'CODESTU',
+        // Mã code cho các ảnh Chiang Mai
+        'CODEVWX', 'CODEYZA', 'CODEBCD', 'CODEEFG', 'CODEHIJ', 'CODEKLM', 'CODENOP', 'CODEQRS', 'CODETUV', 'CODEWXY',
+        // Mã code cho các ảnh Pattaya
+        'CODEZAB', 'CODECDE', 'CODEFGH', 'CODEIJK', 'CODELMN', 'CODEOPQ', 'CODERST', 'CODETUV', 'CODEWXY', 'CODEZAB',
+      ],
+
     };
   },
   methods: {
@@ -168,7 +189,7 @@ export default {
   background-color: aliceblue;
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(3,18,26,0.15);
+  box-shadow: 0px 4px 10px rgba(3, 18, 26, 0.15);
 
 }
 
@@ -181,5 +202,35 @@ export default {
   width: 170px;
   height: 94px;
   margin-bottom: 50px;
+}
+.location-discount {
+  position: relative;
+}
+
+.location-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: orange;
+  /* Màu nền cam */
+  padding: 2px 10px;
+  /* Thêm padding cho đẹp */
+  border-top-left-radius: 10px;
+  /* Bo tròn góc */
+}
+
+.discount-code {
+  position: absolute;
+  bottom: -95px;
+  left: 25%;
+  transform: translateX(-50%);
+  /* Canh giữa theo chiều ngang */
+  background-color: orange;
+  /* Màu nền cam */
+  padding: 2px 10px;
+  /* Thêm padding cho đẹp */
+  border-bottom-left-radius: 10px;
+  /* Bo tròn góc */
+  height: 23px ;
 }
 </style>
