@@ -64,7 +64,7 @@
 
 
 
-                                        <div class="d-flex justify-content-center">
+                                        <div class="d-flex mb-4 justify-content-center">
                                             <button type="submit"
                                                 class="btn btn-success btn-block btn-lg gradient-custom-4 ">
 
@@ -73,6 +73,31 @@
 
                                             </button>
                                         </div>
+                                        <div class="dkgg " style="text-align: center;">
+                                            <h6 class="mb-2">Hoặc đăng nhập/đăng ký với</h6>
+                                            <hr>
+
+                                            <button class="btn mr-2 mb-2 gg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-brand-google">
+                                                    <path
+                                                        d="M20.945 11a9 9 0 1 1 -3.284 -5.997l-2.655 2.392a5.5 5.5 0 1 0 2.119 6.605h-4.125v-3h7.945z">
+                                                    </path>
+                                                </svg>Tiếp tục với Google
+                                            </button>
+                                            <button class="btn mb-2  fb"><svg class="mr-2" width="16" height="16"
+                                                    viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                                    data-id="IcBrandSocialFb">
+                                                    <path
+                                                        d="M22 12.0609C22 6.50383 17.5234 2 12 2C6.47656 2 2 6.50383 2 12.0609C2 17.0835 5.65625 21.2454 10.4375 22V14.9691H7.89844V12.0609H10.4375V9.84437C10.4375 7.32325 11.9297 5.93005 14.2148 5.93005C15.3086 5.93005 16.4531 6.12655 16.4531 6.12655V8.60248H15.1914C13.9492 8.60248 13.5625 9.37866 13.5625 10.1745V12.0609H16.3359L15.8926 14.9691H13.5625V22C18.3438 21.2454 22 17.0835 22 12.0609Z"
+                                                        fill="#1877F2"></path>
+                                                </svg>Tiếp tục với Facebook</button>
+
+
+                                        </div>
+
 
 
                                     </Form>
@@ -169,9 +194,10 @@ export default {
 
 
 <style scoped>
-.reg{
+.reg {
     margin-top: 60px;
 }
+
 .gradient-custom-4 {
     color: #ffff;
     /* fallback for old browsers */
@@ -187,5 +213,18 @@ export default {
 .dk {
     text-decoration: none;
     color: rgb(255, 255, 255);
+}
+
+.fb {
+    border: 1px solid rgb(1, 148, 243);
+    color: #3B5998;
+
+}
+
+.gg {
+    border: 1px solid rgb(1, 148, 243);
+    color: #DB4437;
+
+
 }
 </style>
