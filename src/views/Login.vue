@@ -2,12 +2,14 @@
     <div class="lg">
         <p>{{ message }}</p>
         <FormLogin @submit:login="loginUser" />
+     
     </div>
 </template>
-  
+
 <script>
 import FormLogin from "@/components/Formlogin.vue";
 import UserService from "@/services/user.service.js";
+
 
 export default {
     components: {
@@ -29,27 +31,58 @@ export default {
                     // Check the user's role
                     if (response.user.role === 'admin') {
                         this.message = "Đăng nhập thành công vào trang admin";
-                        this.$router.push({ name: 'awelcome' }); // Assuming 'admin' is the name of your admin route.
+                        setTimeout(() => {
+                            this.$router.push({ name: 'awelcome' }); // Assuming 'admin' is the name of your admin route.
+
+                        }, 1000);
+                        this.showToast({
+                            severity: 'success',
+                            summary: 'Thành công',
+                            detail: 'Bạn đã đăng nhập tài khoản',
+                            life: 3000
+                        });
+
                     } else {
                         this.message = "Đăng nhập thành công";
-                        this.$router.push({ name: 'auth' }); // Assuming 'auth' is the name of your user route.
+                        setTimeout(() => {
+                            this.$router.push({ name: 'auth' }); // Assuming 'auth' is the name of your user route.
+
+                        }, 1000);
+
                     }
                 } else {
                     this.message = "Đăng nhập thất bại, mật khẩu hoặc email chưa chính xác";
+                    this.showToast({
+                        severity: 'error',
+                        summary: 'Email hoặc mật khẩu không chính xác',
+                        detail: 'Vui lòng kiểm tra lại',
+                        life: 3000
+                    });
                 }
             } catch (error) {
                 console.error("Login error:", error);
                 this.message = "Đăng nhập thất bại, mật khẩu hoặc email chưa chính xác";
+                this.showToast({
+                    severity: 'error',
+                    summary: 'Email hoặc mật khẩu không chính xác',
+                    detail: 'Vui lòng kiểm tra lại',
+                    life: 3000
+                });
             }
         },
+        showToast(toastConfig) {
+            // Show toast using the PrimeVue toast component
+            this.$toast.add(toastConfig);
+        }
+
+
     },
 };
 </script>
-  
+
 <style scoped>
 .lg>p {
     margin-bottom: 28px;
     color: rgb(249, 4, 4);
 }
 </style>
-  

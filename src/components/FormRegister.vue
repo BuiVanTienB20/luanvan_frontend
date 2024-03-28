@@ -65,12 +65,12 @@
 
 
                                         <div class="d-flex mb-4 justify-content-center">
+                                            <Toast />
+
                                             <button type="submit"
-                                                class="btn btn-success btn-block btn-lg gradient-custom-4 ">
-
-                                                Đăng
-                                                ký
-
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 "
+                                                @click.prevent="submitUser">
+                                                Đăng ký
                                             </button>
                                         </div>
                                         <div class="dkgg " style="text-align: center;">
@@ -116,6 +116,8 @@
 </template>
 
 <script>
+import Button from 'primevue/button';
+import Toast from 'primevue/toast';
 import { ErrorMessage, Field, Form } from "vee-validate";
 
 
@@ -126,6 +128,8 @@ export default {
         Field,
         Form,
         ErrorMessage,
+        Button,
+        Toast
     },
 
 
@@ -174,14 +178,23 @@ export default {
         };
 
     },
+
     methods: {
         submitUser() {
+           
+            if (this.userLocal.name && this.userLocal.email && this.userLocal.password && this.userLocal.respassword) {
+               
+
+                this.$emit("submit:user", this.userLocal);
+            } else {
+               
+                this.$toast.add({ severity: 'error', summary: 'Lỗi', detail: 'Vui lòng điền đầy đủ thông tin.', life: 3000 });
+            }
+        },
 
 
-            this.$emit("submit:user", this.userLocal);
-        }
+    }
 
-    },
 
 };
 

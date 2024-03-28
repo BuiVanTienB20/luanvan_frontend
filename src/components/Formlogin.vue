@@ -32,7 +32,9 @@
                         </div>
 
                         <div class="mb-2 ">
-                            <button class="btn btn-info btn-lg btn-block" type="submit" style="color: #ffff;">Đăng
+                            <Toast />
+                            <button class="btn btn-info btn-lg btn-block" type="submit" style="color: #ffff;"
+                                @click.prevent="submitLogin">Đăng
                                 nhập</button>
                         </div>
 
@@ -92,8 +94,9 @@
 </template>
 
 <script>
+import Button from 'primevue/button';
+import Toast from 'primevue/toast';
 import { ErrorMessage, Field, Form } from "vee-validate";
-
 import * as yup from "yup";
 
 export default {
@@ -101,6 +104,8 @@ export default {
         Field,
         Form,
         ErrorMessage,
+        Button,
+        Toast
     },
 
 
@@ -143,9 +148,17 @@ export default {
     methods: {
         submitLogin() {
 
+            if (this.loginLocal.email && this.loginLocal.password) {
+                this.$emit("submit:login", this.loginLocal);
+
+            } else {
+                this.$toast.add({ severity: 'error', summary: 'Lỗi', detail: 'Vui lòng điền đầy đủ thông tin.', life: 3000 });
+
+            }
 
 
-            this.$emit("submit:login", this.loginLocal);
+
+
         },
         goToAddUsers() {
             this.$router.push({ name: 'user.register' });
