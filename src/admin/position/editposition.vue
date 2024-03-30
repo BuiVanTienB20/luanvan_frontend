@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h1 class="d-flex justify-content-center">Chỉnh sửa khóa tu</h1>
+        <h1 class="d-flex justify-content-center">Chỉnh sửa khách sạn</h1>
         <edit :product="product" @submit:product="editProduct" />
         <p>{{ message }}</p>
     </div>
 </template>
-  
+
 <script>
 import edit from "../../components/position/edit.vue";
 import ProductService from "../../services/hanghoa.service";

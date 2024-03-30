@@ -12,7 +12,7 @@
 
                 </a>
                 <div>
-                    <div class="navbar-user" >
+                    <div class="navbar-user">
                         <router-link :to="{ name: 'login' }" class="login">
                             <img importance="low" loading="lazy"
                                 src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/a/a3478fc6e57b8681609c1458bd50cbb9.svg"
@@ -36,7 +36,7 @@
 
                 </div>
                 <div>
-                    <div class="navbar-user" >
+                    <div class="navbar-user">
                         <router-link :to="{ name: 'login' }" class="login">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" data-id="IcMarketingPromoBadge">
@@ -55,7 +55,7 @@
 
                 </div>
                 <div>
-                    <div class="navbar-user" >
+                    <div class="navbar-user">
                         <router-link :to="{ name: 'login' }" class="login">
                             Hỗ trợ
 
@@ -65,7 +65,7 @@
 
                 </div>
                 <div>
-                    <div class="navbar-user" >
+                    <div class="navbar-user">
                         <router-link :to="{ name: 'login' }" class="login">
                             Hợp tác với chúng tôi
 
@@ -74,16 +74,7 @@
                     </div>
 
                 </div>
-                <div>
-                    <div class="navbar-user" >
-                        <router-link :to="{ name: 'login' }" class="login">
-                            Đặt chỗ của tôi
 
-                        </router-link>
-
-                    </div>
-
-                </div>
                 <div>
                     <button class="navbar-user log" v-if="!isLoggedIn" @click="loginUser()">
                         <router-link :to="{ name: 'login' }" class="login">
@@ -107,8 +98,8 @@
 
 
                     <div class="dropdown" style="width: 250px;" v-else>
-                        <button class="btn m-4 btn-secondary " type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <button class="btn m-4 btn-secondary " type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="@/assets/img/chitonngoc.jpg" class="rounded-circle" height="55" width="60"
                                 alt="User" loading="lazy" />
                         </button>
@@ -116,7 +107,8 @@
                             <div class="m-2">
                                 <b>Tien</b>
                             </div>
-                            <button type="button" class="btn " @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                            <button type="button" class="btn " @click="logout"
+                                style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" style="color: #FFCC00;"
@@ -135,7 +127,8 @@
                             </button>
 
 
-                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                            <button type="button" class="btn" @click="logout"
+                                style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" style="color: #0066CC;"
@@ -152,7 +145,8 @@
 
 
 
-                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600;">
+                            <button type="button" class="btn" @click="logout"
+                                style="font-size: 16px; line-height: 14px; font-weight: 600;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" style="color: #0066CC;"
@@ -168,7 +162,8 @@
 
                             </button>
 
-                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                            <button type="button" class="btn" @click="logout"
+                                style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" style="color: #0066CC;"
@@ -189,7 +184,8 @@
 
 
 
-                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                            <button type="button" class="btn" @click="logout"
+                                style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" style="color: #0066CC;"
@@ -208,7 +204,8 @@
 
                             </button>
 
-                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+                            <button type="button" class="btn" @click="logout"
+                                style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" style="color: #0066CC;"
@@ -218,13 +215,14 @@
                                         d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
                                     <path d="M3 7l9 6l9 -6" />
                                 </svg>
-                               Khuyến mãi
+                                Khuyến mãi
 
                             </button>
 
-                           
-                           
-                            <button type="button" class="btn" @click="logout" style="font-size: 16px; line-height: 14px; font-weight: 600">
+
+
+                            <button type="button" class="btn" @click="logout"
+                                style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" style="color: #0066CC;"
@@ -260,71 +258,8 @@
             </nav>
             <div>
                 <nav class="navbar navi">
-                    <div class="" style="margin-right: 16px;;margin-left: auto;">
-                        <router-link :to="{ name: 'auth' }" class="" style="color: #ffffff;">
-                            Khách sạn
-                        </router-link>
-
-                    </div>
-                    <div class="" style="margin-right: 16px;; ">
-                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                            Vé máy bay
-                        </router-link>
 
 
-
-                    </div>
-
-                    <div class="" style="margin-right: 16px;; ">
-                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                            Vé xe khách
-                        </router-link>
-
-
-
-                    </div>
-
-                    <div class="" style="margin-right: 16px;; ">
-                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                            Đưa đón sân bay
-                        </router-link>
-
-
-
-                    </div>
-                    <div class="" style="margin-right: 16px;; ">
-                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                            Cho thuê xe
-                        </router-link>
-
-
-
-                    </div>
-
-                    <div class="" style="margin-right: 16px;; ">
-                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                            Hoạt động vui chơi
-                        </router-link>
-
-
-
-                    </div>
-
-                    <div class="" style="margin-right: 16px;; ">
-                        <router-link :to="{ name: 'psuccess' }" class="" style="color: #ffffff;">
-                            More
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M6 9l6 6l6 -6" />
-                            </svg>
-                        </router-link>
-
-
-
-                    </div>
-                    <div :class="''" style="color: white;margin-right: auto;"></div>
                 </nav>
 
             </div>
@@ -395,9 +330,11 @@ export default {
         logout() {
             window.localStorage.removeItem('user');
             this.isLoggedIn = false;
+            setTimeout(() => {
+                this.$router.push({ name: "trangchu" });
 
+            }, 2000);
 
-            this.$router.push({ name: "trangchu" });
         },
         loginUser() {
 
@@ -556,7 +493,7 @@ header {
     /* Màu nền xanh */
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 24px;
     /* Khoảng cách nền và chữ trong thẻ div */
     border-radius: 1px;
     /* Bo góc thẻ div */

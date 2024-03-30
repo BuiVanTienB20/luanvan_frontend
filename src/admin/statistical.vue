@@ -1,6 +1,6 @@
 <template>
-    <div >
-        <table  style="width: 50%; ;">
+    <div class="static">
+        <table style="width: 50%; ;">
             <thead>
                 <tr>
                     <th scope="col">Tháng</th>
@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr  class="table-primary" v-for="(monthData, index) in monthlyData" :key="index">
+                <tr class="table-primary" v-for="(monthData, index) in monthlyData" :key="index">
                     <td>{{ index + 1 }}</td>
                     <td>{{ monthData.totalStudents }}</td>
                     <td>{{ monthData.totalFees }}</td>
@@ -25,7 +25,7 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 export default {
     data() {
@@ -43,8 +43,12 @@ export default {
     },
 };
 </script>
-  
-<style>
+
+<style scoped>
+.static {
+    margin-top: 110px;
+}
+
 /* Thêm CSS theo ý của bạn */
 .bar-chart {
     display: flex;
@@ -69,5 +73,5 @@ export default {
     bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
-}</style>
-  
+}
+</style>

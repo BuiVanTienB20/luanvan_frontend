@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-sm-12" style="text-align: center;">
-            <h3>Đăng ký khóa tu</h3>
+            <h4 style="text-align: center;">Thống kê doanh thu</h4>
 
         </div>
 
@@ -46,13 +46,12 @@
 
 
 
-            <button class="btn btn-success" @click="approveOrder">Duyệt</button>
+            <button class="btn mb-2 btn-success" @click="approveOrder">Duyệt</button>
 
-            <h4 style="text-align: center;">Thống kê khóa học đã đăng ký</h4>
             <table class="table">
                 <thead>
                     <tr class="table-primary">
-                        <th scope="row">Tên khóa học</th>
+                        <th scope="row">Tên khách sạn</th>
                         <th scope="col">Giá</th>
                         <th scope="col">Số lượng</th>
                         <th scope="col">Thành tiền</th>
@@ -84,7 +83,7 @@
 
     </div>
 </template>
-  
+
 <script>
 import OrderService from '../services/dathang.service';
 import CartService from '../services/giohang.service';
@@ -190,6 +189,10 @@ export default {
 };
 </script>
 <style scoped>
+.row {
+    margin-top: 100px;
+}
+
 .td {
     display: flex;
 }

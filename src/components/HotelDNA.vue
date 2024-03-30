@@ -69,24 +69,7 @@
           <h5>999.999</h5>
         </div>
       </div>
-      <button class="button-circle bg-white text-primary" @click="previousImages" v-show="startIndex > 0"><svg
-          xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-left-filled" width="24"
-          height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-          stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M13.883 5.007l.058 -.005h.118l.058 .005l.06 .009l.052 .01l.108 .032l.067 .027l.132 .07l.09 .065l.081 .073l.083 .094l.054 .077l.054 .096l.017 .036l.027 .067l.032 .108l.01 .053l.01 .06l.004 .057l.002 .059v12c0 .852 -.986 1.297 -1.623 .783l-.084 -.076l-6 -6a1 1 0 0 1 -.083 -1.32l.083 -.094l6 -6l.094 -.083l.077 -.054l.096 -.054l.036 -.017l.067 -.027l.108 -.032l.053 -.01l.06 -.01z"
-            stroke-width="0" fill="currentColor" />
-        </svg></button>
-      <button class="button-circle bg-white text-primary" @click="nextImages"
-        v-show="startIndex + 5 < images1.length"><svg xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-caret-right-filled" width="24" height="24" viewBox="0 0 24 24"
-          stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M9 6c0 -.852 .986 -1.297 1.623 -.783l.084 .076l6 6a1 1 0 0 1 .083 1.32l-.083 .094l-6 6l-.094 .083l-.077 .054l-.096 .054l-.036 .017l-.067 .027l-.108 .032l-.053 .01l-.06 .01l-.057 .004l-.059 .002l-.059 -.002l-.058 -.005l-.06 -.009l-.052 -.01l-.108 -.032l-.067 -.027l-.132 -.07l-.09 -.065l-.081 -.073l-.083 -.094l-.054 -.077l-.054 -.096l-.017 -.036l-.027 -.067l-.032 -.108l-.01 -.053l-.01 -.06l-.004 -.057l-.002 -12.059z"
-            stroke-width="0" fill="currentColor" />
-        </svg></button>
+
     </div>
     <!-- Add similar div and button structure for other groups -->
   </div>
@@ -104,33 +87,32 @@ export default {
       currentImages: [],
       images1: [
         '../src/assets/img/si1.webp', '../src/assets/img/si2.webp', '../src/assets/img/si3.webp', '../src/assets/img/si4.webp', '../src/assets/img/si5.webp',
-        '../src/assets/img/si6.webp', '../src/assets/img/si7.webp', '../src/assets/img/si8.webp', '../src/assets/img/si9.webp', '../src/assets/img/si10.webp'
+
       ],
       images2: [
         '../src/assets/img/ku1.webp', '../src/assets/img/ku2.webp', '../src/assets/img/ku3.webp', '../src/assets/img/ku4.webp', '../src/assets/img/ku5.webp',
-        '../src/assets/img/ku6.webp', '../src/assets/img/ku7.webp', '../src/assets/img/ku8.webp', '../src/assets/img/ku9.webp', '../src/assets/img/ku10.webp'
+
       ],
       images3: [
         '../src/assets/img/ba1.webp', '../src/assets/img/ba2.webp', '../src/assets/img/ba3.webp', '../src/assets/img/ba4.webp', '../src/assets/img/ba5.webp',
-        '../src/assets/img/ba6.webp', '../src/assets/img/ba7.webp', '../src/assets/img/ba8.webp', '../src/assets/img/ba9.webp', '../src/assets/img/ba10.webp'
+
       ],
 
       highlightedButton: 0,
       locationNames: [
         // Tên địa điểm cho các ảnh Bangkok
-        'Bangkok 1', 'Bangkok 2', 'Bangkok 3', 'Bangkok 4', 'Bangkok 5', 'Bangkok 6', 'Bangkok 7', 'Bangkok 8', 'Bangkok 9', 'Bangkok 10',
+        'Bangkok 1', 'Bangkok 2', 'Bangkok 3', 'Bangkok 4', 'Bangkok 5',
         // Tên địa điểm cho các ảnh Chiang Mai
-        'Chiang Mai 1', 'Chiang Mai 2', 'Chiang Mai 3', 'Chiang Mai 4', 'Chiang Mai 5', 'Chiang Mai 6', 'Chiang Mai 7', 'Chiang Mai 8', 'Chiang Mai 9', 'Chiang Mai 10',
+        'Chiang Mai 1', 'Chiang Mai 2', 'Chiang Mai 3', 'Chiang Mai 4', 'Chiang Mai 5',
         // Tên địa điểm cho các ảnh Pattaya
-        'Pattaya 1', 'Pattaya 2', 'Pattaya 3', 'Pattaya 4', 'Pattaya 5', 'Pattaya 6', 'Pattaya 7', 'Pattaya 8', 'Pattaya 9', 'Pattaya 10',
+        'Pattaya 1', 'Pattaya 2', 'Pattaya 3', 'Pattaya 4', 'Pattaya 5',
       ],
       discountCodes: [
         // Mã code cho các ảnh Bangkok
-        'CODE123', 'CODE456', 'CODE789', 'CODEABC', 'CODEDEF', 'CODEGHI', 'CODEJKL', 'CODEMNO', 'CODEPQR', 'CODESTU',
+        'CODE123', 'CODE456', 'CODE789', 'CODEABC', 'CODEDEF',
         // Mã code cho các ảnh Chiang Mai
-        'CODEVWX', 'CODEYZA', 'CODEBCD', 'CODEEFG', 'CODEHIJ', 'CODEKLM', 'CODENOP', 'CODEQRS', 'CODETUV', 'CODEWXY',
-        // Mã code cho các ảnh Pattaya
-        'CODEZAB', 'CODECDE', 'CODEFGH', 'CODEIJK', 'CODELMN', 'CODEOPQ', 'CODERST', 'CODETUV', 'CODEWXY', 'CODEZAB',
+        'CODEVWX', 'CODEYZA', 'CODEBCD', 'CODEEFG', 'CODEHIJ',
+        'CODEZAB', 'CODECDE', 'CODEFGH', 'CODEIJK', 'CODELMN',
       ],
 
     };
@@ -168,12 +150,7 @@ export default {
         this.highlightedButton = 0;
       }
     },
-    previousImages() {
-      this.startIndex -= 5;
-    },
-    nextImages() {
-      this.startIndex += 5;
-    }
+
   },
   created() {
     this.showImages(this.images1, 1);
@@ -203,6 +180,7 @@ export default {
   height: 94px;
   margin-bottom: 50px;
 }
+
 .location-discount {
   position: relative;
 }
@@ -231,6 +209,6 @@ export default {
   /* Thêm padding cho đẹp */
   border-bottom-left-radius: 10px;
   /* Bo tròn góc */
-  height: 23px ;
+  height: 23px;
 }
 </style>

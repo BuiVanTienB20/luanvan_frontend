@@ -2,7 +2,7 @@
     <div class="lg">
         <p>{{ message }}</p>
         <FormLogin @submit:login="loginUser" />
-     
+
     </div>
 </template>
 
@@ -48,6 +48,13 @@ export default {
                             this.$router.push({ name: 'auth' }); // Assuming 'auth' is the name of your user route.
 
                         }, 1000);
+                        this.showToast({
+                            severity: 'success',
+                            summary: 'Thành công',
+                            detail: 'Bạn đã đăng nhập tài khoản',
+                            life: 3000
+                        });
+
 
                     }
                 } else {

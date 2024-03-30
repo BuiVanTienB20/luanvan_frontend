@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h1 class="d-flex justify-content-center">Thêm khóa tu</h1>
-        <add @submit:product="createProduct" />
-        <p>{{ message }}</p>
-    </div>
+  <div>
+    <h1 class="d-flex justify-content-center">Thêm khách sạn</h1>
+    <add @submit:product="createProduct" />
+    <p>{{ message }}</p>
+  </div>
 </template>
 
 <script>
@@ -11,22 +11,22 @@ import add from "@/components/position/add.vue";
 import ProductService from "../../services/hanghoa.service";
 
 export default {
-    components: {
-        add,
+  components: {
+    add,
 
 
-    },
-    props: {
-        product: { type: Object, require: true },
-    },
-    data() {
-        return {
+  },
+  props: {
+    product: { type: Object, require: true },
+  },
+  data() {
+    return {
 
-            message: "",
-        };
-    },
-    methods: {
-    
+      message: "",
+    };
+  },
+  methods: {
+
     async createProduct(data) {
       // Hiển thị cửa sổ xác nhận
       const confirmed = window.confirm("Bạn có thêm sản phẩm mới?");

@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import Button from 'primevue/button';
+
 import Toast from 'primevue/toast';
 import { ErrorMessage, Field, Form } from "vee-validate";
 import * as yup from "yup";
@@ -104,7 +104,6 @@ export default {
         Field,
         Form,
         ErrorMessage,
-        Button,
         Toast
     },
 

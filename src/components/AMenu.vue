@@ -1,17 +1,9 @@
 <template>
-    <div>
+    <div class="menu">
         <table class="table align-middle mb-0 bg-white">
             <thead class="bg-light">
                 <tr>
                     <th style="text-align:  center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pennant-filled"
-                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path
-                                d="M10 2a1 1 0 0 1 .993 .883l.007 .117v.35l8.406 3.736c.752 .335 .79 1.365 .113 1.77l-.113 .058l-8.406 3.735v7.351h1a1 1 0 0 1 .117 1.993l-.117 .007h-4a1 1 0 0 1 -.117 -1.993l.117 -.007h1v-17a1 1 0 0 1 1 -1z"
-                                stroke-width="0" fill="currentColor"></path>
-                        </svg>
 
                         Quản Trị Viên
 
@@ -27,9 +19,9 @@
 
 
 
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-hexagon" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-hexagon"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M12 13a3 3 0 1 0 0 -6a3 3 0 0 0 0 6z"></path>
                             <path d="M6.201 18.744a4 4 0 0 1 3.799 -2.744h4a4 4 0 0 1 3.798 2.741"></path>
@@ -48,20 +40,21 @@
 
                 <tr>
                     <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-store"
-                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M3 21l18 0"></path>
-                            <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4">
-                            </path>
-                            <path d="M5 21l0 -10.15"></path>
-                            <path d="M19 21l0 -10.15"></path>
-                            <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M3 21l18 0" />
+                            <path d="M5 21v-14l8 -4v18" />
+                            <path d="M19 21v-10l-6 -4" />
+                            <path d="M9 9l0 .01" />
+                            <path d="M9 12l0 .01" />
+                            <path d="M9 15l0 .01" />
+                            <path d="M9 18l0 .01" />
                         </svg>
 
-                        <router-link :to="{ name: 'admin-position' }" style="text-decoration: none; class " class="textp">
-                            Quản lí khóa tu
+                        <router-link :to="{ name: 'admin-position' }" style="text-decoration: none;  " class="textp">
+                            Quản lí khách sạn
                         </router-link>
                     </td>
 
@@ -70,8 +63,8 @@
                     <td>
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="icon icon-tabler icon-tabler-align-box-center-stretch" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M3 19v-14a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z">
                             </path>
@@ -81,16 +74,16 @@
                         </svg>
 
                         <router-link :to="{ name: 'dire' }" style="text-decoration: none; class " class="textp">
-                            Quản lí đăng ký khóa tu
+                            Quản lí đặt phòng
                         </router-link>
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-bar" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-bar"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
                             <path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
@@ -98,8 +91,8 @@
                             <path d="M4 20l14 0" />
                         </svg>
 
-                        <router-link :to="{ name: 'statistical' }" style="text-decoration: none; class " class="textp">
-                           Thống kê (giả định) người đăng ký / học phí trong năm
+                        <router-link :to="{ name: 'statistical' }" style="text-decoration: none;" class="textp">
+                            Thống kê (giả định) doanh thu trong năm
                         </router-link>
                     </td>
 
@@ -110,10 +103,11 @@
         </table>
         <div class="button">
 
-            <button type="button" class="btn btn-success" @click="logout">
+            <button type="button" class="btn btn-secondary" @click="logout">
                 Đăng xuất
 
             </button>
+
 
 
         </div>
@@ -124,7 +118,11 @@
 </template>
 
 <script>
+import Toast from 'primevue/toast';
 export default {
+    components: {
+        Toast
+    },
     methods: {
 
 
@@ -132,9 +130,14 @@ export default {
         logout() {
             window.localStorage.removeItem('user');
             this.isLoggedIn = false;
+            setTimeout(() => {
+                this.$router.push({ name: "trangchu" });
+
+            }, 2000);
 
 
-            this.$router.push({ name: "trangchu" });
+
+
         },
 
 
@@ -145,6 +148,10 @@ export default {
 </script>
 
 <style scoped>
+.menu {
+    margin-top: 110px;
+}
+
 /* Style the <tr> elements when hovered */
 .table tbody tr:hover {
     background-color: #f2f2f2;
@@ -152,7 +159,7 @@ export default {
 }
 
 .table thead tr th {
-    color: #c18000;
+    color: #528B8B;
 }
 
 .table tbody tr td {
@@ -162,6 +169,7 @@ export default {
     font-weight: 700;
 
 
+
 }
 
 .table tbody tr td .textp {
@@ -169,13 +177,13 @@ export default {
 }
 
 .table tbody tr td .textp:hover {
-    color: #c18000;
+    color: #528B8B;
 }
 
 
 /* Change the text color and icon color on hover */
 .table tbody tr:hover td {
-    color: #c18000;
+    color: #528B8B;
     /* Change to the desired text color */
 }
 
@@ -187,7 +195,7 @@ export default {
     display: block;
     width: 100%;
     height: 1px;
-    background-color: #c18000;
+    background-color: #528B8B;
     /* Change to the desired line color */
 }
 
@@ -200,12 +208,8 @@ export default {
 
 button {
     color: #f2f2f2;
-    background-color: rgb(12, 113, 61);
+    background-color: #8B7B8B;
     border-radius: 5px;
 
-}</style>
-
-
-
-
-
+}
+</style>
