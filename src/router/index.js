@@ -93,9 +93,13 @@ const routes = [
         name: "editposition",
         component: () => import("@/admin/position/editposition.vue"),
       },
+      {
+        path: "myseft",
+        name: "myseft",
+        component: () => import("@/components/position/myseft.vue"),
+      },
     ],
   },
- 
 ];
 
 const router = createRouter({

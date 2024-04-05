@@ -1,77 +1,116 @@
 <template>
-    <div class="static">
-        <table style="width: 50%; ;">
-            <thead>
-                <tr>
-                    <th scope="col">Tháng</th>
-                    <th scope="col">Học viên</th>
-                    <th scope="col">Học phí</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-primary" v-for="(monthData, index) in monthlyData" :key="index">
-                    <td>{{ index + 1 }}</td>
-                    <td>{{ monthData.totalStudents }}</td>
-                    <td>{{ monthData.totalFees }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class=" auth card">
 
-        <div class="bar-chart">
-            <div v-for="(month, index) in monthlyData" :key="index" class="bar"
-                :style="{ height: `${(month.totalStudents / maxStudents) * 100}%` }">
-                <span>{{ month.totalStudents }}</span>
-            </div>
-        </div>
+        <Chart type="bar" :data="chartData" :options="chartOptions" class=" chart h-30rem" />
+
+
+
+
     </div>
 </template>
 
 <script>
+
+import Chart from 'primevue/chart';
+
 export default {
+    components: {
+        Chart,
+    },
     data() {
         return {
-            monthlyData: Array.from({ length: 12 }, () => ({
-                totalStudents: Math.floor(Math.random() * 100) + 1,
-                totalFees: Math.floor(Math.random() * 10000) + 1000,
-            })),
+            chartData: null,
+            chartOptions: null,
+
+
         };
     },
-    computed: {
-        maxStudents() {
-            return Math.max(...this.monthlyData.map((month) => month.totalStudents));
-        },
+    mounted() {
+        this.chartData = this.setChartData();
+        this.chartOptions = this.setChartOptions();
     },
+    methods: {
+        setChartData() {
+            const documentStyle = getComputedStyle(document.documentElement);
+
+            return {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [
+                    {
+                        type: 'line',
+                        label: 'Dataset 1',
+                        borderColor: documentStyle.getPropertyValue('--orange-500'),
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.4,
+                        data: [50, 25, 12, 48, 56, 76, 42]
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Dataset 2',
+                        backgroundColor: documentStyle.getPropertyValue('--gray-500'),
+                        data: [21, 84, 24, 75, 37, 65, 34],
+                        borderColor: 'white',
+                        borderWidth: 2
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Dataset 3',
+                        backgroundColor: documentStyle.getPropertyValue('--cyan-500'),
+                        data: [41, 52, 24, 74, 23, 21, 32]
+                    }
+                ]
+            };
+        },
+        setChartOptions() {
+            const documentStyle = getComputedStyle(document.documentElement);
+            const textColor = documentStyle.getPropertyValue('--text-color');
+            const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+            const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+            return {
+                maintainAspectRatio: false,
+                aspectRatio: 0.6,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: textColor
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: textColorSecondary
+                        },
+                        grid: {
+                            color: surfaceBorder
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: textColorSecondary
+                        },
+                        grid: {
+                            color: surfaceBorder
+                        }
+                    }
+                }
+            };
+        }
+    }
 };
 </script>
 
 <style scoped>
-.static {
-    margin-top: 110px;
+.auth {
+    margin-top: 160px;
+    width: 100%;
+    height: 100%;
 }
 
-/* Thêm CSS theo ý của bạn */
-.bar-chart {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 300px;
-    /* Điều chỉnh chiều cao của biểu đồ */
-}
-
-.bar {
-    flex: 0 0 8%;
-    /* Điều chỉnh khoảng cách giữa các cột và chiều rộng của cột */
-    background-color: #4CAF50;
-    /* Điều chỉnh màu sắc của cột */
-    text-align: center;
-    color: white;
-    position: relative;
-}
-
-.bar span {
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
+.chart {
+    height: 520px;
+    width: 1090px;
 }
 </style>
