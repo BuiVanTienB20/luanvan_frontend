@@ -46,6 +46,12 @@ const routes = [
         component: () => import("@/views/Event.vue"),
       },
       {
+        path: "/localhotelPro",
+        name: "localhotelPro",
+        component: () => import("@/views/localhotelPro.vue"),
+      },
+
+      {
         path: "/psuccess",
         name: "psuccess",
         component: () => import("@/views/Psuccess.vue"),

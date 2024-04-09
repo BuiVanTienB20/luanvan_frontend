@@ -53,6 +53,17 @@
                 <Button type="button" label="Xong" severity="secondary" @click="closeDialog"></Button>
             </div>
         </Dialog>
+        <label for="icondisplay" class="font-bold block mb-2"> Đặt lịch </label>
+        <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay" />
+
+        <Dropdown v-model="selectedNight" :options="nights" optionLabel="label" placeholder=""
+            class="w-full md:w-14rem">
+            <template slot="value" slot-scope="slotProps">
+                {{ slotProps.value ? slotProps.value.label : slotProps.placeholder }}
+            </template>
+        </Dropdown>
+        <label for="icondisplay" class="font-bold block mb-2"> Ngày trả phòng </label>
+        <Calendar v-model="returnDate" showIcon iconDisplay="input" inputId="returnDate" :readonly="true" />
     </div>
 </template>
 
@@ -61,25 +72,67 @@ import Button from 'primevue/button';
 import Dialog from 'primevue/dialog';
 import InputNumber from 'primevue/inputnumber';
 import Toast from 'primevue/toast';
+
+import Dropdown from 'primevue/dropdown';
+
+import Calendar from 'primevue/calendar';
+
 export default {
     components: {
         Dialog,
         Button,
         InputNumber,
-        Toast
+        Toast,
+        Calendar,
+        Dropdown
     },
     data() {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
         return {
+            selectedNight: { label: '2 đêm', value: 2 },
+
+            nights: [
+                { label: '1 đêm', value: 1 },
+                { label: '2 đêm', value: 2 },
+                { label: '3 đêm', value: 3 },
+                { label: '4 đêm', value: 4 },
+                { label: '5 đêm', value: 5 },
+                { label: '6 đêm', value: 6 },
+                { label: '7 đêm', value: 7 },
+                { label: '8 đêm', value: 8 },
+                { label: '9 đêm', value: 9 },
+                { label: '10 đêm', value: 10 },
+                { label: '11 đêm', value: 11 },
+                { label: '12 đêm', value: 12 },
+                { label: '13 đêm', value: 13 },
+                { label: '14 đêm', value: 14 },
+                { label: '15 đêm', value: 15 },
+                { label: '16 đêm', value: 16 },
+                { label: '17 đêm', value: 17 },
+                { label: '18 đêm', value: 18 },
+                { label: '19 đêm', value: 19 },
+                { label: '20 đêm', value: 20 }
+            ],
+            icondisplay: tomorrow,
             visible: false,
             value1: 1,
             value2: 0,
             value3: 1,
+
         };
+    },
+    computed: {
+        returnDate() {
+            const returnDate = new Date(this.icondisplay);
+            returnDate.setDate(returnDate.getDate() + this.selectedNight.value);
+            return returnDate;
+        }
     },
     methods: {
         showDialog() {
             if (this.value1 === 0 || this.value3 === 0 || this.value3 > this.value1) {
-               
+
 
             } else {
                 this.visible = true;

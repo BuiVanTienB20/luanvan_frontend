@@ -118,10 +118,8 @@
 
           </div>
           <div>
-            <path
-              d="M7 2V5M17 2V5M3 8H21M11.5 11.5H12.5V12.5H11.5V11.5ZM11.5 16.5H12.5V17.5H11.5V16.5ZM16.5 11.5H17.5V12.5H16.5V11.5ZM6.5 16.5H7.5V17.5H6.5V16.5ZM5 21H19C20.1046 21 21 20.1046 21 19V6C21 4.89543 20.1046 4 19 4H5C3.89543 4 3 4.89543 3 6V19C3 20.1046 3.89543 21 5 21Z"
-              stroke="#687176" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <input type="date" id="checkout" v-model="booking.checkoutDate" required>
+            <Calendar v-model="returnDate" showIcon iconDisplay="input" inputId="returnDate" :readonly="true" />
+
 
           </div>
 
@@ -282,8 +280,10 @@ export default {
 
   },
   data() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
     return {
-      selectedNight: null,
+      selectedNight: { label: '2 đêm', value: 2 },
 
       nights: [
         { label: '1 đêm', value: 1 },
@@ -333,13 +333,23 @@ export default {
         nights: 1,
         guests: 1,
       },
-      icondisplay: null,
+      icondisplay: tomorrow,
       // cus
       visible: false,
       value1: 1,
       value2: 0,
       value3: 1,
     };
+  },
+  computed: {
+    returnDate() {
+      const returnDate = new Date(this.icondisplay);
+      returnDate.setDate(returnDate.getDate() + this.selectedNight.value);
+      return returnDate;
+
+    }
+
+
   },
   methods: {
     submitForm() {
