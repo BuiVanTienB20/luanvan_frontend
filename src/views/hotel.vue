@@ -1,0 +1,285 @@
+<template>
+    <div class="hotel">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img class="nen"
+                        src="https://ik.imagekit.io/tvlk/image/imageResource/2024/03/28/1711598887333-2257e9caaf26d52dfa07f589b77b15f1.png"
+                        alt="">
+                </div>
+
+
+                <div class="ks col-sm-12">
+                    <div class="ht">
+                        <img src="../assets/img/ads1.webp" alt="">
+
+                    </div>
+                    <div class="kt">
+                        <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
+                            Premier Pearl Hotel Vung Tau
+                        </p>
+
+                        <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">
+                            Khu nghỉ dưỡng
+
+
+                            <span
+                                style="color: #ff7600;; font-size: 25px; opacity: 0.8;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+
+
+
+                        </p>
+                        <p style="color:  rgba(104, 113, 118, 1.00); font-weight: 500; font-size: 14px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                style=" font-weight: 500;" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                <path
+                                    d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                            </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam
+                        </p>
+                        <p style=" font-weight: 400;font-size: 14px;">Máy lạnh, Nhà hàng, Hồ bơi, Lễ
+                            tân 24h, Chỗ
+                            đậu xe, Thang máy</p>
+
+
+                    </div>
+                    <div class="bt">
+
+                        <div class="thpd">
+
+                            <div class="tt">
+                                <button class="chooserom btn text-white"> Xem giá
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="ks col-sm-12">
+                    <div class="ht">
+                        <img src="../assets/img/ads1.webp" alt="">
+
+                    </div>
+                    <div class="kt">
+                        <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
+                            Premier Pearl Hotel Vung Tau
+                        </p>
+
+                        <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">
+                            Khu nghỉ dưỡng
+
+
+                            <span
+                                style="color: #ff7600;; font-size: 25px; opacity: 0.8;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+
+
+
+                        </p>
+                        <p style="color:  rgba(104, 113, 118, 1.00); font-weight: 500; font-size: 14px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                style=" font-weight: 500;" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                <path
+                                    d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                            </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam
+                        </p>
+                        <p style=" font-weight: 400;font-size: 14px;">Máy lạnh, Nhà hàng, Hồ bơi, Lễ
+                            tân 24h, Chỗ
+                            đậu xe, Thang máy</p>
+
+
+                    </div>
+                    <div class="bt">
+
+                        <div class="thpd">
+
+                            <div class="tt">
+                                <button class="chooserom btn text-white"> Xem giá
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="ks col-sm-12">
+                    <div class="ht">
+                        <img src="../assets/img/ads1.webp" alt="">
+
+                    </div>
+                    <div class="kt">
+                        <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
+                            Premier Pearl Hotel Vung Tau
+                        </p>
+
+                        <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">
+                            Khu nghỉ dưỡng
+
+
+                            <span
+                                style="color: #ff7600;; font-size: 25px; opacity: 0.8;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+
+
+
+                        </p>
+                        <p style="color:  rgba(104, 113, 118, 1.00); font-weight: 500; font-size: 14px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                style=" font-weight: 500;" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                <path
+                                    d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+                            </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam
+                        </p>
+                        <p style=" font-weight: 400;font-size: 14px;">Máy lạnh, Nhà hàng, Hồ bơi, Lễ
+                            tân 24h, Chỗ
+                            đậu xe, Thang máy</p>
+
+
+                    </div>
+                    <div class="bt">
+
+                        <div class="thpd">
+
+                            <div class="tt">
+                                <button class="chooserom btn text-white"> Xem giá
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</template>
+
+<script>
+
+
+export default {
+    components: {
+
+
+
+    },
+    data() {
+        return {
+
+        };
+    },
+    methods: {
+
+    }
+
+}
+</script>
+
+<style scoped>
+.hotel {
+    margin-top: 140px;
+    margin-bottom: 160px;
+
+
+
+}
+
+.nen {
+    border-radius: 10px;
+    width: 938px;
+    /* Chiều rộng cố định của ảnh */
+    height: 213px;
+    /* Chiều cao cố định của ảnh */
+    display: block;
+    /* Hiển thị là block element để sử dụng margin: auto */
+    margin-left: 100px;
+    /* Đẩy ảnh về phía bên trái */
+    margin-right: auto;
+    /* Đẩy ảnh về phía bên phải */
+    margin-bottom: 40px;
+}
+
+
+.ks {
+
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.ks:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.5);
+    /* Màu viền khi rê chuột vào */
+}
+
+.ht {
+    padding: 10px;
+
+}
+
+.ht>img {
+    width: 205px;
+    height: 164px;
+    border-radius: 10px;
+
+}
+
+.kt {
+    padding-top: 4px;
+    margin-right: 62px;
+}
+
+
+.bt {
+    padding: 10px;
+
+}
+
+.thpd {
+    display: flex;
+    padding-top: 5px;
+    width: 150px;
+}
+
+.chooserom {
+    background-color: rgb(1, 148, 243);
+    font-weight: 700;
+}
+
+.chooserom:hover {
+    background-color: rgb(1, 148, 243 0.8);
+}
+
+.tt {
+    padding: 100px 5px 5px 5px;
+
+}
+</style>

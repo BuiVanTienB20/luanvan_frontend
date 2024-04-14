@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="edit">
         <h1 class="d-flex justify-content-center">Chỉnh sửa khách sạn</h1>
         <edit :product="product" @submit:product="editProduct" />
         <p>{{ message }}</p>
@@ -47,3 +47,9 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.edit {
+    margin-top: 120px;
+}
+</style>

@@ -50,6 +50,36 @@ const routes = [
         name: "localhotelPro",
         component: () => import("@/views/localhotelPro.vue"),
       },
+      {
+        path: "/hotel",
+        name: "hotel",
+        component: () => import("@/views/hotel.vue"),
+      },
+      {
+        path: "/bookroom",
+        name: "bookroom",
+        component: () => import("@/views/bookroom.vue"),
+      },
+      {
+        path: "/test",
+        name: "test",
+        component: () => import("@/views/test.vue"),
+      },
+      {
+        path: "/comfirm",
+        name: "comfirm",
+        component: () => import("@/views/comfirm.vue"),
+      },
+      {
+        path: "/bookdetail",
+        name: "bookdetail",
+        component: () => import("@/views/bookdetail.vue"),
+      },
+      {
+        path: "/pay",
+        name: "pay",
+        component: () => import("@/views/pay.vue"),
+      },
 
       {
         path: "/psuccess",
@@ -103,6 +133,11 @@ const routes = [
         path: "myseft",
         name: "myseft",
         component: () => import("@/components/position/myseft.vue"),
+      },
+      {
+        path: "Cancel",
+        name: "Cancel",
+        component: () => import("@/components/position/Cancel.vue"),
       },
     ],
   },

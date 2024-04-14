@@ -100,8 +100,8 @@
                     <div class="dropdown" style="width: 250px;" v-else>
                         <button class="btn m-4 btn-secondary " type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="@/assets/img/chitonngoc.jpg" class="rounded-circle" height="55" width="60"
-                                alt="User" loading="lazy" />
+                            Tien
+
                         </button>
                         <div class="dropdown-menu" style="margin-top: -21px;" aria-labelledby="dropdownMenuButton">
                             <div class="m-2">

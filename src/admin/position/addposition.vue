@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="add">
     <h1 class="d-flex justify-content-center">Thêm khách sạn</h1>
     <add @submit:product="createProduct" />
     <p>{{ message }}</p>
@@ -47,4 +47,8 @@ export default {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.add {
+  margin-top: 120px;
+}
+</style>

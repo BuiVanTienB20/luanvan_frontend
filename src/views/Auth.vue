@@ -105,6 +105,8 @@
       </div>
     </div>
 
+    <Knob v-model="value" :step="5" />
+
 
 
   </div>
@@ -115,6 +117,8 @@
 import Button from 'primevue/button';
 import Dialog from 'primevue/dialog';
 import Dropdown from 'primevue/dropdown';
+
+import Knob from 'primevue/knob';
 
 import Calendar from 'primevue/calendar';
 
@@ -131,12 +135,14 @@ export default {
     Toast,
     SplitButton,
     Dialog,
+    Knob,
 
     Dropdown,
     InputNumber
   },
   data() {
     return {
+      value: 80,
       visible: false,
       value1: 20,
       value2: 25,
