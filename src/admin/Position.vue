@@ -8,11 +8,11 @@
         <table class="table align-middle mb-0 bg-white">
             <thead class="bg-light">
                 <tr>
-                    <th>Khách sạn</th>
-                    <th>Mô tả</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
-                    <th>Ghi chú</th>
+                    <th>Tỉnh thành</th>
+                    <!-- <th>Mô tả</th> -->
+                    <!-- <th>Giá</th> -->
+                    <!-- <th>Số lượng khách sạn</th>
+                    <th>Ghi chú</th> -->
                     <th>Sửa</th>
                     <th>Xóa</th>
                 </tr>
@@ -24,20 +24,20 @@
                             <img :src="product.imgURL" alt="" style="width: 45px; height: 45px; margin-right: 18px"
                                 class="rounded-circle" />
                             <div class="ms-3">
-                                <p class="fw-bold mb-1">{{ product.TenHH }}</p>
+                                <p class="fw-bold mb-1">{{ product.province_name }}</p>
                             </div>
                         </div>
                     </td>
-                    <td>
+                    <!-- <td>
                         <p class="fw-normal mb-1">{{ product.MoTaHH }}</p>
-                    </td>
-                    <td>
+                    </td> -->
+                    <!-- <td>
                         <p>{{ product.Gia }} VNĐ</p>
-                    </td>
-                    <td>{{ product.SoLuongHangHoa }}</td>
+                    </td> -->
+                    <!-- <td>{{ product.SoLuongHangHoa }}</td>
                     <td>
                         <p>{{ product.GhiChu }}</p>
-                    </td>
+                    </td> -->
                     <td>
 
                         <button type="button" class="btn btn-link btn-sm btn-rounded"
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import ProductService from '../services/hanghoa.service';
+import ProductService from '../services/tinhthanh.service';
 
 export default {
     data() {

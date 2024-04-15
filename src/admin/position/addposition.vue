@@ -1,6 +1,6 @@
 <template>
   <div class="add">
-    <h1 class="d-flex justify-content-center">Thêm khách sạn</h1>
+    <h1 class="d-flex justify-content-center">Thêm tỉnh thành</h1>
     <add @submit:product="createProduct" />
     <p>{{ message }}</p>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 import add from "@/components/position/add.vue";
-import ProductService from "../../services/hanghoa.service";
+import ProductService from "../../services/tinhthanh.service";
 
 export default {
   components: {

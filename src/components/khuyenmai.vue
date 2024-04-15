@@ -1,26 +1,14 @@
 <template>
   <div>
     <div class="button-container">
-      <button class="btn" :class="{ 'btn-info': showImages1, 'btn-secondary': !showImages1 }" @click="showImages(1)"
-        @mouseover="highlightButton(1)" @mouseleave="resetButton(1)">Trong nước</button>
-      <button class="btn" :class="{ 'btn-info': showImages2, 'btn-secondary': !showImages2 }" @click="showImages(2)"
-        @mouseover="highlightButton(2)" @mouseleave="resetButton(2)">Quốc tế</button>
-    </div>
-    <div v-if="showImages1">
-      <div class="image-container">
-        <div v-for="(image, index) in images1.slice(startIndex, startIndex + 5)" :key="index" class="image-item">
-          <img :src="image" :alt="'Ảnh ' + (startIndex + index + 1)">
-        </div>
-      </div>
 
     </div>
-    <div v-if="showImages2">
+    <div v-if="showImages">
       <div class="image-container">
-        <div v-for="(image, index) in images2.slice(startIndex, startIndex + 5)" :key="index" class="image-item">
-          <img :src="image" :alt="'Ảnh ' + (startIndex + index + 1)">
+        <div v-for="(image, index) in images1.slice(startIndex, startIndex + 5)" :key="index" class="image-item">
+          <img :src="image" :alt="'Ảnh ' + (startIndex + index + 1)" class="soanh">
         </div>
       </div>
-     
     </div>
   </div>
 </template>
@@ -29,46 +17,22 @@
 export default {
   data() {
     return {
-      showImages1: true,
-      showImages2: false,
+      showImages: true,
       startIndex: 0,
       images1: [
         '../src/assets/img/trongnuoc1.webp', '../src/assets/img/trongnuoc2.webp', '../src/assets/img/trongnuoc3.webp', '../src/assets/img/trongnuoc4.webp', '../src/assets/img/trongnuoc5.webp',
-        
-      ],
-      images2: [
-        '../src/assets/img/quocte1.webp', '../src/assets/img/quocte2.webp', '../src/assets/img/quocte3.webp', '../src/assets/img/quocte4.webp', '../src/assets/img/quocte5.webp',
-       
       ],
       highlightedButton: 0
     };
   },
   methods: {
-    showImages(buttonNumber) {
-      this.startIndex = 0; // Reset startIndex when switching between image sets
-      if (buttonNumber === 1) {
-        this.showImages1 = true;
-        this.showImages2 = false;
-      } else if (buttonNumber === 2) {
-        this.showImages1 = false;
-        this.showImages2 = true;
-      }
-    },
-    highlightButton(buttonNumber) {
-      this.highlightedButton = buttonNumber;
-    },
-    resetButton(buttonNumber) {
-      if (this.highlightedButton !== buttonNumber) {
-        this.highlightedButton = 0;
-      }
-    },
-   
+    // Nếu bạn cần thêm hành động khi nút được nhấn, bạn có thể thêm hàm ở đây
   }
 };
 </script>
 
-<style >
 
+<style>
 .button-container {
   display: flex;
   margin-left: 45px;
@@ -109,8 +73,12 @@ export default {
   /* Khi di chuột qua, thay đổi màu chữ thành trắng */
 }
 
-
-
+.soanh:hover {
+  transform: scale(1.05);
+  /* Increase the size by 5% */
+  transition: transform 0.4s ease;
+  /* Add a smooth transition effect */
+}
 
 .image-container {
   display: flex;
@@ -127,6 +95,5 @@ export default {
   width: 80%;
   height: auto;
   border-radius: 5px;
- 
-
-}</style>
+}
+</style>

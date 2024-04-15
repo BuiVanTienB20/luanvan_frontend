@@ -45,7 +45,7 @@ export default {
                     } else {
                         this.message = "Đăng nhập thành công";
                         setTimeout(() => {
-                            this.$router.push({ name: 'auth' }); // Assuming 'auth' is the name of your user route.
+                            this.$router.push({ name: 'trangchu' }); // Assuming 'auth' is the name of your user route.
 
                         }, 1000);
                         this.showToast({

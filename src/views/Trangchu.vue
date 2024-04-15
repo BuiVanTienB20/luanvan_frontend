@@ -82,7 +82,7 @@
 
     </div>
 
-    <div class="qc">
+    <!-- <div class="qc">
       <div class="container">
         <div class="row">
 
@@ -93,9 +93,9 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
 
-    <div class="qc">
+    <!-- <div class="qc">
       <div class="container">
         <div class="row">
 
@@ -106,7 +106,7 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
 
     <div class="qc ">
       <div class="container">
@@ -349,11 +349,12 @@
             <div class="ks" @mouseover="showButton" @mouseleave="hideButton">
               <div class="image-container">
                 <img :src="product.imgURL" alt="Hình ảnh" class="imgsp" />
-                <button class="overlay-button" v-show="isButtonVisible">Xem phòng khách sạn còn trống</button>
+                <button class="overlay-button" v-show="isButtonVisible" @click="goTohotel()">Xem phòng khách sạn còn
+                  trống</button>
               </div>
               <div class="ten">
-                <p class="text-white" style="font-size: 24px; font-weight: 600;">{{ product.TenHH }}</p>
-                <p class="text-white" style="font-weight: 600;">Có 500 khách sạn</p>
+                <p class="text-white" style="font-size: 24px; font-weight: 600;">{{ product.province_name }}</p>
+                <!-- <p class="text-white" style="font-weight: 600;">Có {{ product.SoLuongHangHoa }} khách sạn</p> -->
               </div>
             </div>
           </div>
@@ -406,7 +407,7 @@
 <script>
 import VueAIcarousel from "vue-ai-carousel";
 
-import ProductService from '../services/hanghoa.service';
+import ProductService from '../services/tinhthanh.service';
 
 import findhotel from '../components/findhotel.vue';
 
@@ -455,6 +456,9 @@ export default {
     id: { type: String, required: true },
   },
   methods: {
+    goTohotel() {
+      this.$router.push({ name: 'hotel' });
+    },
     async retrieveProducts() {
       try {
         this.products = await ProductService.getAll();
@@ -813,6 +817,6 @@ button:hover {
 
 .ks:hover img {
   filter: brightness(40%);
- 
+
 }
 </style>

@@ -1,7 +1,7 @@
 import createApiClient from "./api.service";
 
-class EmployeeService {
-  constructor(baseUrl = "/api/employees") {
+class ProductService {
+  constructor(baseUrl = "/api/products") {
     this.api = createApiClient(baseUrl);
   }
   async getAll() {
@@ -10,7 +10,7 @@ class EmployeeService {
   async create(data) {
     return (await this.api.post("/", data)).data;
   }
- 
+
   async get(id) {
     return (await this.api.get(`/${id}`)).data;
   }
@@ -22,4 +22,4 @@ class EmployeeService {
   }
 }
 
-export default new EmployeeService();
+export default new ProductService();

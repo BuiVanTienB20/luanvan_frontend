@@ -54,7 +54,7 @@
 
 <script>
 import CartService from '../services/giohang.service';
-import ProductService from '../services/hanghoa.service';
+import ProductService from '../services/tinhthanh.service';
 export default {
   data() {
     return {

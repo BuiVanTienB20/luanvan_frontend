@@ -1,6 +1,6 @@
 <template>
     <div class="edit">
-        <h1 class="d-flex justify-content-center">Chỉnh sửa khách sạn</h1>
+        <h1 class="d-flex justify-content-center">Chỉnh sửa tỉnh thành</h1>
         <edit :product="product" @submit:product="editProduct" />
         <p>{{ message }}</p>
     </div>
@@ -8,7 +8,7 @@
 
 <script>
 import edit from "../../components/position/edit.vue";
-import ProductService from "../../services/hanghoa.service";
+import ProductService from "../../services/tinhthanh.service";
 
 export default {
     components: {

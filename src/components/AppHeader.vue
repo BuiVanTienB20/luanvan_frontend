@@ -99,11 +99,12 @@
 
                     <div class="dropdown" style="width: 250px;" v-else>
                         <button class="btn m-4 btn-secondary " type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            style="border-radius: 50px" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             Tien
 
                         </button>
-                        <div class="dropdown-menu" style="margin-top: -21px;" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" style="margin-top: -21px" aria-labelledby="dropdownMenuButton">
                             <div class="m-2">
                                 <b>Tien</b>
                             </div>
@@ -287,14 +288,6 @@ export default {
         };
 
     },
-    methods: {
-
-        goToAddUsers() {
-            this.$router.push({ name: 'user.register' });
-        },
-    },
-
-
 
     mounted() {
         // Khai báo biến intervalId bằng let hoặc const
@@ -324,6 +317,9 @@ export default {
 
 
     methods: {
+        goToAddUsers() {
+            this.$router.push({ name: 'user.register' });
+        },
 
 
 
@@ -340,9 +336,9 @@ export default {
 
             this.$router.push({ name: "login" });
         },
-        openModal() {
-            this.AModalVisible = false;
-        },
+        // openModal() {
+        //     this.AModalVisible = false;
+        // },
 
 
     }
