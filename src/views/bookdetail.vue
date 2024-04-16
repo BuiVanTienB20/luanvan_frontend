@@ -214,7 +214,7 @@
                     </div>
                 </div>
                 <div class="thatoan col-sm-12 ">
-                    <button class="btn text-white">Tiếp tục đến thanh toán</button>
+                    <button class="btn text-white" @click="goTopay()">Tiếp tục đến thanh toán</button>
                 </div>
             </div>
         </div>
@@ -229,7 +229,7 @@ import FocusTrap from 'primevue/focustrap';
 import InputNumber from 'primevue/inputnumber';
 import InputText from 'primevue/inputtext';
 
-
+import RoomService from '../services/phong.service';
 export default {
     components: {
         Button,
@@ -237,6 +237,7 @@ export default {
         InputNumber,
         InputText,
         Calendar,
+        RoomService
     },
     directives: {
         'focustrap': FocusTrap
@@ -245,6 +246,7 @@ export default {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         return {
+            rooms: [],
             name: '',
             email: '',
             countryCode: null,
@@ -302,7 +304,14 @@ export default {
 
         };
     },
+    props: {
+        id: { type: String, required: true },
+    },
     methods: {
+        goTopay() {
+            this.$router.push({ name: 'pay' });
+
+        },
         generatePhoneNumber() {
             if (this.countryCode) {
                 const countryCodeValue = this.countryCode.split(' ')[0]; // Extracting the country code without the '+' sign

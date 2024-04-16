@@ -23,12 +23,6 @@ const routes = [
         name: "auth",
         component: () => import("@/views/Auth.vue"),
       },
-      {
-        path: "/product/:id",
-        name: "product",
-        component: () => import("@/views/Product.vue"),
-        props: true,
-      },
 
       {
         path: "/loginuser",
@@ -51,14 +45,17 @@ const routes = [
         component: () => import("@/views/localhotelPro.vue"),
       },
       {
-        path: "/hotel",
+        path: "/hotel/province/:id", // Thêm tham số động :id vào đường dẫn
         name: "hotel",
         component: () => import("@/views/hotel.vue"),
+        props: true, // Cho phép truyền props từ route vào component
       },
+
       {
-        path: "/bookroom",
+        path: "/bookroom/hotel/:id",
         name: "bookroom",
         component: () => import("@/views/bookroom.vue"),
+        props: true,
       },
       {
         path: "/test",
@@ -71,9 +68,10 @@ const routes = [
         component: () => import("@/views/comfirm.vue"),
       },
       {
-        path: "/bookdetail",
+        path: "/bookdetail/room/:id",
         name: "bookdetail",
         component: () => import("@/views/bookdetail.vue"),
+        props: true,
       },
       {
         path: "/pay",

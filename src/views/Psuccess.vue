@@ -1,10 +1,10 @@
 <template>
     <div class="psuccess">
         <a-result status="success" title="Bạn đã đặt phòng và thanh toán thành công!"
-            sub-title="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.">
+            sub-title="Vui lòng kiểm tra mail để biết bạn đã đặt phòng thành công">
             <template #extra>
-                <a-button key="console" type="primary">Đặt mới</a-button>
-                <a-button key="buy">Trang chủ</a-button>
+                <a-button key="console" type="primary" @click="goTohotel()">Đặt mới</a-button>
+                <a-button key="buy" @click="goTohome()">Trang chủ</a-button>
             </template>
         </a-result>
 
@@ -14,6 +14,16 @@
 
 <script>
 export default {
+
+    methods: {
+        goTohotel() {
+            this.$router.push({ name: 'hotel' });
+
+        },
+        goTohome() {
+            this.$router.push({ name: 'trangchu' });
+        }
+    }
 
 }
 </script>

@@ -25,23 +25,7 @@
                                 alt="" style="    width: 60px;
     height: 36px;">
                         </div>
-                        <div class="form-group">
-                            <label for="customer-name">Họ và Tên:</label>
-
-                            <input type="text" id="customer-name" v-model="customerName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Địa chỉ email:</label>
-                            <input type="email" id="email" v-model="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Số điện thoại:</label>
-                            <input type="tel" id="phone" v-model="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Địa chỉ thanh toán:</label>
-                            <textarea id="address" v-model="address" required></textarea>
-                        </div>
+                      
                         <div class="form-group">
                             <label>Tổng số tiền:</label>
                             <span>{{ totalPrice }}</span>
@@ -50,7 +34,7 @@
                             <input type="checkbox" id="terms" v-model="agreeTerms" required>
                             <label for="terms">Tôi đồng ý với các điều khoản và điều kiện của trang web.</label>
                         </div>
-                        <button type="submit">Thanh Toán</button>
+                        <button type="submit" @click="goTopsuccess()">Thanh Toán</button>
                     </form>
                 </div>
             </div>
@@ -75,6 +59,10 @@ export default {
         };
     },
     methods: {
+        goTopsuccess() {
+            this.$router.push({ name: 'psuccess' });
+
+        },
         submitPayment() {
             // Handle payment submission
             // You can send this data to your backend for processing

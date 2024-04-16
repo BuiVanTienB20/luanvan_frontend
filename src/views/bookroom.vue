@@ -121,9 +121,10 @@
                 </Dialog>
             </div>
             <div class="bt">
-                <button class="btn btn-warning text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-zoom">
+                <button class="btn btn-warning text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-zoom">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
                         <path d="M21 21l-6 -6" />
@@ -160,14 +161,16 @@
                     </div>
                 </div>
 
-                <div class="br col-sm-12">
+                <div class="br col-sm-12" v-for="room in rooms" :key="room._id">
                     <div class="anh">
-                        <img src="../assets/img/ads2.webp" alt="">
+                        <img :src="room.imgURL" alt="">
+
 
                     </div>
                     <div class="ct">
-                        <div style="font-weight: bold;">
-                            Grand Double City - Room Only
+                        <div style="font-weight: bold;display: flex">
+                            <p class="mr-4"> {{ room.room_name }}</p>
+                            <p>{{ room.room_number }}</p>
                         </div>
                         <div class="item">
                             <div class="tp">
@@ -180,19 +183,11 @@
                                     <path d="M22 17v-3h-20" />
                                     <path d="M2 8v9" />
                                     <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
-                                </svg> 1 Giường đôi
+                                </svg> {{ room.capacity }} Giường đôi
                             </div>
-                            <div class="tp"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-users">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                                </svg> 2 khách</div>
-                            <div class="tp" style="font-weight: 600;color: red;"> Chỉ còn 2 phòng</div>
+                            <div class="tp"> {{ room.room_type }}</div>
+                            <div class="tp" style="font-weight: 600;color: red;"> còn phòng :{{ room.availability }}
+                            </div>
                         </div>
                         <div class="item">
                             <div class="tp">
@@ -287,11 +282,11 @@
                             <div class="tp" style="font-weight: 700">
 
                                 <p style="text-decoration-line: line-through; ">
-                                    625.040 VND
+                                    {{ room.price_per_night }}.000 VND
 
                                 </p>
                                 <p style="color: rgb(255, 94, 31);font-size: 24px;" v-tooltip.top="'Đã bao gồm thuế'">
-                                    603.163 VND
+                                    {{ (room.price_per_night * 0.1).toLocaleString() }}.000 VND
 
                                 </p>
                                 <p style="font-weight: 500; color: rgba(104, 113, 118, 1.00); font-size: 12px;"
@@ -312,179 +307,10 @@
 
                                 </p>
                                 <p> <button class="dn btn">
-                                        Đặt ngay
-                                    </button>
-                                </p>
+                                        <router-link :to="{ name: 'bookdetail', params: { id: room._id } }"
+                                            class="link">Đặt
+                                            ngay</router-link>
 
-
-                            </div>
-
-                        </div>
-
-
-
-
-                    </div>
-
-
-
-
-
-                </div>
-
-                <div class="br col-sm-12">
-                    <div class="anh">
-                        <img src="../assets/img/ads2.webp" alt="">
-
-                    </div>
-                    <div class="ct">
-                        <div style="font-weight: bold;">
-                            Grand Double City - Room Only
-                        </div>
-                        <div class="item">
-                            <div class="tp">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-bed">
-                                    <path stroke="none" d="M0 0h20v20H0z" fill="none" />
-                                    <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                    <path d="M22 17v-3h-20" />
-                                    <path d="M2 8v9" />
-                                    <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
-                                </svg> 1 Giường đôi
-                            </div>
-                            <div class="tp"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-users">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                                </svg> 2 khách</div>
-                            <div class="tp" style="font-weight: 600;color: red;"> Chỉ còn 2 phòng</div>
-                        </div>
-                        <div class="item">
-                            <div class="tp">
-                                <p style="color: rgba(104, 113, 118, 1.00)"> <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-2-off">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M14.386 10.409c.53 -2.28 1.766 -4.692 4.614 -7.409v12m-4 0h-1c0 -.313 0 -.627 0 -.941" />
-                                        <path d="M19 19v2h-1v-3" />
-                                        <path d="M8 8v13" />
-                                        <path d="M5 5v2a3 3 0 0 0 4.546 2.572m1.454 -2.572v-3" />
-                                        <path d="M3 3l18 18" />
-                                    </svg> Không gồm bữa sáng</p>
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-wifi">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 18l.01 0" />
-                                        <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
-                                        <path d="M6.343 12.343a8 8 0 0 1 11.314 0" />
-                                        <path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0" />
-                                    </svg> Wifi miễn phí</p>
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-smoking-no">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M8 13l0 4" />
-                                        <path d="M16 5v.5a2 2 0 0 0 2 2a2 2 0 0 1 2 2v.5" />
-                                        <path d="M3 3l18 18" />
-                                        <path
-                                            d="M17 13h3a1 1 0 0 1 1 1v2c0 .28 -.115 .533 -.3 .714m-3.7 .286h-13a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1h9" />
-                                    </svg> Không hút thuốc</p>
-                                <p style="color: rgba(1, 148, 243, 1.00);"
-                                    v-tooltip.top="'Áp dụng Thanh Toán Tại Khách Sạn. Cho chuyến đi thêm linh hoạt: KHÔNG CẦN THANH TOÁN NGAY khi đặt phòng! Bạn có đặt ngay phòng có giá tốt nhất hôm nay và thanh toán sau bằng tiền mặt hoặc thẻ khi nhận phòng. Thời gian hiển thị là giờ địa phương.'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-cash">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M7 9m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" />
-                                        <path d="M14 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                        <path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2" />
-                                    </svg>Thanh Toán tại khách sạn <br>
-                                    Thanh toán tại khách sạn nơi ở
-                                </p>
-                            </div>
-                            <div class="tp">
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-browser-check">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M4 4m0 1a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1z" />
-                                        <path d="M4 8h16" />
-                                        <path d="M8 4v4" />
-                                        <path d="M9.5 14.5l1.5 1.5l3 -3" />
-                                    </svg> Miễn phí hủy phòng</p>
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-calendar-repeat">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />
-                                        <path d="M16 3v4" />
-                                        <path d="M8 3v4" />
-                                        <path d="M4 11h12" />
-                                        <path d="M20 14l2 2h-3" />
-                                        <path d="M20 18l2 -2" />
-                                        <path d="M19 16a3 3 0 1 0 2 5.236" />
-                                    </svg> Có thể đổi lịch </p>
-                                <p style="color: rgba(1, 148, 243, 1.00);"
-                                    v-tooltip.top="'Miễn phí hủy phòng trong vòng 2 giờ kể từ lúc đặt'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-help-hexagon">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" />
-                                        <path d="M12 16v.01" />
-                                        <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
-                                    </svg> Xem chính xác hủy phòng
-                                </p>
-
-                            </div>
-                            <div class="tp" style="font-weight: 700">
-
-                                <p style="text-decoration-line: line-through; ">
-                                    625.040 VND
-
-                                </p>
-                                <p style="color: rgb(255, 94, 31);font-size: 24px;" v-tooltip.top="'Đã bao gồm thuế'">
-                                    603.163 VND
-
-                                </p>
-                                <p style="font-weight: 500; color: rgba(104, 113, 118, 1.00); font-size: 12px;"
-                                    v-tooltip.top="'Đặt phòng để nhận ngay điểm thưởng Traveloka và được giảm giá cho các lần đặt chỗ sau.'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        style="color:#d38b1b;" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon  icon-tabler icons-tabler-outline icon-tabler-coin-bitcoin">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                        <path
-                                            d="M9 8h4.09c1.055 0 1.91 .895 1.91 2s-.855 2 -1.91 2c1.055 0 1.91 .895 1.91 2s-.855 2 -1.91 2h-4.09" />
-                                        <path d="M10 12h4" />
-                                        <path d="M10 7v10v-9" />
-                                        <path d="M13 7v1" />
-                                        <path d="M13 16v1" />
-                                    </svg> Nhận 10620
-
-                                </p>
-                                <p> <button class="dn btn">
-                                        Đặt ngay
                                     </button>
                                 </p>
 
@@ -505,177 +331,9 @@
                 </div>
 
 
-                <div class="br col-sm-12">
-                    <div class="anh">
-                        <img src="../assets/img/ads2.webp" alt="">
-
-                    </div>
-                    <div class="ct">
-                        <div style="font-weight: bold;">
-                            Grand Double City - Room Only
-                        </div>
-                        <div class="item">
-                            <div class="tp">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-bed">
-                                    <path stroke="none" d="M0 0h20v20H0z" fill="none" />
-                                    <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                    <path d="M22 17v-3h-20" />
-                                    <path d="M2 8v9" />
-                                    <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
-                                </svg> 1 Giường đôi
-                            </div>
-                            <div class="tp"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-users">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                                </svg> 2 khách</div>
-                            <div class="tp" style="font-weight: 600;color: red;"> Chỉ còn 2 phòng</div>
-                        </div>
-                        <div class="item">
-                            <div class="tp">
-                                <p style="color: rgba(104, 113, 118, 1.00)"> <svg xmlns="http://www.w3.org/2000/svg"
-                                        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-2-off">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M14.386 10.409c.53 -2.28 1.766 -4.692 4.614 -7.409v12m-4 0h-1c0 -.313 0 -.627 0 -.941" />
-                                        <path d="M19 19v2h-1v-3" />
-                                        <path d="M8 8v13" />
-                                        <path d="M5 5v2a3 3 0 0 0 4.546 2.572m1.454 -2.572v-3" />
-                                        <path d="M3 3l18 18" />
-                                    </svg> Không gồm bữa sáng</p>
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-wifi">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 18l.01 0" />
-                                        <path d="M9.172 15.172a4 4 0 0 1 5.656 0" />
-                                        <path d="M6.343 12.343a8 8 0 0 1 11.314 0" />
-                                        <path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0" />
-                                    </svg> Wifi miễn phí</p>
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-smoking-no">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M8 13l0 4" />
-                                        <path d="M16 5v.5a2 2 0 0 0 2 2a2 2 0 0 1 2 2v.5" />
-                                        <path d="M3 3l18 18" />
-                                        <path
-                                            d="M17 13h3a1 1 0 0 1 1 1v2c0 .28 -.115 .533 -.3 .714m-3.7 .286h-13a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1h9" />
-                                    </svg> Không hút thuốc</p>
-                                <p style="color: rgba(1, 148, 243, 1.00);"
-                                    v-tooltip.top="'Áp dụng Thanh Toán Tại Khách Sạn. Cho chuyến đi thêm linh hoạt: KHÔNG CẦN THANH TOÁN NGAY khi đặt phòng! Bạn có đặt ngay phòng có giá tốt nhất hôm nay và thanh toán sau bằng tiền mặt hoặc thẻ khi nhận phòng. Thời gian hiển thị là giờ địa phương.'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-cash">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M7 9m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" />
-                                        <path d="M14 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                        <path d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2" />
-                                    </svg>Thanh Toán tại khách sạn <br>
-                                    Thanh toán tại khách sạn nơi ở
-                                </p>
-                            </div>
-                            <div class="tp">
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-browser-check">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M4 4m0 1a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1z" />
-                                        <path d="M4 8h16" />
-                                        <path d="M8 4v4" />
-                                        <path d="M9.5 14.5l1.5 1.5l3 -3" />
-                                    </svg> Miễn phí hủy phòng</p>
-                                <p style="color: rgb(0, 135, 90);"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-calendar-repeat">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />
-                                        <path d="M16 3v4" />
-                                        <path d="M8 3v4" />
-                                        <path d="M4 11h12" />
-                                        <path d="M20 14l2 2h-3" />
-                                        <path d="M20 18l2 -2" />
-                                        <path d="M19 16a3 3 0 1 0 2 5.236" />
-                                    </svg> Có thể đổi lịch </p>
-                                <p style="color: rgba(1, 148, 243, 1.00);"
-                                    v-tooltip.top="'Miễn phí hủy phòng trong vòng 2 giờ kể từ lúc đặt'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-help-hexagon">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" />
-                                        <path d="M12 16v.01" />
-                                        <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
-                                    </svg> Xem chính xác hủy phòng
-                                </p>
-
-                            </div>
-                            <div class="tp" style="font-weight: 700">
-
-                                <p style="text-decoration-line: line-through; ">
-                                    625.040 VND
-
-                                </p>
-                                <p style="color: rgb(255, 94, 31);font-size: 24px;" v-tooltip.top="'Đã bao gồm thuế'">
-                                    603.163 VND
-
-                                </p>
-                                <p style="font-weight: 500; color: rgba(104, 113, 118, 1.00); font-size: 12px;"
-                                    v-tooltip.top="'Đặt phòng để nhận ngay điểm thưởng Traveloka và được giảm giá cho các lần đặt chỗ sau.'">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                        style="color:#d38b1b;" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon  icon-tabler icons-tabler-outline icon-tabler-coin-bitcoin">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                        <path
-                                            d="M9 8h4.09c1.055 0 1.91 .895 1.91 2s-.855 2 -1.91 2c1.055 0 1.91 .895 1.91 2s-.855 2 -1.91 2h-4.09" />
-                                        <path d="M10 12h4" />
-                                        <path d="M10 7v10v-9" />
-                                        <path d="M13 7v1" />
-                                        <path d="M13 16v1" />
-                                    </svg> Nhận 10620
-
-                                </p>
-                                <p> <button class="dn btn">
-                                        Đặt ngay
-                                    </button>
-                                </p>
-
-
-                            </div>
-
-                        </div>
 
 
 
-
-                    </div>
-
-
-
-
-
-                </div>
 
             </div>
 
@@ -699,6 +357,8 @@ import Dropdown from 'primevue/dropdown';
 import InputNumber from 'primevue/inputnumber';
 import Tooltip from 'primevue/tooltip';
 import View from '../components/view.vue';
+
+import RoomService from '../services/phong.service';
 export default {
     components: {
         Dropdown,
@@ -707,6 +367,7 @@ export default {
         Button,
         InputNumber,
         View,
+        RoomService,
 
     },
     directives: {
@@ -716,6 +377,8 @@ export default {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         return {
+            rooms: [],
+            hotelIdInput: '',
             selectedNight: { label: '2 đêm', value: 2 },
 
             nights: [
@@ -780,7 +443,11 @@ export default {
             },
         };
     },
+    props: {
+        id: { type: String, required: true },
+    },
     computed: {
+
         returnDate() {
             const returnDate = new Date(this.icondisplay);
             returnDate.setDate(returnDate.getDate() + this.selectedNight.value);
@@ -790,7 +457,21 @@ export default {
 
 
     },
+    created() {
+        this.loadRooms();
+    },
     methods: {
+        async loadRooms() {
+            try {
+                // Trích xuất provinceId từ URL
+                const hotelId = window.location.pathname.split('/').pop();
+
+                // Gọi phương thức findAllByhotelId(hotelId) từ HotelService
+                this.rooms = await RoomService.findByHotelId(hotelId);
+            } catch (error) {
+                console.error('Error loading hotels:', error);
+            }
+        },
         submitForm() {
             // Gửi dữ liệu đặt phòng lên máy chủ
             console.log('Đã gửi dữ liệu đặt phòng:', this.booking);
@@ -827,6 +508,11 @@ export default {
 .book {
     margin-top: 121px;
     margin-bottom: 160px;
+}
+
+.link {
+    text-decoration: none;
+    color: #e2effe;
 }
 
 .ca {

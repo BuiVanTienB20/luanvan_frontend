@@ -349,12 +349,15 @@
             <div class="ks" @mouseover="showButton" @mouseleave="hideButton">
               <div class="image-container">
                 <img :src="product.imgURL" alt="Hình ảnh" class="imgsp" />
-                <button class="overlay-button" v-show="isButtonVisible" @click="goTohotel()">Xem phòng khách sạn còn
-                  trống</button>
+                <button class="overlay-button" v-show="isButtonVisible"> <router-link
+                    :to="{ name: 'hotel', params: { id: product._id } }" class="link">Xem phòng
+                    khách sạn còn
+                    trống</router-link></button>
+
               </div>
               <div class="ten">
                 <p class="text-white" style="font-size: 24px; font-weight: 600;">{{ product.province_name }}</p>
-                <!-- <p class="text-white" style="font-weight: 600;">Có {{ product.SoLuongHangHoa }} khách sạn</p> -->
+
               </div>
             </div>
           </div>
@@ -456,9 +459,7 @@ export default {
     id: { type: String, required: true },
   },
   methods: {
-    goTohotel() {
-      this.$router.push({ name: 'hotel' });
-    },
+
     async retrieveProducts() {
       try {
         this.products = await ProductService.getAll();
@@ -518,6 +519,11 @@ const closeModalRegister = () => {
   margin-top: -20px;
   /* Remove the default margin from the header */
   height: 300px;
+}
+
+.link {
+  color: #ccc;
+  text-decoration: none;
 }
 
 
@@ -781,12 +787,19 @@ button:hover {
 
 }
 
+router-link {
+  color: #ccc;
+  text-decoration: none;
+
+}
+
 
 .overlay-button {
 
   border: 1px solid white;
   border-radius: 0;
   filter: none;
+
 }
 
 .overlay-button {

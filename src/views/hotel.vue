@@ -9,22 +9,22 @@
                 </div>
 
 
-                <div class="ks col-sm-12">
+                <div class="ks col-sm-12" v-for="hotel in hotels" :key="hotel._id">
                     <div class="ht">
-                        <img src="../assets/img/ads1.webp" alt="">
+                        <img :src="hotel.imgURL" alt="">
 
                     </div>
                     <div class="kt">
                         <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
-                            Premier Pearl Hotel Vung Tau
+                            {{ hotel.name }}
                         </p>
 
                         <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">
-                            Khu nghỉ dưỡng
+                            {{ hotel.type }}
 
 
-                            <span
-                                style="color: #ff7600;; font-size: 25px; opacity: 0.8;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                            <span style="color: #ff7600;; font-size: 25px; opacity: 0.8;"> {{ hotel.rating
+                                }}&#9733;</span>
 
 
 
@@ -38,11 +38,11 @@
                                 <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
                                 <path
                                     d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                            </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam
+                            </svg> {{ hotel.
+                                address }}
                         </p>
-                        <p style=" font-weight: 400;font-size: 14px;">Máy lạnh, Nhà hàng, Hồ bơi, Lễ
-                            tân 24h, Chỗ
-                            đậu xe, Thang máy</p>
+                        <p style=" font-weight: 400;font-size: 14px;">{{ hotel.
+                            description }}</p>
 
 
                     </div>
@@ -51,60 +51,9 @@
                         <div class="thpd">
 
                             <div class="tt">
-                                <button class="chooserom btn text-white"> Xem giá
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="ks col-sm-12">
-                    <div class="ht">
-                        <img src="../assets/img/ads1.webp" alt="">
-
-                    </div>
-                    <div class="kt">
-                        <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
-                            Premier Pearl Hotel Vung Tau
-                        </p>
-
-                        <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">
-                            Khu nghỉ dưỡng
-
-
-                            <span
-                                style="color: #ff7600;; font-size: 25px; opacity: 0.8;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-
-
-
-                        </p>
-                        <p style="color:  rgba(104, 113, 118, 1.00); font-weight: 500; font-size: 14px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                style=" font-weight: 500;" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                <path
-                                    d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                            </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam
-                        </p>
-                        <p style=" font-weight: 400;font-size: 14px;">Máy lạnh, Nhà hàng, Hồ bơi, Lễ
-                            tân 24h, Chỗ
-                            đậu xe, Thang máy</p>
-
-
-                    </div>
-                    <div class="bt">
-
-                        <div class="thpd">
-
-                            <div class="tt">
-                                <button class="chooserom btn text-white"> Xem giá
+                                <button class="chooserom btn text-white">
+                                    <router-link :to="{ name: 'bookroom', params: { id: hotel._id } }" class="link"> Xem
+                                        giá</router-link>
 
                                 </button>
 
@@ -116,58 +65,9 @@
                 </div>
 
 
-                <div class="ks col-sm-12">
-                    <div class="ht">
-                        <img src="../assets/img/ads1.webp" alt="">
-
-                    </div>
-                    <div class="kt">
-                        <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
-                            Premier Pearl Hotel Vung Tau
-                        </p>
-
-                        <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">
-                            Khu nghỉ dưỡng
-
-
-                            <span
-                                style="color: #ff7600;; font-size: 25px; opacity: 0.8;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
 
 
 
-                        </p>
-                        <p style="color:  rgba(104, 113, 118, 1.00); font-weight: 500; font-size: 14px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                style=" font-weight: 500;" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                <path
-                                    d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                            </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt Nam
-                        </p>
-                        <p style=" font-weight: 400;font-size: 14px;">Máy lạnh, Nhà hàng, Hồ bơi, Lễ
-                            tân 24h, Chỗ
-                            đậu xe, Thang máy</p>
-
-
-                    </div>
-                    <div class="bt">
-
-                        <div class="thpd">
-
-                            <div class="tt">
-                                <button class="chooserom btn text-white"> Xem giá
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
 
 
             </div>
@@ -180,20 +80,46 @@
 </template>
 
 <script>
+import HotelService from '../services/khachsan.service';
 
 
 export default {
     components: {
+        HotelService
 
 
 
     },
     data() {
         return {
+            hotels: [],
+            provinceIdInput: '',
 
         };
     },
+    props: {
+        id: { type: String, required: true },
+    },
+    created() {
+        this.loadHotels();
+    },
     methods: {
+        async loadHotels() {
+            try {
+                // Trích xuất provinceId từ URL
+                const provinceId = window.location.pathname.split('/').pop();
+
+                // Gọi phương thức findAllByProvinceId(provinceId) từ HotelService
+                this.hotels = await HotelService.findAllByProvinceId(provinceId);
+            } catch (error) {
+                console.error('Error loading hotels:', error);
+            }
+        },
+        gotobookroom() {
+            this.$router.push({ name: 'bookroom' });
+
+        },
+
 
     }
 
@@ -222,6 +148,11 @@ export default {
     margin-right: auto;
     /* Đẩy ảnh về phía bên phải */
     margin-bottom: 40px;
+}
+
+.link {
+    color: aliceblue;
+    text-decoration: none;
 }
 
 
