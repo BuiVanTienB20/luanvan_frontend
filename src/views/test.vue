@@ -1,125 +1,117 @@
 <template>
-    <div class="test">
-        <h1>hello</h1>
-
-        <p
-            v-tooltip.top="'Áp dụng Thanh Toán Tại Khách Sạn. Cho chuyến đi thêm linh hoạt: KHÔNG CẦN THANH TOÁN NGAY khi đặt phòng! Bạn có đặt ngay phòng có giá tốt nhất hôm nay và thanh toán sau bằng tiền mặt hoặc thẻ khi nhận phòng. Thời gian hiển thị là giờ địa phương.'">
-            Miễn phí huỷ phòng trước 13 thg 5 2024 13:00.
-        </p>
-        <div>
-            <a-comment>
-                <template v-slot:actions>
-                    <span key="comment-nested-reply-to">Reply to</span>
-                </template>
-                <template v-slot:author>
-                    <a>Han Solo</a>
-                </template>
-                <template v-slot:avatar>
-                    <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-                </template>
-                <template v-slot:content>
-                    <p>
-                        We supply a series of design principles, practical patterns and high quality design
-                        resources (Sketch and Axure).
-                    </p>
-                </template>
-                <a-comment>
-                    <template v-slot:actions>
-                        <span>Reply to</span>
-                    </template>
-                    <template v-slot:author>
-                        <a>Han Solo</a>
-                    </template>
-                    <template v-slot:avatar>
-                        <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-                    </template>
-                    <template v-slot:content>
-                        <p>
-                            We supply a series of design principles, practical patterns and high quality design
-                            resources (Sketch and Axure).
-                        </p>
-                    </template>
-                    <a-comment>
-                        <template v-slot:actions>
-                            <span>Reply to</span>
-                        </template>
-                        <template v-slot:author>
-                            <a>Han Solo</a>
-                        </template>
-                        <template v-slot:avatar>
-                            <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-                        </template>
-                        <template v-slot:content>
-                            <p>
-                                We supply a series of design principles, practical patterns and high quality design
-                                resources (Sketch and Axure).
-                            </p>
-                        </template>
-                    </a-comment>
-                    <a-comment>
-                        <template v-slot:actions>
-                            <span>Reply to</span>
-                        </template>
-                        <template v-slot:author>
-                            <a>Han Solo</a>
-                        </template>
-                        <template v-slot:avatar>
-                            <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-                        </template>
-                        <template v-slot:content>
-                            <p>
-                                We supply a series of design principles, practical patterns and high quality design
-                                resources (Sketch and Axure).
-                            </p>
-                        </template>
-                    </a-comment>
-                </a-comment>
-            </a-comment>
+    <div class="container">
+        <h1>Quản lý đơn đặt hàng khách sạn</h1>
+        <div class="card row d-flex">
+            <div class="col-sm-6">
+                <h2>Danh sách đơn hàng</h2>
+                <ul class="order-list">
+                    <li class="order-item">
+                        <span class="order-id">Order #001</span>
+                        <span class="order-status">Đang xử lý</span>
+                    </li>
+                    <!-- Add more order items as needed -->
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <h2>Chi tiết đơn hàng</h2>
+                <ul class="order-details">
+                    <li><strong>Người đặt:</strong> {{ namebook }}</li>
+                    <li><strong>Email:</strong> {{ email }}</li>
+                    <li><strong>Số điện thoại:</strong> {{ phone }}</li>
+                    <li><strong>Ngày nhận phòng:</strong> {{ formatDate(check_in_date) }}</li>
+                    <li><strong>Ngày trả phòng:</strong> {{ formatDate(check_out_date) }}</li>
+                    <li><strong>Trạng thái đặt hàng:</strong> {{ booking_status }}</li>
+                    <li><strong>Ngày tạo:</strong> {{ formatDate(created_at) }}</li>
+                    <li><strong>Ngày cập nhật:</strong> {{ formatDate(updated_at) }}</li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <Steps :model="items" />
-        </div>
-
     </div>
 </template>
 
 <script>
-import InputText from 'primevue/inputtext';
-import Tooltip from 'primevue/tooltip';
-
-import Steps from 'primevue/steps';
-
 export default {
-    components: {
-        InputText,
-        Steps
-
-    },
-    directives: {
-        'tooltip': Tooltip
-    },
     data() {
         return {
-            items: [
-                {
-                    label: 'Đặt'
-                },
-                {
-                    label: 'Thanh toán '
-                },
-                {
-                    label: 'Gửi phiếu xác nhận'
-                }
-            ]
+            check_in_date: '2024-04-21T10:38:30.011+00:00',
+            check_out_date: '2024-04-23T10:38:30.011+00:00',
+            booking_status: 'Chưa thanh toán',
+            created_at: '2024-04-20T10:38:46.105+00:00',
+            updated_at: '2024-04-20T10:38:46.105+00:00',
+            email: 'tienb2014620@gmail.com',
+            phone: '0335675984',
+            namebook: 'Bùi Văn Tiền'
         }
     },
-
+    methods: {
+        formatDate(dateString) {
+            const date = new Date(dateString);
+            return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        }
+    }
 }
 </script>
 
 <style scoped>
-.test {
-    margin-top: 160px;
-    margin-bottom: 160px;
+.container {
+    padding: 20px;
+}
+
+.card {
+    margin-top: 130px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-id {
+    font-weight: bold;
+}
+
+.order-status {
+    color: #888;
+}
+
+/* Hover effect for order items */
+.order-item:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.order-details {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-details li {
+    margin-bottom: 10px;
+}
+
+.order-details strong {
+    font-weight: bold;
+    margin-right: 5px;
 }
 </style>

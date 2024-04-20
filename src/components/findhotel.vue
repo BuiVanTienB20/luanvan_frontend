@@ -23,9 +23,9 @@
           <label for="city">Thành phố, địa điểm/Khách sạn: </label>
 
         </div>
-        <div style="width: 1200px;">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon mr-2 icon-tabler icon-tabler-map-pin" width="24"
-            height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+        <div style="width: 1200px; display: flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon mt-2 mr-2 icon-tabler icon-tabler-map-pin" width="26"
+            height="26" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
@@ -207,7 +207,7 @@
 
 
           <button class=" text-white" type="submit"
-            style="margin-left: 349px; font-weight: 500; border-radius: 5px ; background-color: rgb(255, 94, 31);">
+            style="margin-left: 650px; font-weight: 500; border-radius: 5px ; background-color: rgb(255, 94, 31);">
             <svg xmlns="http://www.w3.org/2000/svg" class="text-white icon icon-tabler icon-tabler-map-search"
               width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
               stroke-linecap="round" stroke-linejoin="round">
@@ -220,7 +220,6 @@
             </svg>
             Tìm khách sạn
           </button>
-
 
         </div>
       </div>
@@ -309,16 +308,15 @@ export default {
       ],
       selectedProvince: null,
       provinces: [
-        { name: 'Hà Nội', code: 'HN' },
-        { name: 'Hồ Chí Minh', code: 'HCM' },
+        { name: 'Thành Phố HCM', code: 'TPHCM' },
+        { name: 'Vũng Tàu', code: 'VT' },
         { name: 'Đà Nẵng', code: 'DN' },
-        { name: 'Hải Phòng', code: 'HP' },
-        { name: 'Cần Thơ', code: 'CT' },
-        { name: 'Bình Dương', code: 'BD' },
-        { name: 'Đồng Nai', code: 'DNai' },
-        { name: 'Khánh Hòa', code: 'KH' },
-        { name: 'Quảng Nam', code: 'QNam' },
-        { name: 'Hải Dương', code: 'HD' }
+        { name: 'Hà Nội', code: 'HN' },
+        { name: 'Đà Lạt', code: 'DL' },
+        { name: 'Phú Quốc', code: 'PQ' },
+        { name: 'Nha Trang', code: 'NT' },
+        { name: 'Hội An', code: 'HA' },
+        { name: 'Phan Thiết', code: 'PT' }
 
       ].map(city => {
         return {

@@ -53,7 +53,7 @@
                             <path d="M9 18l0 .01" />
                         </svg>
 
-                        <router-link :to="{ name: 'admin-position' }" style="text-decoration: none;  " class="textp">
+                        <router-link :to="{ name: 'admin-position' }" class="textp">
                             Quản lí khách sạn
                         </router-link>
                     </td>
@@ -73,7 +73,7 @@
                             <path d="M10 7h4"></path>
                         </svg>
 
-                        <router-link :to="{ name: 'dire' }" style="text-decoration: none; class " class="textp">
+                        <router-link :to="{ name: 'Bookingmanagement' }"  class="textp">
                             Quản lí đặt phòng
                         </router-link>
                     </td>
@@ -91,7 +91,7 @@
                             <path d="M4 20l14 0" />
                         </svg>
 
-                        <router-link :to="{ name: 'statistical' }" style="text-decoration: none;" class="textp">
+                        <router-link :to="{ name: 'statistical' }"  class="textp">
                             Thống kê (giả định) doanh thu trong năm
                         </router-link>
                     </td>
@@ -178,6 +178,11 @@ export default {
 
 .table tbody tr td .textp:hover {
     color: #528B8B;
+}
+
+.textp{
+    text-decoration: none;
+
 }
 
 

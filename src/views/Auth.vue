@@ -32,6 +32,39 @@
 
 
 
+
+
+    <Card style="width: 25rem; overflow: hidden">
+      <template>
+        <img alt="user header" src="https://primefaces.org/cdn/primevue/images/usercard.png" />
+      </template>
+      <template>Advanced Card</template>
+      <template>Card subtitle</template>
+      <template>
+        <p class="m-0">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam
+          deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
+          neque
+          quas!
+        </p>
+      </template>
+      <template>
+        <div class="flex gap-3 mt-1">
+          <Button label="Cancel" severity="secondary" outlined class="w-full" />
+          <Button label="Save" class="w-full" />
+        </div>
+      </template>
+    </Card>
+
+
+
+
+
+
+
+
+
+
     <Dropdown v-model="selectedCountry" :options="countries" filter optionLabel="name" placeholder="Select a Country"
       class="w-full md:w-14rem">
       <template slot="value" slot-scope="slotProps">
@@ -128,6 +161,13 @@ import InputNumber from 'primevue/inputnumber';
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
 
+
+import Card from 'primevue/card';
+
+
+
+
+
 export default {
   components: {
     Button,
@@ -136,6 +176,7 @@ export default {
     SplitButton,
     Dialog,
     Knob,
+    Card,
 
     Dropdown,
     InputNumber

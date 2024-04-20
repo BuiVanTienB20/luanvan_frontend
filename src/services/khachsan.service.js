@@ -19,6 +19,12 @@ class HotelService {
   async findAllByProvinceId(provinceId) {
     return (await this.api.get(`/province/${provinceId}`)).data;
   }
+  async findOneByProvinceIdAndHotelId(provinceId, hotelId) {
+    return (await this.api.get(`/province/${provinceId}/${hotelId}`)).data;
+  }
+  async updateHotelByProvinceIdAndHotelId(provinceId, hotelId, data) {
+    return (await this.api.put(`/province/${provinceId}/${hotelId}`, data)).data;
+  }
   async update(id, data) {
     return (await this.api.put(`/${id}`, data)).data;
   }

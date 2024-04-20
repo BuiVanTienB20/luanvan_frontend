@@ -2,6 +2,7 @@
     <div class="bookdetail">
         <div class="mybook">
             <h1>Đặt phòng của bạn</h1>
+            <Toast ref="toast" />
         </div>
         <div class="container">
             <div class="ro row">
@@ -23,6 +24,7 @@
                                 <InputText id="input" v-model="name" type="text" placeholder="Name" autofocus
                                     style="width: 550px;" />
                             </IconField>
+                            <span v-if="!name.trim()" class="text-danger">Cần nhập đầy đủ thông tin</span>
                         </div>
 
                         <div class="ttd mb-4">
@@ -33,6 +35,7 @@
                                     </InputIcon>
                                     <InputText id="email" v-model="email" type="email" placeholder="Email" />
                                 </IconField>
+                                <span v-if="!email.trim()" class="text-danger">Cần nhập đầy đủ thông tin</span>
                             </div>
 
                             <div class="field mr-2">
@@ -43,6 +46,7 @@
                                     <Dropdown v-model="countryCode" placeholder="Select Country Code"
                                         :options="countryCodes" @change="generatePhoneNumber" style="width: 120px" />
                                 </IconField>
+
                             </div>
 
                             <div class="field">
@@ -53,6 +57,7 @@
                                     <InputText id="phoneNumber" v-model="phoneNumber" type="tel"
                                         placeholder="Phone Number" style="width: 200px" />
                                 </IconField>
+                                <span v-if="!phoneNumber.trim()" class="text-danger">Cần nhập đầy đủ thông tin</span>
                             </div>
 
                         </div>
@@ -75,15 +80,16 @@
                     </div>
 
                 </div>
-                <div class="td col-sm-6">
+                <div class="td col-sm-6" v-if="room" :key="room._id">
                     <div class="br col-sm-12 " style="margin-top: 40px;">
                         <div class=" mb-10" style="font-weight: bold;margin-bottom: 20px; display: flex;">
-                            <p style="margin-top: 6px;">Grand Double City - Room Only </p>
-                            <a-rate :value="5" disabled style="margin-left: 40px;margin-bottom: 30px;" />
+                            <p style="margin-top: 6px;margin-right: 5px">{{ room.room_name }} </p>
+                            <p style="margin-top: 6px;margin-right: 5px">{{ room.room_number }} </p>
 
                         </div>
                         <div class="anh" style="margin-bottom: 20px;">
-                            <img src="../assets/img/ads2.webp" alt="">
+                            <img :src="room.imgURL" alt="" style="border: 1px solid #333; height: 200px; width: 500px;">
+
 
                         </div>
                         <div class="ct">
@@ -99,19 +105,13 @@
                                         <path d="M22 17v-3h-20" />
                                         <path d="M2 8v9" />
                                         <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
-                                    </svg> 1 Giường đôi
+                                    </svg> {{ room.capacity }} Giường đôi
                                 </div>
-                                <div class="tp"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-users">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                                    </svg> 2 khách</div>
-                                <div class="tp" style="font-weight: 600;color: red;"> Chỉ còn 2 phòng</div>
+                                <div class="tp">
+                                    <p style="margin-top: 6px;margin-right: 5px">{{ room.room_type }} </p>
+                                </div>
+                                <div class="tp" style="font-weight: 600;color: red;"> Chỉ còn {{ room.availability }}
+                                    phòng</div>
                                 <p style="color: rgba(104, 113, 118, 1.00)"> <svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -187,13 +187,12 @@
                                 <div class="tp" style="font-weight: 700">
 
                                     <p style="text-decoration-line: line-through; ">
-                                        625.040 VND
+                                        {{ room.price_per_night }}.000 VND
 
                                     </p>
                                     <p style="color: rgb(255, 94, 31);font-size: 24px;"
                                         v-tooltip.top="'Đã bao gồm thuế'">
-                                        603.163 VND
-
+                                        {{ (room.price_per_night * 0.1).toLocaleString() }}.000 VND
                                     </p>
 
 
@@ -229,6 +228,9 @@ import FocusTrap from 'primevue/focustrap';
 import InputNumber from 'primevue/inputnumber';
 import InputText from 'primevue/inputtext';
 
+
+import Toast from 'primevue/toast';
+import BookingService from '../services/datphong.service';
 import RoomService from '../services/phong.service';
 export default {
     components: {
@@ -237,7 +239,11 @@ export default {
         InputNumber,
         InputText,
         Calendar,
-        RoomService
+        RoomService,
+        BookingService,
+        Toast
+
+
     },
     directives: {
         'focustrap': FocusTrap
@@ -245,10 +251,23 @@ export default {
     data() {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
+
         return {
-            rooms: [],
-            name: '',
+            errors: {
+                name: false,
+                email: false,
+                phoneNumber: false
+            },
+            room: [],
+
+
+            check_in_date: '',
+            check_out_date: '',
+            total_price: '',
+            booking_status: '',
             email: '',
+            phone: '',
+            name: '',
             countryCode: null,
             phoneNumber: '',
             countryCodes: [
@@ -307,11 +326,89 @@ export default {
     props: {
         id: { type: String, required: true },
     },
+    async created() {
+        const roomId = this.$route.params.id;
+        try {
+            this.room = await RoomService.get(roomId);
+        } catch (error) {
+            console.error(error);
+        }
+    },
     methods: {
-        goTopay() {
-            this.$router.push({ name: 'pay' });
+        onNameChange() {
+            // Kiểm tra xem name có được điền không
+            this.errors.name = !this.name.trim();
+            // Kiểm tra xem email có được điền không
+            this.errors.email = !this.email.trim();
+            // Kiểm tra xem phoneNumber có được điền không
+            this.errors.phoneNumber = !this.phoneNumber.trim();
+        },
+
+        async goTopay() {
+            try {
+                // Get user ID from localStorage
+                const userJs = window.localStorage.getItem('user');
+                const user = JSON.parse(userJs);
+
+                const RoomData = await RoomService.get(this.$route.params.id);
+
+
+                // Create data object for the cart
+                const data = {
+
+
+
+                    user_id: user._id,
+                    room_id: RoomData._id,
+                    check_in_date: this.icondisplay,
+                    check_out_date: this.returnDate,
+                    total_price: this.price_per_night,
+                    booking_status: this.booking_status,
+                    email: this.email,
+                    phone: this.phoneNumber,
+                    namebook: this.name
+                };
+
+                await BookingService.create(data);
+                this.showToast({
+                    severity: 'success',
+                    summary: 'Thành công',
+                    detail: 'Bạn đã đăng ký thành công',
+                    life: 3000
+                });
+
+                if (!this.name.trim() || !this.email.trim() || !this.phoneNumber.trim()) {
+                    this.showToast({
+                        severity: 'error',
+                        summary: 'Cần đăng nhập để đăng ký',
+                        detail: 'Vui lòng kiểm tra lại',
+                        life: 3000
+                    });
+
+
+                } else {
+                    setTimeout(() => {
+                        this.$router.push({ name: 'pay' });
+
+                    }, 3000);
+
+
+                }
+
+            } catch (error) {
+                console.error(error);
+                this.showToast({
+                    severity: 'error',
+                    summary: 'Có lỗi xảy ra',
+                    detail: 'Vui lòng kiểm tra lại',
+                    life: 3000
+                });
+            }
+
 
         },
+
+
         generatePhoneNumber() {
             if (this.countryCode) {
                 const countryCodeValue = this.countryCode.split(' ')[0]; // Extracting the country code without the '+' sign
@@ -321,6 +418,10 @@ export default {
                 }
                 this.phoneNumber = randomPhoneNumber;
             }
+        },
+        showToast(toastConfig) {
+            // Show toast using the PrimeVue toast component
+            this.$toast.add(toastConfig);
         }
     },
     computed: {

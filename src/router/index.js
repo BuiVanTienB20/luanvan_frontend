@@ -108,9 +108,19 @@ const routes = [
         component: () => import("@/admin/Position.vue"),
       },
       {
-        path: "dire",
-        name: "dire",
-        component: () => import("@/admin/Directcard.vue"),
+        path: "hotel/province/:id",
+        name: "admin-hotel",
+        component: () => import("@/admin/hotel.vue"),
+      },
+      {
+        path: "room/hotel/:id",
+        name: "admin-room",
+        component: () => import("@/admin/room.vue"),
+      },
+      {
+        path: "Bookingmanagement",
+        name: "Bookingmanagement",
+        component: () => import("@/admin/Bookingmanagement.vue"),
       },
       {
         path: "statistical",
@@ -127,6 +137,29 @@ const routes = [
         name: "editposition",
         component: () => import("@/admin/position/editposition.vue"),
       },
+      {
+        path: "addhotel/province/:id",
+        name: "addhotel",
+        component: () => import("@/admin/hotel/addhotel.vue"),
+      },
+      {
+        path: "edithotel/province/:provinceId/:hotelId",
+        name: "edithotel",
+        component: () => import("@/admin/hotel/edithotel.vue"),
+        props: true,
+      },
+      {
+        path: "addroom/hotel/:id",
+        name: "addroom",
+        component: () => import("@/admin/room/addroom.vue"),
+      },
+      {
+        path: "editroom/hotel/:hotelId/:roomId",
+        name: "editroom",
+        component: () => import("@/admin/room/editroom.vue"),
+        props: true,
+      },
+
       {
         path: "myseft",
         name: "myseft",

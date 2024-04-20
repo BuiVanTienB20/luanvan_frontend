@@ -1,6 +1,7 @@
 <template>
     <header>
         <div class="navt">
+            <Toast ref="toast" />
             <nav class="navbar navbar-expand navbar-dark bg-white">
                 <a href="" class="navbar-brand">
                     <router-link :to="{ name: 'trangchu' }" class="nav-link">
@@ -278,7 +279,12 @@
 
 
 <script>
+import Toast from 'primevue/toast';
 export default {
+    components: {
+        Toast
+
+    },
     data() {
         return {
             isLoggedIn: false,
@@ -329,7 +335,14 @@ export default {
             setTimeout(() => {
                 this.$router.push({ name: "trangchu" });
 
+
             }, 2000);
+            this.showToast({
+                severity: 'success',
+                summary: 'Thành công',
+                detail: 'Bạn đã đăng xuất thành công',
+                life: 3000
+            });
 
         },
         loginUser() {

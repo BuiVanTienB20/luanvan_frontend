@@ -19,6 +19,13 @@ class RoomService {
   async update(id, data) {
     return (await this.api.put(`/${id}`, data)).data;
   }
+  async findByHotelIdAndRoomId(hotelId, roomId) {
+    return (await this.api.get(`/hotel/${hotelId}/${roomId}`)).data;
+  }
+
+  async updateByHotelAndRoomId(hotelId, roomId, data) {
+    return (await this.api.put(`/hotel/${hotelId}/${roomId}`, data)).data;
+  }
   async delete(id, data) {
     return (await this.api.delete(`/${id}`, data)).data;
   }
