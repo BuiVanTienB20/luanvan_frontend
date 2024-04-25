@@ -41,14 +41,15 @@
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
                 <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay"
-                    style="width: 140px;margin-right: 10px" />
+                    style="width: 160px;margin-right: 10px" />
                 <Dropdown v-model="selectedNight" :options="nights" optionLabel="label" placeholder=""
                     style="margin-right: 10px;" class="w-full md:w-14rem">
                     <template slot="value" slot-scope="slotProps">
                         {{ slotProps.value ? slotProps.value.label : slotProps.placeholder }}
                     </template>
                 </Dropdown>
-                <Calendar v-model="returnDate" showIcon iconDisplay="input" inputId="returnDate" :readonly="true" />
+                <Calendar v-model="returnDate" showIcon iconDisplay="input" inputId="returnDate" :readonly="true"
+                    style="width: 160px;" />
 
             </div>
             <div class="bt">
@@ -85,7 +86,7 @@
                     </div>
 
                     <div class="flex align-items-center gap-3  mb-3 ">
-                        <b><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        <b class="tn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"
                                 class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-horse-toy">
@@ -101,7 +102,7 @@
                     </div>
 
                     <div class="flex align-items-center gap-3  mb-3 ">
-                        <b><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        <b class="tn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"
                                 class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-door">
@@ -134,37 +135,141 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="col-sm-12">
-                        <b>Bộ lọc phôt biến cho</b>
+                    <div class="bla col-sm-12 mb-4">
+                        <b>Bộ lọc đã áp dụng</b>
+
+
+
+
+                    </div>
+                    <div class="bl col-sm-12">
+                        <b>Bộ lọc phổ biến cho</b>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Khách sạn</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked"> <a-rate :value="5" disabled /></a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked"> <a-rate :value="4" disabled /></a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Hồ bơi</a-checkbox>
+                        </div>
+                    </div>
+                    <div class="bl col-sm-12" style="height: 150px;">
+                        <b>Phạm vi giá</b>
+                        <div class="mt-4 mb-4">
+                            <div class="input-container flex justify-content-between">
+                                <div class="input-wrapper" style="display: flex;">
+                                    <div style="display: flex;">
+                                        <InputText v-model.number="value4[0]" class="w-1/3" style="width: 90px;" />
+                                        <p class="ml-1">đến</p>
+                                    </div>
+
+
+
+                                    <div style="display: flex;">
+                                        <InputText v-model.number="value4[1]" class="w-1/3"
+                                            style="width: 100px;margin-left: 5px;" />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <Slider v-model="value4" range :min="100000" :max="10000000" class="w-full"
+                                    style="padding: 2px;margin: 20px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bl col-sm-12" style="height: 100px;">
+                        <b>Chính sách đặt phòng</b>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Miễn phí hủy</a-checkbox>
+                        </div>
+
+                    </div>
+                    <div class="bl col-sm-12" style="height: 240px;">
+                        <b>Hạng sao</b>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked"> <a-rate :value="1" disabled /></a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked"> <a-rate :value="2" disabled /></a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked"> <a-rate :value="3" disabled /></a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked"> <a-rate :value="4" disabled /></a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked"> <a-rate :value="5" disabled /></a-checkbox>
+                        </div>
+                    </div>
+                    <div class="bl col-sm-12" style="height: 400px;">
+                        <b>Tiện nghi</b>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Wifi</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Hồ bơi</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Chỗ đậu xe</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Nhà hàng</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Lễ tân 24h</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Thang máy</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Lối dành cho xe lăn</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Trung tâm thể dục</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Phòng họp</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Đưa đón săn bay</a-checkbox>
+                        </div>
+                    </div>
+                    <div class="bl col-sm-12" style="height: 140px;">
+                        <b>Loại hình lưu trú</b>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Khu nghỉ dưỡng</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Biệt thự</a-checkbox>
+                        </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Khách san</a-checkbox>
+                        </div>
+
                     </div>
 
                 </div>
+                <!-- chon theo cam tinh -->
                 <div class="col-sm-9">
                     <div class="col-sm-12" style="display: flex;">
-                        <div class="col-sm-6">
-                            <Carousel :value="products" :circular="false" :showIndicators="false" :numVisible="3"
-                                :numScroll="3" :responsiveOptions="responsiveOptions">
-                                <template #item="slotProps">
-                                    <div class="border-1 surface-border border-round m-2  p-3">
-                                        <div class="mb-3 font-medium" style="white-space: nowrap;">{{
-                                            slotProps.data.name }}</div>
-
-                                    </div>
-                                </template>
-                            </Carousel>
+                        <div class="col-sm-9">
+                            <Carchon></Carchon>
 
                         </div>
-                        <div class="col-sm-3" style="margin-top: 20px">
+                         <!-- chon theo cam tinh -->
+                        <div class="col-sm-3">
                             <Dropdown v-model="selectedCity" :options="sx" option-label="name" placeholder="Xếp theo"
                                 checkmark :highlight-on-select="false" class="w-full md:w-14rem" />
 
 
                         </div>
-                        <div class="col-sm-3">
-                            hello
 
-
-                        </div>
 
                     </div>
 
@@ -172,7 +277,7 @@
 
 
                     <div class="giam col-sm-12">
-                        Giảm trực tiếp 20% so với ngày thường. Trượt xuống để chọn khách sạn!
+                        Giảm trực tiếp 20% so với ngày thường. Trượt xuống để chọn phòng khách sạn!
 
                     </div>
 
@@ -524,9 +629,13 @@ import Carousel from 'primevue/carousel';
 import Dialog from 'primevue/dialog';
 import Dropdown from 'primevue/dropdown';
 import InputNumber from 'primevue/inputnumber';
+import InputText from 'primevue/inputtext';
+import Slider from 'primevue/slider';
 import Tooltip from 'primevue/tooltip';
 import View from '../components/view.vue';
 import RoomService from '../services/phong.service';
+import Carchon from '../components/filter/carouselchoose.vue';
+
 export default {
     components: {
         Dropdown,
@@ -537,6 +646,9 @@ export default {
         View,
         RoomService,
         Carousel,
+        Slider,
+        InputText,
+        Carchon
 
     },
     directives: {
@@ -546,6 +658,7 @@ export default {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         return {
+            value4: [2000000, 8000000],
             rooms: [],
             hotelIdInput: '',
             selectedNight: { label: '2 đêm', value: 2 },
@@ -612,10 +725,9 @@ export default {
             },
             products: [
                 { name: 'All ', },
-                { name: 'căn hộ ', },
-                { name: 'biệt thự ', },
-                { name: 'gia đình', },
-                { name: 'ưu đãi ', },
+                { name: 'thanh toán tại khách sạn ', },
+                { name: 'phù hợp với gia đình', },
+                { name: 'ưu đãi  ', },
 
 
             ],
@@ -626,7 +738,9 @@ export default {
                 { name: 'Độ phổ biến', code: 'dpb' },
                 { name: 'Điểm đánh giá', code: 'ddg' },
 
-            ]
+            ], 
+            activeTab: null,
+            showAll: true
         };
     },
     props: {
@@ -670,6 +784,15 @@ export default {
             this.state.indeterminate = this.state.checkedList.length > 0 && this.state.checkedList.length < this.plainOptions.length;
             this.state.checkAll = this.state.checkedList.length === this.plainOptions.length;
         },
+        changeColor(tab) {
+            this.activeTab = tab;
+        },
+        nextTab() {
+            this.showAll = false;
+        },
+        prevTab() {
+            this.showAll = true;
+        }
     },
     watch: {
         'state.checkedList': 'updateChecked'
@@ -804,5 +927,52 @@ export default {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.bla {
+    background-image: linear-gradient(92deg, rgb(189, 233, 255) 0%, rgb(214, 241, 255) 50%, rgb(214, 241, 255) 100%);
+    border-radius: 20px;
+    height: 200px;
+
+
+
+
+}
+
+.bl {
+    margin-top: 25px;
+    border-radius: 20px;
+    border: 1px solid #3333;
+    width: 500px;
+    height: 200px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.check {
+    padding-top: 10px;
+}
+
+.tn {
+    margin-right: 100px;
+}
+
+.ngl {
+    margin-right: 75px;
+}
+
+
+.t.btn:hover {
+    cursor: pointer;
+}
+
+.selected p {
+    color: rgb(24, 141, 176);
+    /* Thay đổi màu chữ khi được chọn */
+}
+
+.carousel {
+    font-weight: 700;
+    font-size: 14px;
 }
 </style>

@@ -1,33 +1,37 @@
 <template>
     <div class="card flex justify-content-center">
-        <Dropdown v-model="selectedCity" :options="sx" option-label="name" placeholder="Xếp theo" checkmark
-            :highlight-on-select="false" class="w-full md:w-14rem" />
+        <div class="mt-4 mb-4">
+            <div class="input-container flex justify-content-between">
+                <div class="input-wrapper" style="display: flex;">
+                    <InputText v-model.number="value1[0]" class="w-1/3" style="width: 70px;" />
+
+                    <InputText v-model.number="value1[1]" class="w-1/3" style="width: 100px;margin-left: 50px;" />
+                </div>
+                <!-- Thêm đường thẳng nối -->
+
+            </div>
+            <div>
+                <Slider v-model="value1" range :min="100000" :max="10000000" class="w-full"
+                    style="padding: 2px;margin: 20px;" />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-
-import Dropdown from 'primevue/dropdown';
-
+import InputText from 'primevue/inputtext';
+import Slider from 'primevue/slider';
 
 export default {
     components: {
-        Dropdown
-
+        Slider,
+        InputText
     },
     data() {
         return {
-            selectedCity: null,
-            sx: [
-                { name: 'Giá cao nhất', code: 'gc' },
-                { name: 'Giá thấp nhất', code: 'gt' },
-                { name: 'Độ phổ biến', code: 'dpb' },
-                { name: 'Điểm đánh giá', code: '' },
-             
-            ]
+            value1: [2000000, 8000000]
         };
-    },
-
+    }
 };
 </script>
 
@@ -35,6 +39,22 @@ export default {
 .card {
     margin-bottom: 160px;
     margin-top: 160px;
-    width: 200px;
+    width: 300px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper {
+    width: 20px;
+    position: relative;
+}
+
+
+
+.p-slider-horizontal {
+    margin-top: 10px;
 }
 </style>

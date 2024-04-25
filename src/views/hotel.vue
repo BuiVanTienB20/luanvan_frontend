@@ -7,9 +7,9 @@
 
 
 
-                   
 
-                   
+
+
 
 
 
@@ -39,11 +39,41 @@
                 </div>
 
 
-                <div class="col-sm-3">
-                    <b>Các nơi lưu trú</b>
+                <div class="lc col-sm-3">
+                    <div class="lck col-sm-12">
+                        <b>Các nơi lưu trú</b>
+                        <p>Biệt thự ở Hội An</p>
+                        <p>Căn hộ ở Hội An</p>
+
+                    </div>
+                    <div class="lck col-sm-12">
+                        <b>Các khách sạn hạng sao khác ở
+
+                        </b>
+                        <p>Khách sạn 5 sao Hội An</p>
+                        <p>Khách sạn 4 sao Hội An</p>
+                        <p>Khách sạn 3 sao Hội An</p>
+                        <p>Khách sạn 2 sao Hội An</p>
+                    </div>
+                    <div class="lck col-sm-12">
+                        <b>Các khách sạn khác ở </b>
+
+
+                    </div>
+                    <div class="lck col-sm-12">
+                        <b>Khách sạn gần các địa điểm nổi tiếng</b>
+
+                    </div>
+                    <div class="lck col-sm-12">
+                        <b>Khách sạn ở các thành phố lân cận</b>
+
+                    </div>
+
+
 
                 </div>
                 <div class="col-sm-9">
+                    <h5 class="mb-4" style="font-weight: 700;">Các khách sạn được yêu thích ở</h5>
                     <div class="ks col-sm-12" v-for="hotel in hotels" :key="hotel._id">
                         <div class="ht">
                             <img :src="hotel.imgURL" alt="">
@@ -284,5 +314,41 @@ export default {
 .tt {
     padding: 100px 5px 5px 5px;
 
+}
+
+.lc {
+    display: block;
+    margin-top: 10px;
+    border-radius: 20px;
+    border: 1px solid #3333;
+    width: 500px;
+    height: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.lck {
+
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 10px;
+    white-space: nowrap;
+}
+
+.lck>b,
+.lck>p {
+    padding-top: 10px;
+
+}
+
+.lck>b {
+    font-weight: 700px;
+}
+
+.lck>p {
+
+    font-weight: 700px;
+    padding-left: 10px;
+    color: #0770cd;
 }
 </style>
