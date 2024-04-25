@@ -19,7 +19,7 @@ export default {
 
 <template>
     <div>
-        <AHeader />
+
 
 
         <div class="row">
@@ -27,7 +27,10 @@ export default {
                 <AMenu />
 
             </div>
+
             <div class="col-sm-9">
+                <AHeader />
+
                 <router-view></router-view>
 
             </div>

@@ -104,7 +104,8 @@ export default {
 
 <style scoped>
 .auth {
-    margin-top: 160px;
+    margin-top: 110px;
+    margin-left: 20px;
     width: 100%;
     height: 100%;
 }

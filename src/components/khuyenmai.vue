@@ -1,12 +1,13 @@
+<!-- Component hiện tại -->
 <template>
   <div>
-    <div class="button-container">
-
-    </div>
+   
     <div v-if="showImages">
       <div class="image-container">
         <div v-for="(image, index) in images1.slice(startIndex, startIndex + 5)" :key="index" class="image-item">
-          <img :src="image" :alt="'Ảnh ' + (startIndex + index + 1)" class="soanh">
+          <router-link :to="{name:'localhotelPro'}">
+            <img :src="image" :alt="'Ảnh ' + (startIndex + index + 1)" class="soanh">
+          </router-link>
         </div>
       </div>
     </div>
@@ -30,6 +31,8 @@ export default {
   }
 };
 </script>
+
+
 
 
 <style>

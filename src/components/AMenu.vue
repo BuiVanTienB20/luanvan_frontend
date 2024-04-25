@@ -73,7 +73,7 @@
                             <path d="M10 7h4"></path>
                         </svg>
 
-                        <router-link :to="{ name: 'Bookingmanagement' }"  class="textp">
+                        <router-link :to="{ name: 'Bookingmanagement' }" class="textp">
                             Quản lí đặt phòng
                         </router-link>
                     </td>
@@ -91,7 +91,7 @@
                             <path d="M4 20l14 0" />
                         </svg>
 
-                        <router-link :to="{ name: 'statistical' }"  class="textp">
+                        <router-link :to="{ name: 'statistical' }" class="textp">
                             Thống kê (giả định) doanh thu trong năm
                         </router-link>
                     </td>
@@ -149,7 +149,14 @@ export default {
 
 <style scoped>
 .menu {
-    margin-top: 110px;
+    margin-top: 0;
+    /* Cố định header ở trên cùng */
+    position: fixed;
+    top: 0;
+    /* Đặt header ở trên cùng của trang */
+    z-index: 1000;
+    /* Đảm bảo header hiển thị trên các phần tử khác */
+    margin-bottom: 20px;
 }
 
 /* Style the <tr> elements when hovered */
@@ -180,7 +187,7 @@ export default {
     color: #528B8B;
 }
 
-.textp{
+.textp {
     text-decoration: none;
 
 }

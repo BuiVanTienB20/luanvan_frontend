@@ -28,6 +28,7 @@ class UserService {
   async delete(id, data) {
     return (await this.api.delete(`/${id}`, data)).data;
   }
+  
 }
 
 export default new UserService();

@@ -12,11 +12,6 @@ const routes = [
         name: "trangchu",
         component: () => import("@/views/TrangChu.vue"),
       },
-      {
-        path: "/:pathMatch(.*)*",
-        name: "notfound",
-        component: () => import("@/views/NotFound.vue"),
-      },
 
       {
         path: "/auth",
@@ -71,6 +66,12 @@ const routes = [
         path: "/bookdetail/room/:id",
         name: "bookdetail",
         component: () => import("@/views/bookdetail.vue"),
+        props: true,
+      },
+      {
+        path: "/listtrain/user",
+        name: "listtrain",
+        component: () => import("@/views/user/listtrain.vue"),
         props: true,
       },
       {
@@ -172,11 +173,28 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "notfound",
+    component: () => import("@/views/NotFound.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+  scrollBehavior(to) {
+    if (to.hash) {
+      // Nếu có hash trong URL, cuộn đến phần tử có id tương ứng
+      return {
+        el: to.hash,
+        behavior: "smooth",
+      };
+    } else {
+      // Cuộn lên đầu trang khi chuyển đến trang mới hoặc trở về
+      return { left: 0, top: 0 };
+    }
+  },
 });
 
 export default router;

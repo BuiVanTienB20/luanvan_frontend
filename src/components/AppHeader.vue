@@ -100,7 +100,7 @@
 
                     <div class="dropdown" style="width: 250px;" v-else>
                         <button class="btn m-4 btn-secondary " type="button" id="dropdownMenuButton"
-                            style="border-radius: 50px" data-toggle="dropdown" aria-haspopup="true"
+                            data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             Tien
 
@@ -129,7 +129,7 @@
                             </button>
 
 
-                            <button type="button" class="btn" @click="logout"
+                            <button type="button" class="btn" @click="listtrain()"
                                 style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -164,7 +164,7 @@
 
                             </button>
 
-                            <button type="button" class="btn" @click="logout"
+                            <button type="button" class="btn" @click="listtrain"
                                 style="font-size: 16px; line-height: 14px; font-weight: 600">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -327,6 +327,10 @@ export default {
             this.$router.push({ name: 'user.register' });
         },
 
+        listtrain() {
+            this.$router.push({ name: "listtrain" });
+
+        },
 
 
         logout() {

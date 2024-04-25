@@ -25,6 +25,11 @@
       </div>
     </Dialog>
 
+    <div class="card flex justify-content-center">
+      <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select a City" checkmark
+        :highlightOnSelect="false" class="w-full md:w-14rem" />
+    </div>
+
 
     <Toast />
     <SplitButton label="3 người lớn, 0 trẻ em, 3 phòng" @click="save" :model="items" severity="secondary" />
@@ -183,6 +188,14 @@ export default {
   },
   data() {
     return {
+      selectedCity: null,
+      cities: [
+        { name: 'New York', code: 'NY' },
+        { name: 'Rome', code: 'RM' },
+        { name: 'London', code: 'LDN' },
+        { name: 'Istanbul', code: 'IST' },
+        { name: 'Paris', code: 'PRS' }
+      ],
       value: 80,
       visible: false,
       value1: 20,

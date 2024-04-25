@@ -9,10 +9,7 @@
                 <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Navbar brand -->
-                    <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                        <img class="img-rounded" alt="Cinque Terre" src="../assets/img/logoks.png" border-radius="50%"
-                            loading="lazy" />
-                    </a>
+
                     <!-- Left links -->
 
                     <!-- Left links -->
@@ -21,6 +18,10 @@
 
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
+                    <button class="pro btn btn-default mr-4">
+                        Bùi Văn Tiền
+
+                    </button>
 
                     <div class="dropdown">
                         <a class=" d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
@@ -51,7 +52,7 @@ export default {
     color: #fff;
     padding: 10px 0;
     text-align: center;
-    width: 100%;
+    width: 1140px;
     position: fixed;
     /* Cố định header ở trên cùng */
     top: 0;
@@ -66,5 +67,9 @@ export default {
     height: 60px;
 
     border-radius: 50%;
+}
+
+.pro{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 </style>
