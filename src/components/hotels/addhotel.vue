@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Form @submit="submitHotel" :validation-schema="hotelFormSchema">
+        <Form @submit="submitHotel" :validation-schema="hotelFormSchema" enctype="multipart/form-data">
             <!-- Tên khách sạn -->
             <div class="form-group">
                 <label for="name">Tên khách sạn:</label>
@@ -39,7 +39,8 @@
             <!-- Ảnh khách sạn -->
             <div class="form-group">
                 <label for="imgURL">Ảnh:</label>
-                <Field name="imgURL" type="text" class="form-control" v-model="hotelLocal.imgURL" required />
+                <Field name="imgURL" type="file" class="form-control" v-model="hotelLocal.imgURL"
+                     required />
                 <ErrorMessage name="imgURL" class="error-feedback" style="color: rgb(238, 15, 15);" />
             </div>
 
@@ -65,8 +66,8 @@
 
 <script>
 import { ErrorMessage, Field, Form } from "vee-validate";
-import * as yup from "yup";
 import { useRoute } from 'vue-router';
+import * as yup from "yup";
 
 export default {
     components: {
@@ -94,6 +95,7 @@ export default {
             imgURL: yup.string().required("Vui lòng chọn một ảnh."),
         });
         return {
+
             hotelLocal: {
                 name: "",
                 address: "",
@@ -117,6 +119,9 @@ export default {
             this.$emit("submit:hotel", this.hotelLocal);
             // Xử lý việc gửi biểu mẫu ở đây
         },
+        
+
+
     },
 };
 </script>

@@ -11,11 +11,12 @@
                 </svg>
             </router-link>
         </button>
-        <button class="btn btn-sm" @click="goToAddhotel()" style="margin-left: 400px;">
+        <button class="btn btn-sm" @click="goToAddHotel()" style="margin-left: 400px;">
             <router-link :to="{ name: 'addhotel' }" class="text-success">
                 <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
             </router-link>
         </button>
+
         <table class="table align-middle mb-0 bg-white">
             <thead class="bg-light">
                 <tr>
@@ -139,7 +140,7 @@ export default {
             }
         },
         async deletehotel(id) {
-            
+
             try {
                 await HotelService.delete(id);
                 this.retrieveHotels();
@@ -150,7 +151,9 @@ export default {
         goToAddHotel() {
             const provinceId = this.$route.params.id;
             this.$router.push({ name: 'addhotel', params: { id: provinceId } });
+           
         },
+
         handleEditHotel(hotelId) {
             const provinceId = this.$route.params.id;
             this.goToEditHotel(provinceId, hotelId);

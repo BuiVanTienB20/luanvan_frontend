@@ -57,5 +57,7 @@ export default {
 <style scoped>
 .edit {
   margin-top: 110px;
+   margin-left: 35px;
+  margin-right: 50px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Form @submit="submitRoom" :validation-schema="roomFormSchema">
+        <Form @submit="submitRoom" :validation-schema="roomFormSchema" enctype="multipart/form-data">
             <!-- Tên phòng -->
             <div class="form-group">
                 <label for="room_name">Tên phòng:</label>
@@ -47,7 +47,7 @@
             <!-- Ảnh phòng -->
             <div class="form-group">
                 <label for="imgURL">Ảnh:</label>
-                <Field name="imgURL" type="text" class="form-control" v-model="roomLocal.imgURL" required />
+                <Field name="imgURL" type="file" class="form-control" v-model="roomLocal.imgURL" required />
                 <ErrorMessage name="imgURL" class="error-feedback" style="color: rgb(238, 15, 15);" />
             </div>
 

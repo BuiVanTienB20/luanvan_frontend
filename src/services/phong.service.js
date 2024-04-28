@@ -1,3 +1,4 @@
+import axios from "axios";
 import createApiClient from "./api.service";
 
 class RoomService {
@@ -8,7 +9,12 @@ class RoomService {
     return (await this.api.get("/")).data;
   }
   async create(data) {
-    return (await this.api.post("/", data)).data;
+    console.log("hello",data)
+    createApiClient().post("/api/rooms", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
   async deleteAll() {
     return (await this.api.delete("/")).data;

@@ -1,3 +1,4 @@
+import axios from "axios";
 import createApiClient from "./api.service";
 
 class HotelService {
@@ -8,8 +9,13 @@ class HotelService {
     return (await this.api.get("/")).data;
   }
   async create(data) {
-    return (await this.api.post("/", data)).data;
+    createApiClient().post("/api/hotels", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
+
   async deleteAll() {
     return (await this.api.delete("/")).data;
   }
@@ -23,8 +29,17 @@ class HotelService {
     return (await this.api.get(`/province/${provinceId}/${hotelId}`)).data;
   }
   async updateHotelByProvinceIdAndHotelId(provinceId, hotelId, data) {
-    return (await this.api.put(`/province/${provinceId}/${hotelId}`, data)).data;
+    await createApiClient().put(
+      `/api/hotels/province/${provinceId}/${hotelId}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
   }
+
   async update(id, data) {
     return (await this.api.put(`/${id}`, data)).data;
   }

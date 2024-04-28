@@ -262,8 +262,8 @@
                             <Carchon></Carchon>
 
                         </div>
-                         <!-- chon theo cam tinh -->
-                        <div class="col-sm-3">
+                        <!-- chon theo cam tinh -->
+                        <div class="col-sm-3 mt-3">
                             <Dropdown v-model="selectedCity" :options="sx" option-label="name" placeholder="Xếp theo"
                                 checkmark :highlight-on-select="false" class="w-full md:w-14rem" />
 
@@ -632,9 +632,9 @@ import InputNumber from 'primevue/inputnumber';
 import InputText from 'primevue/inputtext';
 import Slider from 'primevue/slider';
 import Tooltip from 'primevue/tooltip';
+import Carchon from '../components/filter/carouselchoose.vue';
 import View from '../components/view.vue';
 import RoomService from '../services/phong.service';
-import Carchon from '../components/filter/carouselchoose.vue';
 
 export default {
     components: {
@@ -738,7 +738,7 @@ export default {
                 { name: 'Độ phổ biến', code: 'dpb' },
                 { name: 'Điểm đánh giá', code: 'ddg' },
 
-            ], 
+            ],
             activeTab: null,
             showAll: true
         };

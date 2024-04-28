@@ -25,22 +25,41 @@ export default {
 
   methods: {
     async createHotel(data) {
-
       try {
-        await HotelService.create(data);
+        console.log("hello", data.name)
+        let formData = new FormData();
+        formData.append("name", data.name);
+
+
+        console.log("mew", formData)
+        formData.append("address", data.address);
+        formData.append("description", data.description);
+        formData.append("rating", data.rating);
+        formData.append("type", data.type);
+        formData.append("imgURL", data.imgURL);
+        formData.append("province_id",data.province_id);
+        console.log("fomdata", formData)
+
+        await HotelService.create(formData);
+
         this.message = "Thêm khách sạn mới thành công";
         this.$router.push({ name: 'admin-hotel' });
+
+
       } catch (error) {
         console.log(error);
       }
     }
   },
+
 };
 </script>
 
 <style scoped>
 .add {
   margin-top: 120px;
+  margin-left: 35px;
+  margin-right: 50px;
 }
 
 .add h1 {
