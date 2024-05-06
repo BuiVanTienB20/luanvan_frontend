@@ -37,6 +37,44 @@
                 <ErrorMessage name="rating" class="error-feedback" style="color: rgb(238, 15, 15);" />
             </div>
 
+            <div class="form-group">
+                <label for="discount">Giảm giá:</label>
+                <Field name="discount" type="text" class="form-control" v-model="hotelLocal.discount" />
+                <ErrorMessage name="discount" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+            <!-- Giá -->
+            <div class="form-group">
+                <label for="price">Giá:</label>
+                <Field name="price" type="number" class="form-control" v-model="hotelLocal.price" required />
+                <ErrorMessage name="price" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+            <!-- Tiêu đề giảm giá -->
+            <div class="form-group">
+                <label for="discountTitle">Tiêu đề giảm giá:</label>
+                <Field name="discountTitle" type="text" class="form-control" v-model="hotelLocal.discountTitle" />
+                <ErrorMessage name="discountTitle" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+            <div class="form-group">
+                <label for="capacityAdults">Sức chứa người lớn:</label>
+                <Field name="capacity.adults" type="number" class="form-control" v-model="hotelLocal.capacity.adults"
+                    required />
+                <ErrorMessage name="capacity.adults" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+            <div class="form-group">
+                <label for="capacityChildren">Sức chứa trẻ em:</label>
+                <Field name="capacity.children" type="number" class="form-control"
+                    v-model="hotelLocal.capacity.children" required />
+                <ErrorMessage name="capacity.children" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+
+
+
+
             <!-- ID Tỉnh -->
             <div class="form-group" style="display: none;">
                 <label for="province_id">ID Tỉnh:</label>
@@ -87,8 +125,15 @@ export default {
             description: yup.string().required("Mô tả phải có giá trị."),
             type: yup.string().required("Loại phải có giá trị."),
             rating: yup.number().required("Chất lượng phải có giá trị."),
+            discount: yup.string(),
+            price: yup.number().required("Giá phải có giá trị."),
+            discountTitle: yup.string(),
             province_id: yup.string().required("ID Tỉnh phải có giá trị."),
             imgURL: yup.string().required("Ảnh phải có giá trị."),
+            capacity: yup.object().shape({
+                adults: yup.number().required("Vui lòng nhập số lượng người lớn."),
+                children: yup.number().required("Vui lòng nhập số lượng trẻ em.")
+            })
         });
 
         return {
@@ -113,9 +158,7 @@ export default {
 };
 </script>
 
-<style scoped>
-/* CSS không thay đổi */
-</style>
+
 
 
 <style scoped>

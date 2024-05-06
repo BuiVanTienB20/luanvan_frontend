@@ -71,7 +71,7 @@
         <div class="row">
           <div class="col-sm-6 offset-sm-3 text-center">
             <!-- Thêm class col-md-6 để hình ảnh chiếm 50% chiều rộng, offset-md-3 để căn giữa -->
-            <img class="imgqc" src="../assets/img/qc.webp" alt="">
+            <img class="imgqc" src="https://ik.imagekit.io/tvlk/image/imageResource/2024/03/29/1711697485797-0fefd84f135dd36bc9199cff63bbe8eb.jpeg?tr=q-75,w-1280" alt="">
           </div>
           <div class="col-sm-12">
             <khuyenmai> </khuyenmai>

@@ -38,32 +38,42 @@
                 <div class="row">
                     <div class="col-sm-3" style="margin: 20px;" v-for="room in rooms" :key="room._id">
                         <div class="card" style="width:320px">
-                            <img :src="room.imgURL" alt="" style="margin-right: 18px"
-                                class="rrounded-circle square-image" />
+                            <img :src="room.imgURL" alt="" style="width: 100%;"  />
+                            <p class="overlay-text">{{ room.room_number }}</p>
 
                             <div class="card-body">
-                                <h4 class="card-title">{{ room.room_name }} {{ room.room_number }}</h4>
+                                <h4 class="card-title">{{ room.room_name }}</h4>
                                 <div style="display: flex;justify-content: space-between;">
-                                    <p class="card-text">{{ room.room_type }}</p>
-                                    <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
+                                    <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
                                             class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-bed">
-                                            <path stroke="none" d="M0 0h20v20H0z" fill="none" />
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                             <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                                             <path d="M22 17v-3h-20" />
                                             <path d="M2 8v9" />
                                             <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
-                                        </svg> {{ room.capacity }}</p>
+                                        </svg> {{ room.room_type }}</p>
+                                    <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-user-screen">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path
+                                                d="M19.03 17.818a3 3 0 0 0 1.97 -2.818v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8c0 1.317 .85 2.436 2.03 2.84" />
+                                            <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                            <path d="M8 21a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
+                                        </svg> <b>Sức chứa:</b> {{ room.capacity }}</p>
 
 
                                 </div>
 
-                                <div style="display: flex;justify-content: space-between;">
-                                    <p class="card-text" style="color: rgb(255, 94, 31);font-size: 24px;">Giá: {{
-                                        room.price_per_night }}</p>
-                                    <p class="card-text" style="font-weight: 600;color: red;">còn phòng :{{
-                                        room.availability }}</p>
+                                <div>
+                                    <p class="card-text" style="color: rgb(255, 94, 31);font-size: 24px;font-weight: 700;">Giá: {{
+                                        room.price_per_night }}.000 VND</p>
+                                    <p class="card-text" style="font-weight: 600;color: red;margin-bottom: 20px;">còn
+                                        phòng :{{
+                                            room.availability }}</p>
 
                                 </div>
 
@@ -176,5 +186,21 @@ export default {
 <style scoped>
 .room {
     margin-top: 110px
+}
+.card {
+  position: relative;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 31%;
+    left: 92%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(67 61 61 / 80%);
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+
 }
 </style>

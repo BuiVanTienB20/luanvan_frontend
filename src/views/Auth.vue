@@ -1,82 +1,10 @@
 <template>
   <div class="auth">
-    <Toast />
-    <Button label="Success" severity="success" @click="showSuccess" />
-    <Button label="Info" severity="info" @click="showInfo" />
-    <Button label="Warn" severity="warning" @click="showWarn" />
-    <Button label="Error" severity="danger" @click="showError" />
-    <Button label="Secondary" severity="secondary" @click="showSecondary" />
-    <Button label="Contrast" severity="contrast" @click="showContrast" />
-
-    <Button label="Show" @click="visible = true" />
-    <Dialog v-model:visible="visible" modal header="Edit Profile" :style="{ width: '25rem' }">
-      <span class="p-text-secondary block mb-5">Update your information.</span>
-      <div class="flex align-items-center gap-3 mb-3">
-        <label for="username" class="font-semibold w-6rem">Username</label>
-        <InputText id="username" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex align-items-center gap-3 mb-5">
-        <label for="email" class="font-semibold w-6rem">Email</label>
-        <InputText id="email" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex justify-content-end gap-2">
-        <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-        <Button type="button" label="Save" @click="visible = false"></Button>
-      </div>
-    </Dialog>
-
-    <div class="card flex justify-content-center">
-      <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select a City" checkmark
-        :highlightOnSelect="false" class="w-full md:w-14rem" />
-    </div>
-
-
-    <Toast />
-    <SplitButton label="3 người lớn, 0 trẻ em, 3 phòng" @click="save" :model="items" severity="secondary" />
-
-
-
-
-
-
-    <Card style="width: 25rem; overflow: hidden">
-      <template>
-        <img alt="user header" src="https://primefaces.org/cdn/primevue/images/usercard.png" />
-      </template>
-      <template>Advanced Card</template>
-      <template>Card subtitle</template>
-      <template>
-        <p class="m-0">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam
-          deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
-          neque
-          quas!
-        </p>
-      </template>
-      <template>
-        <div class="flex gap-3 mt-1">
-          <Button label="Cancel" severity="secondary" outlined class="w-full" />
-          <Button label="Save" class="w-full" />
-        </div>
-      </template>
-    </Card>
-
-
-
-
-
-
-
-
-
-
-    <Dropdown v-model="selectedCountry" :options="countries" filter optionLabel="name" placeholder="Select a Country"
-      class="w-full md:w-14rem">
+    <Dropdown v-model="selectedProvince" :options="products" filter optionLabel="province_name"
+      placeholder="Chọn một tỉnh thành" class="w-full md:w-14rem">
       <template slot="value" slot-scope="slotProps">
         <div v-if="slotProps.value" class="flex align-items-center">
-          <img :alt="slotProps.value.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
-            :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 18px" />
-          <div>{{ slotProps.value.name }}</div>
+          <div>{{ slotProps.value.province_name }}</div>
         </div>
         <span v-else>
           {{ slotProps.placeholder }}
@@ -84,71 +12,97 @@
       </template>
       <template slot="option" slot-scope="slotProps">
         <div class="flex align-items-center">
-          <img :alt="slotProps.option.label" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
-            :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`" style="width: 18px" />
-          <div>{{ slotProps.option.name }}</div>
+          <div>{{ slotProps.option.province_name }}</div>
         </div>
       </template>
     </Dropdown>
 
+    <div class="m-4" style="display: flex;">
+      <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay" style="width: 160px;"
+        :disabledDates="disabledDates" />
 
-
-    <div class="card flex flex-wrap gap-3 p-fluid">
-
-      <div class="flex-auto">
-
-        <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay" />
-      </div>
-
-    </div>
-
-    <div class="card flex justify-content-center">
-
-
-      <Dropdown v-model="selectedNight" :options="nights" optionLabel="label" placeholder="Select Number of Nights"
-        class="w-full md:w-14rem">
+      <Dropdown v-model="selectedNight" :options="nights" optionLabel="label" placeholder="" class="w-full md:w-14rem">
         <template slot="value" slot-scope="slotProps">
           {{ slotProps.value ? slotProps.value.label : slotProps.placeholder }}
         </template>
       </Dropdown>
-    </div>
-    <Dropdown v-model="selectedNight" :options="nights" optionLabel="label" placeholder="Select Number of Nights"
-      class="w-full md:w-14rem">
-      <template slot="value" slot-scope="slotProps">
-        {{ slotProps.value ? slotProps.value.label : slotProps.placeholder }}
-      </template>
-    </Dropdown>
 
-    <div class="card flex flex-wrap gap-3 p-fluid">
-      <div class="flex-auto">
-        <label for="stacked-buttons" class="font-bold block mb-2"> Stacked </label>
-        <InputNumber v-model="value1" :inputId="'stacked-buttons'" showButtons mode="currency" currency="USD" />
-      </div>
+      <Calendar v-model="returnDate" showIcon iconDisplay="input" inputId="returnDate" :readonly="true" />
 
-      <div class="flex-auto">
-        <label for="minmax-buttons" class="font-bold block mb-2"> Min-Max Boundaries </label>
-        <InputNumber v-model="value2" :inputId="'minmax-buttons'" mode="decimal" showButtons :min="0" :max="100" />
-      </div>
-      <div class="flex-auto">
-        <label for="horizontal-buttons" class="font-bold block mb-2"> Horizontal with Step </label>
-        <InputNumber v-model="value3" :inputId="'horizontal-buttons'" showButtons :buttonLayout="'horizontal'"
-          :step="0.25" mode="currency" currency="EUR">
-          <template v-slot:incrementbuttonicon>
-            <span class="pi pi-plus" />
-          </template>
-          <template v-slot:decrementbuttonicon>
-            <span class="pi pi-minus" />
-          </template>
-        </InputNumber>
-      </div>
+
+
     </div>
 
-    <Knob v-model="value" :step="5" />
+    <div class=" m-4">
+      <Button :label="`${value1} Người lớn, ${value2} Trẻ em, ${value3} Phòng`" @click="showDialog"
+        severity="secondary" />
 
+      <Dialog v-model:visible="visible" modal header="" :style="{ width: '25rem', borderRadius: '10px' }"
+        :showHeader="false">
 
+        <div class="flex align-items-center gap-3  mt-3 mb-3 ">
+          <b class="ngl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-user-share">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+              <path d="M6 21v-2a4 4 0 0 1 4 -4h3" />
+              <path d="M16 22l5 -5" />
+              <path d="M21 21.5v-4.5h-4.5" />
+            </svg> Người lớn:</b>
+          <InputNumber v-model="value1" :inputId="'horizontal-buttons1'" showButtons :buttonLayout="'horizontal'"
+            :step="1" :inputStyle="{ width: '48px' }" :min="1" />
+        </div>
 
+        <div class="flex align-items-center gap-3  mb-3 ">
+          <b class="tre"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-horse-toy">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3.5 17.5c5.667 4.667 11.333 4.667 17 0" />
+              <path d="M19 18.5l-2 -8.5l1 -2l2 1l1.5 -1.5l-2.5 -4.5c-5.052 .218 -5.99 3.133 -7 6h-6a3 3 0 0 0 -3 3" />
+              <path d="M5 18.5l2 -9.5" />
+              <path d="M8 20l2 -5h4l2 5" />
+            </svg>Trẻ em:</b>
+          <InputNumber v-model="value2" :inputId="'horizontal-buttons2'" showButtons :buttonLayout="'horizontal'"
+            :step="1" :inputStyle="{ width: '48px' }" :min="0" />
+        </div>
+
+        <div class="flex align-items-center gap-3  mb-3 ">
+          <b class="tre"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-door">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M14 12v.01" />
+              <path d="M3 21h18" />
+              <path d="M6 21v-16a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v16" />
+            </svg>Phòng:</b>
+          <InputNumber v-model="value3" :inputId="'horizontal-buttons3'" showButtons :buttonLayout="'horizontal'"
+            :step="1" :inputStyle="{ width: '48px' }" :min="1" :max="value1" />
+        </div>
+
+        <div class="flex justify-content-end gap-2" :style="{ marginLeft: '250px' }">
+          <Button type="button" label="Xong" severity="secondary" @click="closeDialog"></Button>
+        </div>
+      </Dialog>
+    </div>
+
+    <button class=" text-white" type="submit" @click="goToHotelPage"
+      style="margin-left: 650px; font-weight: 500; border-radius: 5px ; background-color: rgb(255, 94, 31);">
+
+      <svg xmlns="http://www.w3.org/2000/svg" class="text-white icon icon-tabler icon-tabler-map-search" width="24"
+        height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M11 18l-2 -1l-6 3v-13l6 -3l6 3l6 -3v7.5" />
+        <path d="M9 4v13" />
+        <path d="M15 7v5" />
+        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+        <path d="M20.2 20.2l1.8 1.8" />
+      </svg>
+      Tìm khách sạn
+    </button>
   </div>
-
 </template>
 
 <script>
@@ -164,14 +118,9 @@ import SplitButton from 'primevue/splitbutton';
 
 import InputNumber from 'primevue/inputnumber';
 import Toast from 'primevue/toast';
-import { useToast } from 'primevue/usetoast';
-
 
 import Card from 'primevue/card';
-
-
-
-
+import ProductService from '../services/tinhthanh.service';
 
 export default {
   components: {
@@ -182,26 +131,16 @@ export default {
     Dialog,
     Knob,
     Card,
-
     Dropdown,
     InputNumber
   },
   data() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
     return {
-      selectedCity: null,
-      cities: [
-        { name: 'New York', code: 'NY' },
-        { name: 'Rome', code: 'RM' },
-        { name: 'London', code: 'LDN' },
-        { name: 'Istanbul', code: 'IST' },
-        { name: 'Paris', code: 'PRS' }
-      ],
-      value: 80,
-      visible: false,
-      value1: 20,
-      value2: 25,
-      value3: 10.5,
-      selectedNight: null,
+      selectedProvince: null,
+      products: [],
+      selectedNight: { label: '2 đêm', value: 2 },
 
       nights: [
         { label: '1 đêm', value: 1 },
@@ -225,90 +164,71 @@ export default {
         { label: '19 đêm', value: 19 },
         { label: '20 đêm', value: 20 }
       ],
-      buttondisplay: null,
-      icondisplay: null,
-      templatedisplay: null,
-      selectedCountry: null,
-      countries: [
-        { name: 'Australia', code: 'AU' },
-        { name: 'Brazil', code: 'BR' },
-        { name: 'China', code: 'CN' },
-        { name: 'Egypt', code: 'EG' },
-        { name: 'France', code: 'FR' },
-        { name: 'Germany', code: 'DE' },
-        { name: 'India', code: 'IN' },
-        { name: 'Japan', code: 'JP' },
-        { name: 'Spain', code: 'ES' },
-        { name: 'United States', code: 'US' }
-      ],
-      items: [
-        {
-          label: '3 người lớn',
-
-        },
-        {
-          label: '0 trẻ em',
-
-        },
-        {
-          label: '3 phòng',
-
-        },
-
-      ]
-
+      icondisplay: tomorrow,
+      // cus
+      visible: false,
+      value1: 1,
+      value2: 0,
+      value3: 1,
     };
   },
-  methods: {
-    save() {
+  computed: {
+    returnDate() {
+      const returnDate = new Date(this.icondisplay);
+      returnDate.setDate(returnDate.getDate() + this.selectedNight.value);
+      return returnDate;
+    },
+    disabledDates() {
+      const today = new Date();
+      const disabledDates = [];
 
+      // Lặp qua từ ngày hôm qua trở về 30 ngày trước
+      for (let i = 1; i <= 30000; i++) {
+        const disabledDate = new Date(today);
+        disabledDate.setDate(today.getDate() - i);
+        disabledDates.push(disabledDate);
+      }
+
+      return disabledDates;
+    }
+
+
+  },
+
+  methods: {
+    async retrieveProducts() {
+      try {
+        this.products = await ProductService.getAll();
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    goToHotelPage() {
+      if (this.selectedProvince) {
+        this.$router.push({ name: 'test', params: { id: this.selectedProvince._id } });
+      }
+    },
+    submitForm() {
+      // Gửi dữ liệu đặt phòng lên máy chủ
+      console.log('Đã gửi dữ liệu đặt phòng:', this.booking);
+      // Đoạn mã gửi dữ liệu lên máy chủ sẽ được thêm vào ở đây
+      // Ví dụ: sử dụng axios hoặc fetch API để gửi dữ liệu
+    },
+    showDialog() {
+      if (this.value1 === 0 || this.value3 === 0 || this.value3 > this.value1) {
+
+      } else {
+        this.visible = true;
+      }
+    },
+    closeDialog() {
+      this.visible = false;
     }
   },
-
-
-  setup() {
-    const toast = useToast();
-
-
-
-    const showSuccess = () => {
-      toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', life: 3000 });
-    };
-
-    const showInfo = () => {
-      toast.add({ severity: 'info', summary: 'Info Message', detail: 'Message Content', life: 3000 });
-    };
-
-    const showWarn = () => {
-      toast.add({ severity: 'warn', summary: 'Warn Message', detail: 'Message Content', life: 3000 });
-    };
-
-    const showError = () => {
-      toast.add({ severity: 'error', summary: 'Error Message', detail: 'Message Content', life: 3000 });
-    };
-
-    const showSecondary = () => {
-      toast.add({ severity: 'secondary', summary: 'Secondary Message', detail: 'Message Content', life: 3000 });
-    };
-
-    const showContrast = () => {
-      toast.add({ severity: 'contrast', summary: 'Contrast Message', detail: 'Message Content', life: 3000 });
-    };
-
-
-
-    return {
-      showSuccess,
-      showInfo,
-      showWarn,
-      showError,
-      showSecondary,
-      showContrast,
-
-    };
+  created() {
+    this.retrieveProducts();
   },
-
-}
+};
 </script>
 
 <style scoped>
@@ -329,6 +249,18 @@ p {
 
 .card {
   width: 400px;
+}
+.cus {
+  margin: -35px -35px -35px 37px;
 
+  border-radius: 10px;
+}
+
+b {
+  margin-right: 100px;
+}
+
+.ngl {
+  margin-right: 75px;
 }
 </style>

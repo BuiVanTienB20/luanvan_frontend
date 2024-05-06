@@ -9,7 +9,7 @@
                         fill="#FFFFFF"></path>
                 </svg>
                 <Dropdown v-model="selectedProvince" :options="provinces" filter optionLabel="name"
-                    placeholder="Chọn một tỉnh thành" class="w-full md:w-14rem">
+                    placeholder="Chọn một địa điểm bạn muốn tìm kiếm" class="w-full md:w-14rem">
                     <template slot="value" slot-scope="slotProps">
                         <div v-if="slotProps.value" class="flex align-items-center">
                             <img :alt="slotProps.value.label"
@@ -32,24 +32,41 @@
                 </Dropdown>
             </div>
             <div class="bt">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="mr-2" data-id="IcSystemCalendar">
-                    <path
-                        d="M7 2V5M17 2V5M3 8H21M11.5 11.5H12.5V12.5H11.5V11.5ZM11.5 16.5H12.5V17.5H11.5V16.5ZM16.5 11.5H17.5V12.5H16.5V11.5ZM6.5 16.5H7.5V17.5H6.5V16.5ZM5 21H19C20.1046 21 21 20.1046 21 19V6C21 4.89543 20.1046 4 19 4H5C3.89543 4 3 4.89543 3 6V19C3 20.1046 3.89543 21 5 21Z"
-                        stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 11.5V12.5H6.5V11.5H7.5Z" stroke="#0194F3"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                    style="color: #FFFF" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mr-2  icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 21l18 0" />
+                    <path d="M5 21v-14l8 -4v18" />
+                    <path d="M19 21v-10l-6 -4" />
+                    <path d="M9 9l0 .01" />
+                    <path d="M9 12l0 .01" />
+                    <path d="M9 15l0 .01" />
+                    <path d="M9 18l0 .01" />
                 </svg>
-                <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay"
-                    style="width: 160px;margin-right: 10px" />
-                <Dropdown v-model="selectedNight" :options="nights" optionLabel="label" placeholder=""
-                    style="margin-right: 10px;" class="w-full md:w-14rem">
+                <Dropdown v-model="selectedHt" :options="hts" filter optionLabel="name"
+                    placeholder="Chọn khách sạn bạn muốn tìm kiếm" class="w-full md:w-14rem">
                     <template slot="value" slot-scope="slotProps">
-                        {{ slotProps.value ? slotProps.value.label : slotProps.placeholder }}
+                        <div v-if="slotProps.value" class="flex align-items-center">
+                            <img :alt="slotProps.value.label"
+                                src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
+                                :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 18px" />
+                            <div>{{ slotProps.value.name }}</div>
+                        </div>
+                        <span v-else>
+                            {{ slotProps.placeholder }}
+                        </span>
+                    </template>
+                    <template slot="option" slot-scope="slotProps">
+                        <div class="flex align-items-center">
+                            <img :alt="slotProps.option.label"
+                                src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
+                                :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`" style="width: 18px" />
+                            <div>{{ slotProps.option.name }}</div>
+                        </div>
                     </template>
                 </Dropdown>
-                <Calendar v-model="returnDate" showIcon iconDisplay="input" inputId="returnDate" :readonly="true"
-                    style="width: 160px;" />
 
             </div>
             <div class="bt">
@@ -207,7 +224,7 @@
                             <a-checkbox v-model="checked"> <a-rate :value="5" disabled /></a-checkbox>
                         </div>
                     </div>
-                    <div class="bl col-sm-12" style="height: 400px;">
+                    <div class="bl col-sm-12" style="height: 410px;">
                         <b>Tiện nghi</b>
                         <div class="check col-sm-12">
                             <a-checkbox v-model="checked">Wifi</a-checkbox>
@@ -239,6 +256,9 @@
                         <div class="check col-sm-12">
                             <a-checkbox v-model="checked">Đưa đón săn bay</a-checkbox>
                         </div>
+                        <div class="check col-sm-12">
+                            <a-checkbox v-model="checked">Quầy ba</a-checkbox>
+                        </div>
                     </div>
                     <div class="bl col-sm-12" style="height: 140px;">
                         <b>Loại hình lưu trú</b>
@@ -258,13 +278,19 @@
                 <!-- chon theo cam tinh -->
                 <div class="col-sm-9">
                     <div class="col-sm-12" style="display: flex;">
-                        <div class="col-sm-9">
+                        <div class="col-sm-6">
                             <Carchon></Carchon>
 
                         </div>
                         <!-- chon theo cam tinh -->
+
                         <div class="col-sm-3 mt-3">
-                            <Dropdown v-model="selectedCity" :options="sx" option-label="name" placeholder="Xếp theo"
+                            <Dropdown v-model="selectedGia" :options="gia" option-label="name" placeholder="Xếp theo"
+                                checkmark :highlight-on-select="false" class="w-full md:w-14rem" />
+                        </div>
+
+                        <div class="col-sm-6 mt-3">
+                            <Dropdown v-model="selectedSx" :options="sx" option-label="name" placeholder="Xếp theo"
                                 checkmark :highlight-on-select="false" class="w-full md:w-14rem" />
 
 
@@ -277,7 +303,7 @@
 
 
                     <div class="giam col-sm-12">
-                        Giảm trực tiếp 20% so với ngày thường. Trượt xuống để chọn phòng khách sạn!
+                        Giảm giá so với ngày thường. Trượt xuống để chọn phòng khách sạn!
 
                     </div>
 
@@ -285,14 +311,14 @@
                         Tìm thấy 51 cơ sở lưu trú tại Bà Rịa - Vũng Tàu
                     </div>
 
-                    <div class="ks col-sm-12">
+                    <div class="ks col-sm-12" v-for="hotel in hotels" :key="hotel._id">
                         <div class="ht">
-                            <img src="../assets/img/ads1.webp" alt="">
+                            <img :src="hotel.imgURL" alt="">
 
                         </div>
                         <div class="kt">
                             <p style="color:rgb(3, 18, 26); font-weight: 700;font-size: 16px;">
-                                Premier Pearl Hotel Vung Tau
+                                {{ hotel.name }}
                             </p>
 
                             <p style="color:rgb(2, 100, 200); font-weight: 500;font-size: 12px;">
@@ -305,10 +331,11 @@
                                         d="M12 3c-3.866 0 -7 3.272 -7 7v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-10c0 -3.728 -3.134 -7 -7 -7z" />
                                     <path d="M5 13l14 0" />
                                     <path d="M12 3l0 18" />
-                                </svg> Khu nghỉ dưỡng
+                                </svg> {{ hotel.type }}
 
 
-                                <span style="color: yellow; font-size: 26px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                                <span class="ml-4" style="color: yellow; font-size: 26px;"> <a-rate
+                                        :value="hotel.rating" disabled /></span>
                                 <!-- Five yellow star symbols -->
 
 
@@ -322,8 +349,7 @@
                                     <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
                                     <path
                                         d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                                </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt
-                                Nam
+                                </svg> {{ hotel.address }}
                             </p>
                             <p style="color:  rgb(3, 18, 26); font-weight: 500; font-size: 10px;"> <svg
                                     xmlns="http://www.w3.org/2000/svg" width="10" height="24" viewBox="0 0 24 24"
@@ -335,9 +361,9 @@
                                         d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
                                     <path d="M7 7h3v10h-3z" />
                                     <path d="M14 7h3v6h-3z" />
-                                </svg>Máy lạnh, Nhà hàng, Hồ bơi, Lễ tân 24h, Chỗ đậu xe, Thang máy</p>
+                                </svg>{{ hotel.description }}</p>
                             <p
-                                style="border-radius: 20px; background-color: rgb(255, 220, 0);color: rgb(0, 0, 0); font-weight: 500;width: 309px;font-size: 12px;">
+                                style="border-radius: 20px; background-color: rgb(255, 220, 0);color: rgb(0, 0, 0); font-weight: 500;width: 315px;font-size: 12px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     style="color: aliceblue; font-weight: 500;" stroke-linejoin="round"
@@ -347,7 +373,7 @@
                                     <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
                                     <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />
                                     <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                </svg> Đặt sớm mã giảm 500k + công dồn tới 80k
+                                </svg>{{ hotel.discountTitle }}
                             </p>
                             <p style="color:  rgb(177, 84, 0); font-weight: 500;font-size: 14px;"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
@@ -367,13 +393,13 @@
                                 style=" background-color: rgb(186, 240, 117); border-radius: 20px; color: rgb(0, 135, 89); width: 100px; text-align: center;justify-content: center;">
                                 <img style="width: 20px;height: 20px;" class="mr-2"
                                     src="https://ik.imagekit.io/tvlk/image/imageResource/2021/11/21/1637537023389-169535f715e7d4b32d217e48a201dba4.png"
-                                    alt=""> Sale lễ
+                                    alt=""> {{ hotel.discount }}
 
                             </div>
                             <div class="thpd" style="width: 121px; color: rgb(255, 94, 31);
     padding-top: 54px;">
 
-                                <b> 2.916.000 VND</b>
+                                <b> {{ hotel.price }}.000 VND</b>
 
 
 
@@ -381,222 +407,10 @@
                             <div class="thpd">
 
                                 <div class="tt">
-                                    <button class="chooserom btn text-white"> Chọn phòng
-
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="ks col-sm-12">
-                        <div class="ht">
-                            <img src="../assets/img/ads1.webp" alt="">
-
-                        </div>
-                        <div class="kt">
-                            <p style="color:rgb(3, 18, 26); font-weight: 700;font-size: 16px;">
-                                Premier Pearl Hotel Vung Tau
-                            </p>
-
-                            <p style="color:rgb(2, 100, 200); font-weight: 500;font-size: 12px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-window">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M12 3c-3.866 0 -7 3.272 -7 7v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-10c0 -3.728 -3.134 -7 -7 -7z" />
-                                    <path d="M5 13l14 0" />
-                                    <path d="M12 3l0 18" />
-                                </svg> Khu nghỉ dưỡng
-
-
-                                <span style="color: yellow; font-size: 26px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                <!-- Five yellow star symbols -->
-
-
-                            </p>
-                            <p style="color:  rgb(3, 18, 26); font-weight: 500; font-size: 14px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                    <path
-                                        d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                                </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt
-                                Nam
-                            </p>
-                            <p style="color:  rgb(3, 18, 26); font-weight: 500; font-size: 10px;"> <svg
-                                    xmlns="http://www.w3.org/2000/svg" width="10" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" style="color: rgb(2, 100, 200); font-weight: 400;"
-                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-brand-trello">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                                    <path d="M7 7h3v10h-3z" />
-                                    <path d="M14 7h3v6h-3z" />
-                                </svg>Máy lạnh, Nhà hàng, Hồ bơi, Lễ tân 24h, Chỗ đậu xe, Thang máy</p>
-                            <p
-                                style="border-radius: 20px; background-color: rgb(255, 220, 0);color: rgb(0, 0, 0); font-weight: 500;width: 309px;font-size: 12px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    style="color: aliceblue; font-weight: 500;" stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-discount">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 15l6 -6" />
-                                    <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
-                                    <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />
-                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                </svg> Đặt sớm mã giảm 500k + công dồn tới 80k
-                            </p>
-                            <p style="color:  rgb(177, 84, 0); font-weight: 500;font-size: 14px;"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" style=" font-weight: 700;"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-pig-money">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M15 11v.01" />
-                                    <path d="M5.173 8.378a3 3 0 1 1 4.656 -1.377" />
-                                    <path
-                                        d="M16 4v3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342c-.336 .95 -.907 1.8 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3h0z" />
-                                </svg> 1000</p>
-
-                        </div>
-                        <div class="bt">
-                            <div class="thpd"
-                                style=" background-color: rgb(186, 240, 117); border-radius: 20px; color: rgb(0, 135, 89); width: 100px; text-align: center;justify-content: center;">
-                                <img style="width: 20px;height: 20px;" class="mr-2"
-                                    src="https://ik.imagekit.io/tvlk/image/imageResource/2021/11/21/1637537023389-169535f715e7d4b32d217e48a201dba4.png"
-                                    alt=""> Sale lễ
-
-                            </div>
-                            <div class="thpd" style="width: 121px; color: rgb(255, 94, 31);
-    padding-top: 54px;">
-
-                                <b> 2.916.000 VND</b>
-
-
-
-                            </div>
-                            <div class="thpd">
-
-                                <div class="tt">
-                                    <button class="chooserom btn text-white"> Chọn phòng
-
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="ks col-sm-12">
-                        <div class="ht">
-                            <img src="../assets/img/ads1.webp" alt="">
-
-                        </div>
-                        <div class="kt">
-                            <p style="color:rgb(3, 18, 26); font-weight: 700;font-size: 16px;">
-                                Premier Pearl Hotel Vung Tau
-                            </p>
-
-                            <p style="color:rgb(2, 100, 200); font-weight: 500;font-size: 12px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-window">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M12 3c-3.866 0 -7 3.272 -7 7v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-10c0 -3.728 -3.134 -7 -7 -7z" />
-                                    <path d="M5 13l14 0" />
-                                    <path d="M12 3l0 18" />
-                                </svg> Khu nghỉ dưỡng
-
-
-                                <span style="color: yellow; font-size: 26px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                                <!-- Five yellow star symbols -->
-
-
-                            </p>
-                            <p style="color:  rgb(3, 18, 26); font-weight: 500; font-size: 14px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                    <path
-                                        d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                                </svg> Hồ Tràm, Xã Phước Thuận, Thành phố Vũng Tàu, Xuyên Mộc, Bà Rịa - Vũng Tàu, Việt
-                                Nam
-                            </p>
-                            <p style="color:  rgb(3, 18, 26); font-weight: 500; font-size: 10px;"> <svg
-                                    xmlns="http://www.w3.org/2000/svg" width="10" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" style="color: rgb(2, 100, 200); font-weight: 400;"
-                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-brand-trello">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                                    <path d="M7 7h3v10h-3z" />
-                                    <path d="M14 7h3v6h-3z" />
-                                </svg>Máy lạnh, Nhà hàng, Hồ bơi, Lễ tân 24h, Chỗ đậu xe, Thang máy</p>
-                            <p
-                                style="border-radius: 20px; background-color: rgb(255, 220, 0);color: rgb(0, 0, 0); font-weight: 500;width: 309px;font-size: 12px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    style="color: aliceblue; font-weight: 500;" stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-discount">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M9 15l6 -6" />
-                                    <circle cx="9.5" cy="9.5" r=".5" fill="currentColor" />
-                                    <circle cx="14.5" cy="14.5" r=".5" fill="currentColor" />
-                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                </svg> Đặt sớm mã giảm 500k + công dồn tới 80k
-                            </p>
-                            <p style="color:  rgb(177, 84, 0); font-weight: 500;font-size: 14px;"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" style=" font-weight: 700;"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-pig-money">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M15 11v.01" />
-                                    <path d="M5.173 8.378a3 3 0 1 1 4.656 -1.377" />
-                                    <path
-                                        d="M16 4v3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342c-.336 .95 -.907 1.8 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3h0z" />
-                                </svg> 1000</p>
-
-                        </div>
-                        <div class="bt">
-                            <div class="thpd"
-                                style=" background-color: rgb(186, 240, 117); border-radius: 20px; color: rgb(0, 135, 89); width: 100px; text-align: center;justify-content: center;">
-                                <img style="width: 20px;height: 20px;" class="mr-2"
-                                    src="https://ik.imagekit.io/tvlk/image/imageResource/2021/11/21/1637537023389-169535f715e7d4b32d217e48a201dba4.png"
-                                    alt=""> Sale lễ
-
-                            </div>
-                            <div class="thpd" style="width: 121px; color: rgb(255, 94, 31);
-    padding-top: 54px;">
-
-                                <b> 2.916.000 VND</b>
-
-
-
-                            </div>
-                            <div class="thpd">
-
-                                <div class="tt">
-                                    <button class="chooserom btn text-white"> Chọn phòng
+                                    <button class="chooserom btn text-white"> <router-link
+                                            :to="{ name: 'bookroom', params: { id: hotel._id } }" class="link">
+                                            Chọn phòng
+                                        </router-link>
 
                                     </button>
 
@@ -634,8 +448,8 @@ import Slider from 'primevue/slider';
 import Tooltip from 'primevue/tooltip';
 import Carchon from '../components/filter/carouselchoose.vue';
 import View from '../components/view.vue';
+import HotelService from '../services/khachsan.service';
 import RoomService from '../services/phong.service';
-
 export default {
     components: {
         Dropdown,
@@ -687,16 +501,16 @@ export default {
             ],
             selectedProvince: null,
             provinces: [
-                { name: 'Hà Nội', code: 'HN' },
-                { name: 'Hồ Chí Minh', code: 'HCM' },
-                { name: 'Đà Nẵng', code: 'DN' },
-                { name: 'Hải Phòng', code: 'HP' },
-                { name: 'Cần Thơ', code: 'CT' },
-                { name: 'Bình Dương', code: 'BD' },
-                { name: 'Đồng Nai', code: 'DNai' },
-                { name: 'Khánh Hòa', code: 'KH' },
-                { name: 'Quảng Nam', code: 'QNam' },
-                { name: 'Hải Dương', code: 'HD' }
+                { name: 'Quận 1', code: 'HN' },
+                { name: 'Quận 1', code: 'HCM' },
+                { name: 'Quận 1', code: 'DN' },
+                { name: 'Quận 1', code: 'HP' },
+                { name: 'Quận 1', code: 'CT' },
+                { name: 'Quận 1', code: 'BD' },
+                { name: 'Quận 1', code: 'DNai' },
+                { name: 'Quận 1', code: 'KH' },
+                { name: 'Quận 1', code: 'QNam' },
+                { name: 'Quận 1', code: 'HD' }
 
             ].map(city => {
                 return {
@@ -704,6 +518,26 @@ export default {
                     nameWithCountry: `${city.name} (Việt Nam)`
                 };
             }),
+            selectedHt: null,
+            hts: [
+                { name: 'Khách sạn 1', code: 'HN' },
+                { name: 'Khách sạn 1', code: 'HCM' },
+                { name: 'Khách sạn 1', code: 'DN' },
+                { name: 'Khách sạn 1', code: 'HP' },
+                { name: 'Khách sạn 1', code: 'CT' },
+                { name: 'Khách sạn 1', code: 'BD' },
+                { name: 'Khách sạn 1', code: 'DNai' },
+                { name: 'Khách sạn 1', code: 'KH' },
+                { name: 'Khách sạn 1', code: 'QNam' },
+                { name: 'Khách sạn 1', code: 'HD' }
+
+            ].map(city => {
+                return {
+                    ...city,
+                    nameWithCountry: `${city.name} (Hà Nội)`
+                };
+            }),
+
             booking: {
                 city: '',
                 checkinDate: '',
@@ -731,21 +565,32 @@ export default {
 
 
             ],
-            selectedCity: null,
+            selectedSx: null,
+            selectedGia: null,
             sx: [
+
+                { name: 'Độ phổ biến', code: 'dpb' },
+                { name: 'Điểm tích lũy', code: 'dtl' },
+                { name: 'Gần trung tâm thành phố', code: 'tttp' },
+                { name: 'Gần địa điểm du lịch', code: 'dddd' },
+
+            ],
+            gia: [
                 { name: 'Giá cao nhất', code: 'gc' },
                 { name: 'Giá thấp nhất', code: 'gt' },
-                { name: 'Độ phổ biến', code: 'dpb' },
-                { name: 'Điểm đánh giá', code: 'ddg' },
+
 
             ],
             activeTab: null,
-            showAll: true
+            showAll: true,
+            hotels: [],
+            provinceIdInput: '',
         };
     },
     props: {
         id: { type: String, required: true },
     },
+
     computed: {
 
         returnDate() {
@@ -753,10 +598,24 @@ export default {
             returnDate.setDate(returnDate.getDate() + this.selectedNight.value);
             return returnDate;
 
+        },
+        disabledDates() {
+            const today = new Date();
+            const disabledDates = [];
+
+            // Lặp qua từ ngày hôm qua trở về 30 ngày trước
+            for (let i = 1; i <= 30000; i++) {
+                const disabledDate = new Date(today);
+                disabledDate.setDate(today.getDate() - i);
+                disabledDates.push(disabledDate);
+            }
+
+            return disabledDates;
         }
 
 
     },
+
 
     methods: {
 
@@ -792,7 +651,21 @@ export default {
         },
         prevTab() {
             this.showAll = true;
-        }
+        },
+        async loadHotels() {
+            try {
+                // Trích xuất provinceId từ URL
+                const provinceId = window.location.pathname.split('/').pop();
+
+                // Gọi phương thức findAllByProvinceId(provinceId) từ HotelService
+                this.hotels = await HotelService.findAllByProvinceId(provinceId);
+            } catch (error) {
+                console.error('Error loading hotels:', error);
+            }
+        },
+    },
+    created() {
+        this.loadHotels();
     },
     watch: {
         'state.checkedList': 'updateChecked'
@@ -823,6 +696,11 @@ export default {
     margin-right: auto;
     /* Đẩy ảnh về phía bên phải */
     margin-bottom: 40px;
+}
+
+.link {
+    color: aliceblue;
+    text-decoration: none;
 }
 
 .giam {
@@ -871,8 +749,9 @@ export default {
 }
 
 .ht>img {
-    width: 275px;
-    height: 255px;
+    margin-top: 15px;
+    width: 270px;
+    height: 230px;
     border-radius: 10px;
 
 }

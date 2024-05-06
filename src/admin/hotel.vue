@@ -1,6 +1,6 @@
 <template>
     <div class="hotel">
-        <button class="btn btn-sm text-white" style="">
+        <button class="btn btn-sm text-white">
             <router-link :to="{ name: 'admin-position' }" class="text-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -25,6 +25,7 @@
                     <th>Loại</th>
                     <th>Mô tả</th>
                     <th>Chất lượng</th>
+                    <th>Giảm giá</th>
                     <th>Sửa</th>
                     <th>Xóa</th>
                     <th>Phòng</th>
@@ -61,6 +62,7 @@
                         <span style="color: #ff7600;; font-size: 20px; opacity: 0.8;"> {{ hotel.rating
                             }} &#9733;</span>
                     </td>
+                    <td>{{hotel.discount}}</td>
 
 
 
@@ -123,27 +125,45 @@
 <script>
 import HotelService from '../services/khachsan.service';
 
+export async function retrieveHotels() {
+    try {
+        const provinceId = this.$route.params.id;
+        this.hotels = await HotelService.findAllByProvinceId(provinceId);
+        console.log("file")
+       
+    } catch (error) {
+        console.error('Error loading hotels:', error);
+    }
+}
+
+
+
 export default {
+    components: {
+
+
+    },
     data() {
+
         return {
 
             hotels: [],
         };
     },
     methods: {
-        async retrieveHotels() {
-            try {
-                const provinceId = this.$route.params.id;
-                this.hotels = await HotelService.findAllByProvinceId(provinceId);
-            } catch (error) {
-                console.error('Error loading hotels:', error);
-            }
-        },
+        // async retrieveHotels() {
+        //     try {
+        //         const provinceId = this.$route.params.id;
+        //         this.hotels = await HotelService.findAllByProvinceId(provinceId);
+        //     } catch (error) {
+        //         console.error('Error loading hotels:', error);
+        //     }
+        // },
         async deletehotel(id) {
 
             try {
                 await HotelService.delete(id);
-                this.retrieveHotels();
+                retrieveHotels.call(this);
             } catch (error) {
                 console.error(error);
             }
@@ -152,6 +172,8 @@ export default {
             const provinceId = this.$route.params.id;
             this.$router.push({ name: 'addhotel', params: { id: provinceId } });
            
+            
+
         },
 
         handleEditHotel(hotelId) {
@@ -163,7 +185,7 @@ export default {
         },
     },
     created() {
-        this.retrieveHotels();
+        retrieveHotels.call(this); 
     },
 };
 </script>

@@ -64,7 +64,7 @@
                         <div class="bt">
 
                             <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay"
-                                style="width: 160px;" />
+                                style="width: 160px;" :disabledDates="disabledDates" />
                             <Dropdown v-model="selectedNight" :options="nights" optionLabel="label" placeholder=""
                                 class="w-full md:w-14rem">
                                 <template slot="value" slot-scope="slotProps">
@@ -76,6 +76,91 @@
 
                         </div>
 
+                        <div class="row ce mt-4 ml-4">
+
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon mr-2 icon-tabler icon-tabler-calendar-user" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 21h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4.5" />
+                                    <path d="M16 3v4" />
+                                    <path d="M8 3v4" />
+                                    <path d="M4 11h16" />
+                                    <path d="M19 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                    <path d="M22 22a2 2 0 0 0 -2 -2h-2a2 2 0 0 0 -2 2" />
+                                </svg>
+
+                                <div class="cus">
+                                    <Button :label="`${value1} Người lớn, ${value2} Trẻ em, ${value3} Phòng`"
+                                        @click="showDialog" severity="secondary" />
+
+                                    <Dialog v-model:visible="visible" modal header=""
+                                        :style="{ width: '25rem', borderRadius: '10px' }" :showHeader="false">
+
+                                        <div class="flex align-items-center gap-3  mt-3 mb-3 ">
+                                            <b class="ngl"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-user-share">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h3" />
+                                                    <path d="M16 22l5 -5" />
+                                                    <path d="M21 21.5v-4.5h-4.5" />
+                                                </svg> Người lớn:</b>
+                                            <InputNumber v-model="value1" :inputId="'horizontal-buttons1'" showButtons
+                                                :buttonLayout="'horizontal'" :step="1" :inputStyle="{ width: '48px' }"
+                                                :min="1" />
+                                        </div>
+
+                                        <div class="flex align-items-center gap-3  mb-3 ">
+                                            <b class="tre"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-horse-toy">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M3.5 17.5c5.667 4.667 11.333 4.667 17 0" />
+                                                    <path
+                                                        d="M19 18.5l-2 -8.5l1 -2l2 1l1.5 -1.5l-2.5 -4.5c-5.052 .218 -5.99 3.133 -7 6h-6a3 3 0 0 0 -3 3" />
+                                                    <path d="M5 18.5l2 -9.5" />
+                                                    <path d="M8 20l2 -5h4l2 5" />
+                                                </svg>Trẻ em:</b>
+                                            <InputNumber v-model="value2" :inputId="'horizontal-buttons2'" showButtons
+                                                :buttonLayout="'horizontal'" :step="1" :inputStyle="{ width: '48px' }"
+                                                :min="0" />
+                                        </div>
+
+                                        <div class="flex align-items-center gap-3  mb-3 ">
+                                            <b class="tre"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-door">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M14 12v.01" />
+                                                    <path d="M3 21h18" />
+                                                    <path d="M6 21v-16a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v16" />
+                                                </svg>Phòng:</b>
+                                            <InputNumber v-model="value3" :inputId="'horizontal-buttons3'" showButtons
+                                                :buttonLayout="'horizontal'" :step="1" :inputStyle="{ width: '48px' }"
+                                                :min="1" :max="value1" />
+                                        </div>
+
+                                        <div class="flex justify-content-end gap-2" :style="{ marginLeft: '250px' }">
+                                            <Button type="button" label="Xong" severity="secondary"
+                                                @click="closeDialog"></Button>
+                                        </div>
+                                    </Dialog>
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -83,9 +168,21 @@
                 <div class="td col-sm-6" v-if="room" :key="room._id">
                     <div class="br col-sm-12 " style="margin-top: 40px;">
                         <div class=" mb-10" style="font-weight: bold;margin-bottom: 20px; display: flex;">
-                            <p style="margin-top: 6px;margin-right: 5px">{{ room.room_name }} </p>
-                            <p style="margin-top: 6px;margin-right: 5px">{{ room.room_number }} </p>
-
+                            <p style="margin-top: 6px;margin-right: 200px">{{ room.room_name }} </p>
+                            <p c
+                                style="margin-top: 5px;  color: #333;white-space: nowrap; border-radius: 5px; font-weight: bold;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-armchair-2">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M5 10v-4a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v4" />
+                                    <path d="M16 15v-2a3 3 0 1 1 3 3v3h-14v-3a3 3 0 1 1 3 -3v2" />
+                                    <path d="M8 12h8" />
+                                    <path d="M7 19v2" />
+                                    <path d="M17 19v2" />
+                                </svg>Số phòng: {{ room.room_number }}
+                            </p>
                         </div>
                         <div class="anh" style="margin-bottom: 20px;">
                             <img :src="room.imgURL" alt="" style="border: 1px solid #333; height: 200px; width: 500px;">
@@ -96,22 +193,28 @@
 
                             <div class="item1 " style="font-weight: 500;">
                                 <div class="tp">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-bed">
-                                        <path stroke="none" d="M0 0h20v20H0z" fill="none" />
+                                        class="icon  icon-tabler icons-tabler-outline icon-tabler-bed">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                                         <path d="M22 17v-3h-20" />
                                         <path d="M2 8v9" />
                                         <path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" />
-                                    </svg> {{ room.capacity }} Giường đôi
+                                    </svg> {{ room.room_type }}
                                 </div>
-                                <div class="tp">
-                                    <p style="margin-top: 6px;margin-right: 5px">{{ room.room_type }} </p>
-                                </div>
-                                <div class="tp" style="font-weight: 600;color: red;"> Chỉ còn {{ room.availability }}
-                                    phòng</div>
+                                <div class="tp "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon mt-4 mb-4  icon-tabler icons-tabler-outline icon-tabler-user-screen">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M19.03 17.818a3 3 0 0 0 1.97 -2.818v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8c0 1.317 .85 2.436 2.03 2.84" />
+                                        <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                        <path d="M8 21a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2" />
+                                    </svg> Sức chứa: {{ room.capacity }}</div>
+
                                 <p style="color: rgba(104, 113, 118, 1.00)"> <svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -185,14 +288,22 @@
 
                                 </div>
                                 <div class="tp" style="font-weight: 700">
-
                                     <p style="text-decoration-line: line-through; ">
-                                        {{ room.price_per_night }}.000 VND
+                                        {{ (room.price_per_night * 1).toLocaleString('en-US', {
+                                            minimumFractionDigits: 0,
+                                            maximumFractionDigits: (room.price_per_night >= 1000) ? 3 : 0
+                                        })
+                                        }},000 VND
 
                                     </p>
-                                    <p style="color: rgb(255, 94, 31);font-size: 24px;"
+                                    <p style="color: rgb(255, 94, 31); font-size: 20px;"
                                         v-tooltip.top="'Đã bao gồm thuế'">
-                                        {{ (room.price_per_night * 0.1).toLocaleString() }}.000 VND
+                                        {{
+                                            (room.price_per_night * 1.1).toLocaleString('en-US', {
+                                                minimumFractionDigits: 0,
+                                                maximumFractionDigits: (room.price_per_night >= 1000) ? 3 : 0
+                                            })
+                                        }},000 VND
                                     </p>
 
 
@@ -229,6 +340,7 @@ import InputNumber from 'primevue/inputnumber';
 import InputText from 'primevue/inputtext';
 
 
+import Dialog from 'primevue/dialog';
 import Toast from 'primevue/toast';
 import BookingService from '../services/datphong.service';
 import RoomService from '../services/phong.service';
@@ -241,7 +353,8 @@ export default {
         Calendar,
         RoomService,
         BookingService,
-        Toast
+        Toast,
+        Dialog
 
 
     },
@@ -318,6 +431,10 @@ export default {
                 { label: '20 đêm', value: 20 }
             ],
             icondisplay: tomorrow,
+            visible: false,
+            value1: 1,
+            value2: 0,
+            value3: 1,
 
 
 
@@ -335,6 +452,16 @@ export default {
         }
     },
     methods: {
+        showDialog() {
+            if (this.value1 === 0 || this.value3 === 0 || this.value3 > this.value1) {
+
+            } else {
+                this.visible = true;
+            }
+        },
+        closeDialog() {
+            this.visible = false;
+        },
         onNameChange() {
             // Kiểm tra xem name có được điền không
             this.errors.name = !this.name.trim();
@@ -430,7 +557,21 @@ export default {
             returnDate.setDate(returnDate.getDate() + this.selectedNight.value);
             return returnDate;
 
+        },
+        disabledDates() {
+            const today = new Date();
+            const disabledDates = [];
+
+            // Lặp qua từ ngày hôm qua trở về 30 ngày trước
+            for (let i = 1; i <= 30000; i++) {
+                const disabledDate = new Date(today);
+                disabledDate.setDate(today.getDate() - i);
+                disabledDates.push(disabledDate);
+            }
+
+            return disabledDates;
         }
+
 
 
     },
@@ -469,6 +610,20 @@ export default {
 
 
 
+}
+
+.cus {
+    margin: -35px -35px -35px 37px;
+
+    border-radius: 10px;
+}
+
+.ngl {
+    margin-right: 75px;
+}
+
+.tre {
+    margin-right: 100px;
 }
 
 .ttd {

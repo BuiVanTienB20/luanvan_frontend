@@ -42,7 +42,7 @@ export default {
 
         await HotelService.updateHotelByProvinceIdAndHotelId(provinceId, hotelId, data);
         this.message = "Cập nhật khách sạn thành công";
-        this.$router.push({ name: 'admin-hotel',params: { id: provinceId } });
+        this.$router.push({ name: 'admin-hotel', params: { id: provinceId } });
       } catch (error) {
         console.error(error);
 
@@ -57,7 +57,7 @@ export default {
 <style scoped>
 .edit {
   margin-top: 110px;
-   margin-left: 35px;
+  margin-left: 35px;
   margin-right: 50px;
 }
 </style>

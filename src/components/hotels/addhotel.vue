@@ -39,10 +39,43 @@
             <!-- Ảnh khách sạn -->
             <div class="form-group">
                 <label for="imgURL">Ảnh:</label>
-                <Field name="imgURL" type="file" class="form-control" v-model="hotelLocal.imgURL"
-                     required />
+                <Field name="imgURL" type="file" class="form-control" v-model="hotelLocal.imgURL" required />
                 <ErrorMessage name="imgURL" class="error-feedback" style="color: rgb(238, 15, 15);" />
             </div>
+
+            <div class="form-group">
+                <label for="discount">Giảm giá:</label>
+                <Field name="discount" type="text" class="form-control" v-model="hotelLocal.discount" />
+                <ErrorMessage name="discount" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+            <div class="form-group">
+                <label for="price">Giá:</label>
+                <Field name="price" type="number" class="form-control" v-model="hotelLocal.price" required />
+                <ErrorMessage name="price" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+            <!-- Tiêu đề giảm giá -->
+            <div class="form-group">
+                <label for="discountTitle">Tiêu đề giảm giá:</label>
+                <Field name="discountTitle" type="text" class="form-control" v-model="hotelLocal.discountTitle" />
+                <ErrorMessage name="discountTitle" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+            <div class="form-group">
+                <label for="capacityAdults">Sức chứa người lớn:</label>
+                <Field name="capacity.adults" type="number" class="form-control" v-model="hotelLocal.capacity.adults"
+                    required />
+                <ErrorMessage name="capacity.adults" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+            <div class="form-group">
+                <label for="capacityChildren">Sức chứa trẻ em:</label>
+                <Field name="capacity.children" type="number" class="form-control"
+                    v-model="hotelLocal.capacity.children" required />
+                <ErrorMessage name="capacity.children" class="error-feedback" style="color: rgb(238, 15, 15);" />
+            </div>
+
+
 
             <!-- Tỉnh/Thành phố -->
             <div class="form-group" style="display: none;">
@@ -93,6 +126,17 @@ export default {
                 .max(5, "Chất lượng tối đa là 5."),
             type: yup.string().required("Loại khách sạn không được để trống."),
             imgURL: yup.string().required("Vui lòng chọn một ảnh."),
+            discount: yup.string(), // Thêm kiểm tra cho trường giảm giá
+            price: yup
+                .number()
+                .typeError("Vui lòng nhập số.")
+                .required("Giá không được để trống.")
+                .min(0, "Giá không thể âm."),
+            discountTitle: yup.string(), // Kiểm tra cho trường tiêu đề giảm giá
+            capacity: yup.object().shape({
+                adults: yup.number().required("Vui lòng nhập số lượng người lớn."),
+                children: yup.number().required("Vui lòng nhập số lượng trẻ em.")
+            })
         });
         return {
 
@@ -104,6 +148,13 @@ export default {
                 province_id: "",
                 type: "",
                 imgURL: "",
+                discount: "",
+                price: "", // Thêm trường giá
+                discountTitle: "", // Thêm trường tiêu đề giảm giá
+                capacity: {
+                    adults: 1,
+                    children: 0
+                }
             },
             hotelFormSchema,
         };
@@ -119,7 +170,7 @@ export default {
             this.$emit("submit:hotel", this.hotelLocal);
             // Xử lý việc gửi biểu mẫu ở đây
         },
-        
+
 
 
     },

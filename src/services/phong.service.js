@@ -9,7 +9,7 @@ class RoomService {
     return (await this.api.get("/")).data;
   }
   async create(data) {
-    console.log("hello",data)
+    console.log("hello", data);
     createApiClient().post("/api/rooms", data, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -30,7 +30,15 @@ class RoomService {
   }
 
   async updateByHotelAndRoomId(hotelId, roomId, data) {
-    return (await this.api.put(`/hotel/${hotelId}/${roomId}`, data)).data;
+    await createApiClient().put(
+      `/api/rooms/hotel/${hotelId}/${roomId}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
   }
   async delete(id, data) {
     return (await this.api.delete(`/${id}`, data)).data;

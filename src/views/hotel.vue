@@ -75,7 +75,7 @@
                 <div class="col-sm-9">
                     <h5 class="mb-4" style="font-weight: 700;">Các khách sạn được yêu thích ở</h5>
                     <div class="ks col-sm-12" v-for="hotel in hotels" :key="hotel._id">
-                        <div class="ht">
+                        <div class="ht mr-4">
                             <img :src="hotel.imgURL" alt="">
 
                         </div>
@@ -88,13 +88,13 @@
                                 {{ hotel.type }}
 
 
-                                <span style="color: #ff7600;; font-size: 25px; opacity: 0.8;"> {{ hotel.rating
-                                    }}&#9733;</span>
+                                <span class="ml-4" style="color: yellow; font-size: 26px;"> <a-rate
+                                        :value="hotel.rating" disabled /></span>
 
 
 
                             </p>
-                            <p style="color:  rgba(104, 113, 118, 1.00); font-weight: 500; font-size: 14px;">
+                            <p style="color: rgb(104, 113, 118);font-weight: 700; font-size: 14px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     style=" font-weight: 500;" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -106,8 +106,18 @@
                                 </svg> {{ hotel.
                                     address }}
                             </p>
-                            <p style=" font-weight: 400;font-size: 14px;">{{ hotel.
-                                description }}</p>
+                            <p style=" font-weight: 600;font-size: 14px;"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    class="icon mr-4 icon-tabler icons-tabler-outline icon-tabler-brand-binance">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M6 8l2 2l4 -4l4 4l2 -2l-6 -6z" />
+                                    <path d="M6 16l2 -2l4 4l3.5 -3.5l2 2l-5.5 5.5z" />
+                                    <path d="M20 10l2 2l-2 2l-2 -2z" />
+                                    <path d="M4 10l2 2l-2 2l-2 -2z" />
+                                    <path d="M12 10l2 2l-2 2l-2 -2z" />
+                                </svg>{{ hotel.
+                                    description }}</p>
 
 
                         </div>
@@ -279,6 +289,7 @@ export default {
 }
 
 .ht>img {
+    margin-top: 16px;
     width: 205px;
     height: 164px;
     border-radius: 10px;

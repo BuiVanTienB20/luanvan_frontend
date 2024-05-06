@@ -32,14 +32,11 @@
             <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
           </svg>
 
-          <Dropdown v-model="selectedProvince" :options="provinces" filter optionLabel="name"
+          <Dropdown v-model="selectedProvince" :options="products" filter optionLabel="province_name"
             placeholder="Chọn một tỉnh thành" class="w-full md:w-14rem">
             <template slot="value" slot-scope="slotProps">
               <div v-if="slotProps.value" class="flex align-items-center">
-                <img :alt="slotProps.value.label"
-                  src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
-                  :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 18px" />
-                <div>{{ slotProps.value.name }}</div>
+                <div>{{ slotProps.value.province_name }}</div>
               </div>
               <span v-else>
                 {{ slotProps.placeholder }}
@@ -47,10 +44,7 @@
             </template>
             <template slot="option" slot-scope="slotProps">
               <div class="flex align-items-center">
-                <img :alt="slotProps.option.label"
-                  src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
-                  :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`" style="width: 18px" />
-                <div>{{ slotProps.option.name }}</div>
+                <div>{{ slotProps.option.province_name }}</div>
               </div>
             </template>
           </Dropdown>
@@ -81,7 +75,8 @@
 
 
 
-            <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay" style="width: 140px;" />
+            <Calendar v-model="icondisplay" showIcon iconDisplay="input" inputId="icondisplay" style="width: 160px;"
+              :disabledDates="disabledDates" />
 
 
           </div>
@@ -170,8 +165,8 @@
               </div>
 
               <div class="flex align-items-center gap-3  mb-3 ">
-                <b><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                <b class="tre"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-horse-toy">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M3.5 17.5c5.667 4.667 11.333 4.667 17 0" />
@@ -185,8 +180,8 @@
               </div>
 
               <div class="flex align-items-center gap-3  mb-3 ">
-                <b><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                <b class="tre"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="icon mr-2 icon-tabler icons-tabler-outline icon-tabler-door">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M14 12v.01" />
@@ -205,23 +200,21 @@
 
 
 
-          <router-link :to="{ name: 'localhotelPro' }">
-            <button class=" text-white" type="submit"
-              style="margin-left: 650px; font-weight: 500; border-radius: 5px ; background-color: rgb(255, 94, 31);">
+          <button class=" text-white" type="submit" @click="goToHotelPage"
+            style="margin-left: 650px; font-weight: 500; border-radius: 5px ; background-color: rgb(255, 94, 31);">
 
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-white icon icon-tabler icon-tabler-map-search"
-                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M11 18l-2 -1l-6 3v-13l6 -3l6 3l6 -3v7.5" />
-                <path d="M9 4v13" />
-                <path d="M15 7v5" />
-                <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                <path d="M20.2 20.2l1.8 1.8" />
-              </svg>
-              Tìm khách sạn
-            </button>
-          </router-link>
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-white icon icon-tabler icon-tabler-map-search"
+              width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M11 18l-2 -1l-6 3v-13l6 -3l6 3l6 -3v7.5" />
+              <path d="M9 4v13" />
+              <path d="M15 7v5" />
+              <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+              <path d="M20.2 20.2l1.8 1.8" />
+            </svg>
+            Tìm khách sạn
+          </button>
 
 
         </div>
@@ -271,7 +264,7 @@ import Calendar from 'primevue/calendar';
 import Dialog from 'primevue/dialog';
 import Dropdown from 'primevue/dropdown';
 import InputNumber from 'primevue/inputnumber';
-
+import ProductService from '../services/tinhthanh.service';
 export default {
   components: {
     Dropdown,
@@ -310,23 +303,7 @@ export default {
         { label: '20 đêm', value: 20 }
       ],
       selectedProvince: null,
-      provinces: [
-        { name: 'Thành Phố HCM', code: 'TPHCM' },
-        { name: 'Vũng Tàu', code: 'VT' },
-        { name: 'Đà Nẵng', code: 'DN' },
-        { name: 'Hà Nội', code: 'HN' },
-        { name: 'Đà Lạt', code: 'DL' },
-        { name: 'Phú Quốc', code: 'PQ' },
-        { name: 'Nha Trang', code: 'NT' },
-        { name: 'Hội An', code: 'HA' },
-        { name: 'Phan Thiết', code: 'PT' }
-
-      ].map(city => {
-        return {
-          ...city,
-          nameWithCountry: `${city.name} (Việt Nam)`
-        };
-      }),
+      products: [],
       booking: {
         city: '',
         checkinDate: '',
@@ -347,12 +324,36 @@ export default {
       const returnDate = new Date(this.icondisplay);
       returnDate.setDate(returnDate.getDate() + this.selectedNight.value);
       return returnDate;
+    },
+    disabledDates() {
+      const today = new Date();
+      const disabledDates = [];
 
+      // Lặp qua từ ngày hôm qua trở về 30 ngày trước
+      for (let i = 1; i <= 30000; i++) {
+        const disabledDate = new Date(today);
+        disabledDate.setDate(today.getDate() - i);
+        disabledDates.push(disabledDate);
+      }
+
+      return disabledDates;
     }
 
 
   },
   methods: {
+    async retrieveProducts() {
+      try {
+        this.products = await ProductService.getAll();
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    goToHotelPage() {
+      if (this.selectedProvince) {
+        this.$router.push({ name: 'searchHotel', params: { id: this.selectedProvince._id } });
+      }
+    },
     submitForm() {
       // Gửi dữ liệu đặt phòng lên máy chủ
       console.log('Đã gửi dữ liệu đặt phòng:', this.booking);
@@ -369,7 +370,10 @@ export default {
     closeDialog() {
       this.visible = false;
     }
-  }
+  },
+  created() {
+    this.retrieveProducts();
+  },
 };
 </script>
 

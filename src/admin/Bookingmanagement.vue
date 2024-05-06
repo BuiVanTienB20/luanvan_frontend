@@ -113,87 +113,113 @@
                 </div>
 
             </div>
-            <div class="list col-sm-12" v-for="book in books" :key="book._id">
-                <div class="ht col-sm-3 ">
-                    <img :src="book.roomDetails.imgURL" alt="">
 
+            <div class="tlt col-sm-12" v-for="book in books" :key="book._id">
+                <div class="list col-sm-12">
+                    <div class="ht col-sm-3 ">
+                        <img :src="book.roomDetails.imgURL" alt="">
 
-                </div>
-                <div class="kt col-sm-3">
-                    <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
-                        {{ book.roomDetails.room_name }}
-                    </p>
-                    <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">Mã khách sạn: {{
-                        book.roomDetails.hotel_id }}</p>
-                    <p style="font-size: 14px;"> {{ formatDate(book.check_in_date) }}-{{
-                        formatDate(book.check_out_date) }}</p>
-                    <p style="font-size: 14px;"> {{ book.roomDetails.room_name }}</p>
-                    <p style="font-size: 14px;"> {{ book.roomDetails.room_number }}</p>
-                    <p style="font-size: 14px;"> {{ book.roomDetails.room_type }}</p>
-                    <p style="font-size: 14px;"> {{ book.roomDetails.capacity }}</p>
-                    <p style="font-size: 14px;"> {{ book.roomDetails.price_per_night }}</p>
-                    <p style="font-size: 14px;"> {{ book.roomDetails.availability }}</p>
-
-
-                </div>
-                <div class="kt col-sm-3">
-                    <img :src="book.userDetails.imgURL" alt="" style="width: 100px;height: 100px;">
-
-                    <p style="font-size: 14px;"> {{ book.email }}</p>
-                    <p style="font-size: 14px;"> {{ book.phone }}</p>
-                    <p style="font-size: 14px;"> {{ book.namebook }}</p>
-                    <p style="font-size: 14px;"> {{ book.userDetails.address }}</p>
-                    <p style="font-size: 14px;"> {{ book.userDetails.price_per_night }}</p>
-                    <p style="font-size: 14px;"> {{ book.userDetails.availability }}</p>
-                    <p style="font-size: 14px;"> {{ book.userDetails.capacity }}</p>
-
-                </div>
-                <div class="kt col-sm-3">
-                    <p style="font-size: 14px;"> {{ book.booking_status }}</p>
-
-                    <div style="display: flex;">
-
-                        <button class="btn btn-success">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-cash-banknote">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                                <path
-                                    d="M3 6m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-                                <path d="M18 12l.01 0" />
-                                <path d="M6 12l.01 0" />
-                            </svg>
-
-                        </button>
-
-                        <button class="btn btn-danger" style="margin-left: 50px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-device-tablet-cancel">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12.5 21h-6.5a1 1 0 0 1 -1 -1v-16a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8" />
-                                <path d="M19 19m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                                <path d="M17 21l4 -4" />
-                                <path d="M11 17a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
-                            </svg>
-
-                        </button>
 
                     </div>
+                    <div class="kt col-sm-3">
+                        <p style="color: rgba(3, 18, 26, 1.00); font-weight: 700; font-size: 16px;">
+                            {{ book.roomDetails.room_name }}
+                        </p>
+                        <p style="color:rgba(2, 100, 200, 1.00); font-weight: 500;font-size: 12px;">Mã
+                            khách
+                            sạn: {{
+                                book.roomDetails.hotel_id }}</p>
 
 
+
+
+                    </div>
+                    <div class="kt col-sm-3">
+                        <img :src="book.userDetails.imgURL" alt="" style="width: 100px;height: 100px;">
+
+
+
+
+                        <p style="font-size: 14px;"> {{ book.phone }}</p>
+                        <p style="font-size: 14px;"> {{ book.namebook }}</p>
+                        <p style="font-size: 14px;"> {{ book.email }}</p>
+
+                        <p style="font-size: 14px;"> {{ book.userDetails.address }}</p>
+
+
+                    </div>
+                    <div class="kt col-sm-3">
+                        <p style="font-size: 14px;"> {{ book.booking_status }}</p>
+
+                        <div style="display: flex;">
+
+                            <button class="btn btn-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-cash-banknote">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path
+                                        d="M3 6m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                                    <path d="M18 12l.01 0" />
+                                    <path d="M6 12l.01 0" />
+                                </svg>
+
+                            </button>
+
+                            <button class="btn btn-danger" style="margin-left: 50px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-device-tablet-cancel">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12.5 21h-6.5a1 1 0 0 1 -1 -1v-16a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8" />
+                                    <path d="M19 19m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M17 21l4 -4" />
+                                    <path d="M11 17a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
+                                </svg>
+
+                            </button>
+
+                        </div>
+                    </div>
 
                 </div>
+                <div class="listp col-sm-12">
+                    <div style="font-size: 14px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-clock">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10.5 21h-4.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />
+                            <path d="M16 3v4" />
+                            <path d="M8 3v4" />
+                            <path d="M4 11h10" />
+                            <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                            <path d="M18 16.5v1.5l.5 .5" />
+                        </svg> {{ formatDate(book.check_in_date) }}-{{
+                            formatDate(book.check_out_date) }}</div>
 
+                    <div style="font-size: 14px;"> <b>Số phòng:</b> {{ book.roomDetails.room_number }}
+                    </div>
+                    <div style="font-size: 14px;"> {{ book.roomDetails.room_type }}</div>
+                    <div style="font-size: 14px;"> <b>Dành cho:</b> {{ book.roomDetails.capacity }} người
+                    </div>
+                    <div style="font-size: 14px;color: chartreuse;"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-receipt-2">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
+                            <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" />
+                        </svg>{{ (book.roomDetails.price_per_night * 1).toLocaleString('en-US', {
+                                            minimumFractionDigits: 0,
+                                            maximumFractionDigits: (book.roomDetails.price_per_night >= 1000) ? 3 : 0
+                                        })
+                                        }},000 VND</div>
 
-
-
-
-
-
+                </div>
 
             </div>
         </div>
@@ -338,12 +364,28 @@ p {
 
 }
 
-.list {
-    display: flex;
+.tlt {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     margin-bottom: 20px;
     border-radius: 10px;
+
+}
+
+.list {
+    display: flex;
+    font-weight: 700;
+
+}
+
+.listp {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: 700;
+
+
+
 }
 
 .kt {

@@ -3,27 +3,32 @@
     <h1 class="d-flex justify-content-center">Thêm Khách sạn</h1>
     <add @submit:hotel="createHotel" />
     <p>{{ message }}</p>
+
   </div>
 </template>
 <script>
 import add from "../../components/hotels/addhotel.vue";
 import HotelService from "../../services/khachsan.service";
-
+import { retrieveHotels } from "../hotel.vue";
 export default {
   components: {
     add,
+
   },
   props: {
     hotel: { type: Object, require: true },
+
   },
   data() {
     return {
+      hotels: [],
       message: "",
 
     };
   },
 
   methods: {
+
     async createHotel(data) {
       try {
         console.log("hello", data.name)
@@ -37,20 +42,29 @@ export default {
         formData.append("rating", data.rating);
         formData.append("type", data.type);
         formData.append("imgURL", data.imgURL);
-        formData.append("province_id",data.province_id);
+        formData.append("province_id", data.province_id);
+        formData.append("discount", data.discount);
+        formData.append("price", data.price); // Thêm trường giá
+        formData.append("discountTitle", data.discountTitle); // Thêm trường tiêu đề giảm giá
+        formData.append("capacity[adults]", data.capacity.adults); // Thêm sức chứa người lớn
+        formData.append("capacity[children]", data.capacity.children); // Thêm sức chứa trẻ em
         console.log("fomdata", formData)
 
         await HotelService.create(formData);
-
+        await retrieveHotels.call(this);
         this.message = "Thêm khách sạn mới thành công";
         this.$router.push({ name: 'admin-hotel' });
-
-
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+
+
   },
+  created() {
+    retrieveHotels.call(this);
+  },
+
 
 };
 </script>

@@ -40,6 +40,11 @@ const routes = [
         component: () => import("@/views/localhotelPro.vue"),
       },
       {
+        path: "/searchHotel/province/:id",
+        name: "searchHotel",
+        component: () => import("@/views/searchHotel.vue"),
+      },
+      {
         path: "/hotel/province/:id", // Thêm tham số động :id vào đường dẫn
         name: "hotel",
         component: () => import("@/views/hotel.vue"),
@@ -53,7 +58,7 @@ const routes = [
         props: true,
       },
       {
-        path: "/test",
+        path: "/test/province/:id",
         name: "test",
         component: () => import("@/views/test.vue"),
       },
